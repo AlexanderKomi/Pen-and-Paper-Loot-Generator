@@ -1,5 +1,8 @@
 package constants;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 /**
  * THis class contains all information as constants about the program, like version and authors.
  *
@@ -7,7 +10,6 @@ package constants;
  * @version 1.0
  */
 public final class GeneralConstants {
-	
 	/*Naming conventions for versions :
 	 *
 	 * [STABILITY]_[BUILD NUMBER]_[STATUS]
@@ -31,8 +33,27 @@ public final class GeneralConstants {
 	public static final  String[] authors         = { "Alexander Komischke" };
 	private static final String[] stable_versions = {};
 	private static final String[] versions        = { current_version };
+	private static       String   location        = getMainLocation();
 	
 	private GeneralConstants() {
 	}
 	
+	private static String getMainLocation() {
+		String path = GeneralConstants.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		try {
+			path = URLDecoder.decode( path, "UTF-8" );
+		}
+		catch ( UnsupportedEncodingException e ) {
+			e.printStackTrace();
+		}
+		return path;
+	}
+	
+	public static String getLocation() {
+		return location;
+	}
+	
+	public static void setLocation( String location ) {
+		GeneralConstants.location = location;
+	}
 }

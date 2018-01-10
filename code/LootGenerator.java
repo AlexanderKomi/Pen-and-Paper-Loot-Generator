@@ -18,4 +18,6 @@ public class LootGenerator extends Application {
 		primaryStage.setOnCloseRequest( event -> Platform.exit() );
 		primaryStage.show();
 	}
+	
+	
 }

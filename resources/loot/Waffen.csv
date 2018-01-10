@@ -1,0 +1,84 @@
+Name;Kategorie;Typ;"Qualität 
+1 (schrott) bis 
+5 (sehr gut)";Schaden;;Treffer-chance;Parade;Magazin;Beschreibung;Anmerkungen
+;;;;Grund-schaden;Wurf-schaden;;;;;
+Armbrust Zweihand;Fernkampf;Armbrust;1;6;2W6;-2;-2;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Zweihand;Fernkampf;Armbrust;2;8;2W6;-1;-2;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Zweihand;Fernkampf;Armbrust;3;10;2W6;0;-2;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Zweihand;Fernkampf;Armbrust;4;12;3W6;0;-2;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Zweihand;Fernkampf;Armbrust;5;15;3W6;0;-2;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Kurzbogen;Fernkampf;Bogen;1;0;2W6;-2;-2;;;
+Kurzbogen;Fernkampf;Bogen;2;1;2W6;-1;-2;;;
+Kurzbogen;Fernkampf;Bogen;3;2;2W6;0;-2;;;
+Kurzbogen;Fernkampf;Bogen;4;4;2W6;0;-2;;;
+Kurzbogen;Fernkampf;Bogen;5;7;2W6;0;-2;;;
+Langbogen;Fernkampf;Bogen;1;0;2W6;-2;-3;;;
+Langbogen;Fernkampf;Bogen;2;2;2W6;-1;-3;;;
+Langbogen;Fernkampf;Bogen;3;3;2W6;0;-3;;;
+Langbogen;Fernkampf;Bogen;4;6;2W6;0;-3;;;
+Langbogen;Fernkampf;Bogen;5;10;2W6;0;-3;;;
+Schleuder;Fernkampf;Exotisch;1;1;1W6;;;;;
+Schleuder;Fernkampf;Exotisch;2;2;;;;;;
+Schleuder;Fernkampf;Exotisch;3;3;;;;;;
+Schleuder;Fernkampf;Exotisch;4;4;;;;;;
+Schleuder;Fernkampf;Exotisch;5;5;;;;;;
+Karabiner;Fernkampf;Gewehr;2;10;2W6;-1;-3;10;;ohne Visier
+Schrotflinte;Fernkampf;Gewehr;1;10;3W6;-4;-3;2;verzogener Lauf, verrostet und abgesägt;Grundschaden nimmt bei zunehmender Distanz ab
+Armbrust Einhand;Fernkampf;Pistole;1;;;;;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Einhand;Fernkampf;Pistole;2;;;;;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Einhand;Fernkampf;Pistole;3;;;;;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Einhand;Fernkampf;Pistole;4;;;;;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Armbrust Einhand;Fernkampf;Pistole;5;;;;;;;Nach Schuss 1ne Runde aussetzen zum nachladen
+Fackel;Nahkampf;Exotisch;4;5;1W6;1;-3;;Brennend und hell;
+Kettensäge;Nahkampf;Exotisch;3;20;2W6;-3;-2;;Rostig, aber ok;Funktioniert nur für 3 Treffer
+Claymore;Nahkampf;Scharf;1;5;1W6;-1;0;;Abgebrochen, eher ein Kurzschwert;
+Claymore;Nahkampf;Scharf;2;5;2W6;-2;-1;;Noch ein bisschen Schliff;
+Claymore;Nahkampf;Scharf;3;8;2W6;-2;-2;;Einige Kerben, aber noch scharf;
+Claymore;Nahkampf;Scharf;4;12;2W6;-2;-2;;Scharf und rostfrei;
+Claymore;Nahkampf;Scharf;5;18;3W6;-2;-2;;Gezahnte Klinge und super scharf;
+große Axt;Nahkampf;Scharf;1;3;1W6;-1;0;;Zerbrochene Klinge;
+große Axt;Nahkampf;Scharf;2;5;2W6;-2;-1;;;
+große Axt;Nahkampf;Scharf;3;8;2W6;-2;-2;;;
+große Axt;Nahkampf;Scharf;4;12;2W6;-2;-2;;;
+große Axt;Nahkampf;Scharf;5;18;3W6;-2;-2;;;
+Katana;Nahkampf;Scharf;5;13;3W6;0;-1;;Scharf und rostfrei;Verliert schnell an Qualität
+kleine Axt;Nahkampf;Scharf;1;5;1W6;-1;0;;;
+kleine Axt;Nahkampf;Scharf;2;2;2W6;0;0;;;
+kleine Axt;Nahkampf;Scharf;3;6;2W6;0;0;;;
+kleine Axt;Nahkampf;Scharf;4;4;2W6;0;0;;;
+kleine Axt;Nahkampf;Scharf;5;10;2W6;0;0;;;
+Schwert;Nahkampf;Scharf;1;5;1W6;-1;0;;Schlecht verarbeitet und stumpf;
+Schwert;Nahkampf;Scharf;2;2;2W6;0;0;;;
+Schwert;Nahkampf;Scharf;3;6;2W6;0;0;;;
+Schwert;Nahkampf;Scharf;4;4;2W6;0;0;;;
+Schwert;Nahkampf;Scharf;5;10;2W6;0;0;;Sehr scharf und perfekt verarbeitet;
+Dolch;Nahkampf;Spitz;1;4;1W6;-2;-2;;abgebrochene Spitze;
+Dolch;Nahkampf;Spitz;2;4;2W6;-1;-2;;;
+Dolch;Nahkampf;Spitz;3;6;2W6;0;-1;;;
+Dolch;Nahkampf;Spitz;4;8;2W6;0;-1;;;
+Dolch;Nahkampf;Spitz;5;12;2W6;0;-1;;;
+Speer;Nahkampf;Spitz;1;;;;;;;
+Speer;Nahkampf;Spitz;2;;;;;;;
+Speer;Nahkampf;Spitz;3;;;;;;;
+Speer;Nahkampf;Spitz;4;;;;;;;
+Speer;Nahkampf;Spitz;5;;;;;;;
+Baseballschläger;Nahkampf;Stumpf;1;3;1W6;-2;-3;;Abgebrochen und aus Holz;
+Baseballschläger;Nahkampf;Stumpf;2;7;1W6;-2;-2;;Spröde und aus Holz;
+Baseballschläger;Nahkampf;Stumpf;3;4;2W6;-2;-1;;aus Holz;
+Baseballschläger;Nahkampf;Stumpf;4;6;2W6;-1;-1;;Aus Aluminium;
+Baseballschläger;Nahkampf;Stumpf;5;12;2W6;-1;0;;Aus Aluminium mit Stacheldraht;
+großer Schild;Nahkampf;Stumpf;1;0;1W6;-1;2;;Eher kleiner Schild, Stück heraus gebrochen;
+großer Schild;Nahkampf;Stumpf;2;0;1W6;-1;3;;Aus Aluminium;Erfordert KK 11
+großer Schild;Nahkampf;Stumpf;3;2;1W6;-1;3;;aus stahl;Erfordert KK 13
+großer Schild;Nahkampf;Stumpf;4;2;1W6;-1;4;;aus stahl und gefettet;Erfordert KK 15
+großer Schild;Nahkampf;Stumpf;5;2;2W6;-1;4;;Aus Stahl mit Stacheln besetzt;Kann Schüsse blocken Erfordert KK 15
+kleiner Schild;Nahkampf;Stumpf;1;0;1W6;-2;2;;Aus Holz. Ein Stück is herraus gebrochen;Verliert schnell an Qualität
+kleiner Schild;Nahkampf;Stumpf;2;1;1W6;-1;2;;Aus Holz. Ein kleines Stück is herraus gebrochen;Verliert schnell an Qualität
+kleiner Schild;Nahkampf;Stumpf;3;1;1W6;-1;2;;Aus Blech.;Schützt nicht gegen Schüsse
+kleiner Schild;Nahkampf;Stumpf;4;1;1W6;-2;2;;Aus Stahl;Kann wenige Schüsse blocken.
+kleiner Schild;Nahkampf;Stumpf;5;1;2W6;-1;2;;Aus Stahl mit Stacheln besetzt;Kann Schüsse blocken
+Schaufel;Nahkampf;Stumpf;1;0;2W6;-2;-3;;Kaput;
+Schaufel;Nahkampf;Stumpf;2;2;2W6;0;-3;;;
+Schaufel;Nahkampf;Stumpf;3;3;2W6;0;-2;;Kein Spaten;
+Schaufel;Nahkampf;Stumpf;4;4;2W6;0;-1;;Angeschliffen;
+Schaufel;Nahkampf;Stumpf;5;5;2W6;0;-1;;Angeschliffen, mehr eine Axt;
