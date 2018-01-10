@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class ReadFile {
 	
+	private ArrayList<String> foundFileNames = new ArrayList<>();
+	
 	public ArrayList<String> initialize() {
 		System.out.println( "Location : " + GeneralConstants.getLocation() );
 		
@@ -74,10 +76,11 @@ public class ReadFile {
 	private ArrayList<String> findInJar() {
 		ArrayList<String> results = new ArrayList<>();
 		
-		for ( String s : IOConstants.lootClasses ) {
-			s = findResource( IOConstants.resourceFolder + s + IOConstants.fileType );
-			if ( s != null ) {
-				results.add( s );
+		for ( String lootClassName : IOConstants.lootClasses ) {
+			String content = findResource( IOConstants.resourceFolder + lootClassName + IOConstants.fileType );
+			if ( content != null ) {
+				foundFileNames.add( lootClassName );
+				results.add( content );
 			}
 		}
 		
@@ -102,6 +105,7 @@ public class ReadFile {
 					String nameWithoutExtension = f.getName().substring( 0, f.getName().length() - IOConstants.fileType.length() );
 					for ( String s : IOConstants.lootClasses ) {
 						if ( s.equals( nameWithoutExtension ) ) {
+							foundFileNames.add( f.getName() );
 							usebleFiles.add( f );
 							System.out.println( "Found file and is viable lootclass : \t" + f.getName() );
 						}
@@ -121,9 +125,7 @@ public class ReadFile {
 	}
 	
 	private File[] finder( String dirName ) {
-		File f = new File( dirName );
-		//		//System.out.println( Arrays.toString( f.list() ) );
-		return f.listFiles( ( directory, filename ) -> filename.endsWith( IOConstants.fileType ) );
+		return new File( dirName ).listFiles( ( directory, filename ) -> filename.endsWith( IOConstants.fileType ) );
 	}
 	
 	private ArrayList<String> getContentAsStrings( File[] files ) {

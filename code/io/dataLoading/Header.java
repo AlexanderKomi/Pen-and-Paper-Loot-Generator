@@ -3,26 +3,42 @@ package io.dataLoading;
 import constants.IOConstants;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Header {
 	
-	private ArrayList<String> columns;
-	private int               headerLength;
-	private String            header;
+	private String name;
+	private int    headerLength;
+	private ArrayList<String> columns = new ArrayList<>();
 	
-	public Header( String rawHeader, int headerLength ) {
-		this.headerLength = headerLength;
-		this.header = extractHeader( rawHeader );
-		this.columns = extractColumns( header );
-		this.columns.forEach( System.out::println );
+	Header( String name ) {
+		this.name = name;
+		if ( !checkForRestrictions() ) {
+			// not restrictions set in IO Constants
+		}
 	}
 	
-	private String extractHeader( String rawHeader ) {
-		return rawHeader.substring( 0, headerLength );
+	private boolean checkForRestrictions() {
+		for ( int i = 0; i < IOConstants.lootClasses.length; i++ ) {
+			if ( IOConstants.lootClasses[ i ].equals( name ) ) {
+				this.headerLength = IOConstants.headerLengths[ i ];
+				this.columns.addAll( Arrays.asList( IOConstants.columnDefinitions[ i ] ) );
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	// START ------------ This is only for testing --------------
+	
+	private String extractHeader( String rawData ) {
+		return rawData.substring( 0, headerLength );
 	}
 	
 	private ArrayList<String> extractColumns( String header ) {
 		ArrayList<String> extracted = new ArrayList<>();
+		
 		for ( String s : header.split( IOConstants.fileRowSeparator ) ) {
 			for ( String x : s.split( IOConstants.fileEntrySeparator ) ) {
 				if ( x.length() > 0 ) {
@@ -31,5 +47,17 @@ public class Header {
 			}
 		}
 		return extracted;
+	}
+	
+	
+	// END ------------ This is only for testing --------------
+	
+	// -------------------------------------------- GETTER AND SETTER --------------------------------------------------
+	public String getName() {
+		return name;
+	}
+	
+	public ArrayList<String> getColumns() {
+		return columns;
 	}
 }
