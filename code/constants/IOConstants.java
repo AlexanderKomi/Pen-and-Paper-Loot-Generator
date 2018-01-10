@@ -2,13 +2,14 @@ package constants;
 
 public class IOConstants {
 	
+	public static final String resourceFolder = "loot/";
 	
 	public static final String fileType           = ".csv";
 	public static final String fileEntrySeparator = ";";
 	public static final String fileRowSeparator   = "\n";
 	
 	public static final String[]  lootClasses                = {
-			"Waffen"
+			"Waffen", "Test"
 	};
 	public static final int[]     headerLengths              = {
 			160
