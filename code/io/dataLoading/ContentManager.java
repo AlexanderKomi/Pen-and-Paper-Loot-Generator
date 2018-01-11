@@ -10,6 +10,7 @@ public class ContentManager {
 	private ReadFile reader = new ReadFile();
 	
 	public void createUsableData() {
+		// TODO : Extract usefull content from here to model classes
 		ArrayList<String> content      = reader.getContent();
 		String[]          contentArray = new String[ content.size() ];
 		content.toArray( contentArray );
