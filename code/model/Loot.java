@@ -4,29 +4,32 @@ import java.util.ArrayList;
 
 public class Loot {
 	
-	private String            name            = "";
-	private int               qualityAsNumber = 0;
-	private ArrayList<String> otherEntries    = new ArrayList<>();
-	
-	public Loot() {
-	
-	}
+	private String            name;
+	private int               qualityAsNumber;
+	private ArrayList<String> otherEntries;
 	
 	public Loot( String name, int qualityAsNumber, ArrayList<String> otherEntries ) {
 		this.name = name;
 		this.qualityAsNumber = qualityAsNumber;
-		this.otherEntries.addAll( otherEntries );
+		this.otherEntries = ( otherEntries );
 	}
 	
 	@Override
 	public String toString() {
-		String        separator = ", ";
+		String        separator = "; ";
 		StringBuilder sb        = new StringBuilder( this.getName() ).append( separator ).append( "\n" );
-		sb.append( this.getQualityAsNumber() ).append( separator );
-		
+		sb.append( this.getQualityAsNumber() ).append( separator ).append( "\n" );
 		for ( String s : this.getOtherEntries() ) {
-			sb.append( s ).append( ", " );
+			String x;
+			if ( s.isEmpty() || s.equals( " " ) ) {
+				x = " ";
+			}
+			else {
+				x = s;
+			}
+			sb.append( x ).append( separator ).append( "\n" );
 		}
+		sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( "\n" ) );
 		
 		return sb.toString();
 	}
@@ -34,7 +37,7 @@ public class Loot {
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
 	
-	public String getName() {
+	private String getName() {
 		return name;
 	}
 	
@@ -42,7 +45,7 @@ public class Loot {
 		this.name = name;
 	}
 	
-	public int getQualityAsNumber() {
+	private int getQualityAsNumber() {
 		return qualityAsNumber;
 	}
 	
@@ -50,7 +53,7 @@ public class Loot {
 		this.qualityAsNumber = qualityAsNumber;
 	}
 	
-	public ArrayList<String> getOtherEntries() {
+	private ArrayList<String> getOtherEntries() {
 		return otherEntries;
 	}
 	

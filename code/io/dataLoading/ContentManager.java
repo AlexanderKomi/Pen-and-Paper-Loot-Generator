@@ -10,7 +10,7 @@ public class ContentManager {
 	private ReadFile reader = new ReadFile();
 	
 	public void createUsableData() {
-		ArrayList<String> content      = reader.initialize();
+		ArrayList<String> content      = reader.getContent();
 		String[]          contentArray = new String[ content.size() ];
 		content.toArray( contentArray );
 		
@@ -21,7 +21,7 @@ public class ContentManager {
 		contentArray = cutHeader( contentArray );
 		
 		ArrayList<LootClass> classes = createLootClasses( headerArray, contentArray );
-		classes.forEach( System.out::println );
+		//classes.forEach( System.out::println );
 	}
 	
 	private String[] cutHeader( String[] contentArray ) {

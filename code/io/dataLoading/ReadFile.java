@@ -9,18 +9,13 @@ import java.util.ArrayList;
 
 public class ReadFile {
 	
-	private ArrayList<String> foundFileNames = new ArrayList<>();
-	
-	public ArrayList<String> initialize() {
-		System.out.println( "Location : " + GeneralConstants.getLocation() );
+	public ArrayList<String> getContent() {
 		
-		if ( GeneralConstants.getLocation().endsWith( ".jar" ) ) {  //Distinguish between jar and IDE execution
+		if ( this.isExecutedFromJar() ) {  //Distinguish between jar and IDE execution
 			return findInJar();
 		}
 		else {
-			File[] files = findInFiles();
-			if ( files == null ) return null;
-			return getContentAsStrings( files ); //Every Element in this list contains one file.
+			return getContentAsStrings( findInFiles() ); //Every Element in this list contains one file.
 		}
 	}
 	
@@ -79,7 +74,7 @@ public class ReadFile {
 		for ( String lootClassName : IOConstants.lootClasses ) {
 			String content = findResource( IOConstants.resourceFolder + lootClassName + IOConstants.fileType );
 			if ( content != null ) {
-				foundFileNames.add( lootClassName );
+				//foundFileNames.add( lootClassName );
 				results.add( content );
 			}
 		}
@@ -105,9 +100,8 @@ public class ReadFile {
 					String nameWithoutExtension = f.getName().substring( 0, f.getName().length() - IOConstants.fileType.length() );
 					for ( String s : IOConstants.lootClasses ) {
 						if ( s.equals( nameWithoutExtension ) ) {
-							foundFileNames.add( f.getName() );
 							usebleFiles.add( f );
-							System.out.println( "Found file and is viable lootclass : \t" + f.getName() );
+							//System.out.println( "Found file and is viable lootclass : \t" + f.getName() );
 						}
 					}
 				}
@@ -134,5 +128,10 @@ public class ReadFile {
 			content.add( readFile( file.getPath() ) );
 		}
 		return content;
+	}
+	
+	private boolean isExecutedFromJar() {
+		//System.out.println( "Location : " + GeneralConstants.getLocation() );
+		return GeneralConstants.getLocation().endsWith( ".jar" );
 	}
 }
