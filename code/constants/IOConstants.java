@@ -9,17 +9,18 @@ public class IOConstants {
 	public static final String fileRowSeparator   = "\n";
 	
 	public static final String[]  lootClasses                = {
-			"Waffen"
+			"Waffen", "Erste Hilfe"
 	};
 	public static final int[]     headerLengths              = {
-			160
+			160, 0
 	};
 	public static final boolean[] hasSpecialColumnDefinition = {
-			true
+			true, false
 	};
 	
 	public static final String[][] columnDefinitions = {
-			{ "Name", "Kategorie", "Typ", "Qualität", "Schaden", "Trefferchance", "Parade", "Magazin", "Beschreibung", "Anmerkungen", "Grundschaden", "Wurfschaden" }
+			{ "Name", "Kategorie", "Typ", "Qualität", "Schaden", "Trefferchance", "Parade", "Magazin", "Beschreibung", "Anmerkungen", "Grundschaden", "Wurfschaden" },
+			{ "Name", "Qualität", "Menge" }
 	};
 	
 	public static final int[] nameIndexes = {

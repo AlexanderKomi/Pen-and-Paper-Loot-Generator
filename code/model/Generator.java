@@ -1,8 +1,9 @@
 package model;
 
-public class Generator {
-	
-	public static LootClass[] lootClasses;
 
+/**
+ * Implement randomised loot creation here.
+ */
+public class Generator {
 	
 }
