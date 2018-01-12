@@ -4,9 +4,9 @@ import io.dataLoading.ContentManager;
 
 public class IOController {
 	
-	private ContentManager c = new ContentManager();
+	private static ContentManager c = new ContentManager();
 	
-	public void loadStartingData() {
+	public static void loadStartingData() {
 		c.createUsableData();
 	}
 	

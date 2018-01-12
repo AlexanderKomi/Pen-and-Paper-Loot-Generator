@@ -22,6 +22,7 @@
 hs_err_pid*
 /Pen-and-Paper-Loot-Generator.iml
 .idea/
-/.gitignore
 out/production/Pen-and-Paper-Loot-Generator/gui/fxml/
 test/
+code/META-INF/
+out/production/Pen-and-Paper-Loot-Generator/META-INF/

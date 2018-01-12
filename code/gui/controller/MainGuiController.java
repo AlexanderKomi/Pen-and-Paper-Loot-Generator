@@ -16,7 +16,6 @@ public class MainGuiController {
 	
 	@FXML
 	public void initialize() {
-	
 	}
 	
 }

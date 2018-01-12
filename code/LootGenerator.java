@@ -14,7 +14,7 @@ public class LootGenerator extends Application {
 	public void start( Stage primaryStage ) throws Exception {
 		MainController.initialize();
 		Scene scene = new Scene( FXMLLoader.load( getClass().getResource( "gui/fxml/MainGui.fxml" ) ) );
-		primaryStage.setTitle( "Pen and Paper : Loot Generator" );
+		primaryStage.setTitle( "Pen and Paper : Loot LootGeneratorController" );
 		primaryStage.setScene( scene );
 		primaryStage.setOnCloseRequest( event -> Platform.exit() );
 		primaryStage.show();
