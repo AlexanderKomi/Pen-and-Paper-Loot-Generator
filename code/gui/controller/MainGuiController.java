@@ -1,6 +1,5 @@
 package gui.controller;
 
-import io.IOController;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
@@ -17,8 +16,7 @@ public class MainGuiController {
 	
 	@FXML
 	public void initialize() {
-		IOController ioController = new IOController();
-		ioController.loadData();
+	
 	}
 	
 }

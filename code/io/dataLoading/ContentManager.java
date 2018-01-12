@@ -2,12 +2,13 @@ package io.dataLoading;
 
 import constants.IOConstants;
 import model.LootClass;
+import model.LootController;
 
 import java.util.ArrayList;
 
 public class ContentManager {
 	
-	private ReadFile reader = new ReadFile();
+	private static ReadFile reader = new ReadFile();
 	
 	public void createUsableData() {
 		// TODO : Extract usefull content from here to model classes
@@ -22,6 +23,7 @@ public class ContentManager {
 		contentArray = cutHeader( contentArray );
 		
 		ArrayList<LootClass> classes = createLootClasses( headerArray, contentArray );
+		LootController.setLootClasses( classes );
 		//classes.forEach( System.out::println );
 	}
 	
