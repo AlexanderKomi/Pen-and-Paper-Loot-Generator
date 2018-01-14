@@ -9,9 +9,7 @@ public abstract class Generator {
 	
 	private String name;
 	
-	public String generateLoot() {
-		return "";
-	}
+	public abstract String generateLoot();
 	
 	//-------------------------------------- GETTER AND SETTER --------------------------------------
 	
@@ -19,7 +17,7 @@ public abstract class Generator {
 		return name;
 	}
 	
-	public void setName( String name ) {
+	protected void setName( String name ) {
 		this.name = name;
 	}
 }

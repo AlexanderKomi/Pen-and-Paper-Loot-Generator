@@ -26,7 +26,11 @@ public class MainGuiController {
 	
 	@FXML
 	public void initialize() {
-		
+		initializeToolBar();
+		middleContentController.getOutputText().textProperty().bind( toolBarController.resultOutputProperty() );
+	}
+	
+	private void initializeToolBar() {
 		toolBarController.setSelectedTab( middleContentController.getActiveTab() );
 		
 		middleContentController.getTabPane().getSelectionModel().selectedItemProperty().addListener(
@@ -35,7 +39,6 @@ public class MainGuiController {
 					toolBarController.setSelectedTab( (GeneratorTab) newTab );
 				}
 		);
-		
 	}
 	
 }

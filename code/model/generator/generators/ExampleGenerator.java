@@ -8,4 +8,8 @@ public class ExampleGenerator extends Generator {
 		super.setName( name );
 	}
 	
+	@Override
+	public String generateLoot() {
+		return "Cool loot has been generated :)";
+	}
 }

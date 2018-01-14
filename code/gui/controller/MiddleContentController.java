@@ -16,7 +16,7 @@ public class MiddleContentController {
 	
 	@FXML
 	public void initialize() {
-		outputText.setText( "Testing Output" );
+		outputText.setText( "Loot Output" );
 		createTabs();
 	}
 	
@@ -32,6 +32,10 @@ public class MiddleContentController {
 	
 	public void setOutputText( String result ) {
 		this.outputText.setText( result );
+	}
+	
+	public Label getOutputText() {
+		return outputText;
 	}
 	
 	public TabPane getTabPane() {
