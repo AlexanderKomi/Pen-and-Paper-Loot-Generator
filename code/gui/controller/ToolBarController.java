@@ -5,16 +5,20 @@ import javafx.fxml.FXML;
 
 public class ToolBarController {
 	
-	@FXML
-	public void initialize() {
-		//System.out.println("ToolBarController initialized");
-	}
+	private GeneratorTab selectedTab;
 	
 	@FXML
 	private void generateLootClicked() {
-		GeneratorTab t;
-		//t.generateLoot();
-		System.out.println( "-> Generate clicked" );
+		System.out.println( "-> Generate clicked : Active Tab : " + selectedTab.getText() );
 	}
 	
+	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
+	
+	public GeneratorTab getSelectedTab() {
+		return selectedTab;
+	}
+	
+	public void setSelectedTab( GeneratorTab selectedTab ) {
+		this.selectedTab = selectedTab;
+	}
 }

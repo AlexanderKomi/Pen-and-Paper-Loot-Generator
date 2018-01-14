@@ -18,7 +18,9 @@ public class LootGeneratorController {
 	}
 	
 	private static void addExsampleGenerators() {
-		generators.add( new ExampleGenerator( "Example Generator" ) );
+		generators.add( new ExampleGenerator( "Example Generator 1" ) );
+		generators.add( new ExampleGenerator( "Example Generator 2" ) );
+		generators.add( new ExampleGenerator( "Example Generator 3" ) );
 	}
 	
 	//-------------------------------------- GETTER AND SETTER --------------------------------------

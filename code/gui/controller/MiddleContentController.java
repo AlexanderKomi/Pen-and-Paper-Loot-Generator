@@ -21,22 +21,22 @@ public class MiddleContentController {
 	}
 	
 	private void createTabs() {
-		
 		for ( Generator g : LootGeneratorController.getGenerators() ) {
 			GeneratorTab tab = new GeneratorTab( g );
 			tabPane.getTabs().add( tab );
 		}
-		
-		tabPane.getSelectionModel().selectedItemProperty().addListener( ( ov, oldTab, newTab ) -> {
-			System.out.println( "Active tab changed from \t|" + oldTab.getText() + "|\t\t to \t\t|" + newTab.getText() + "|\t." );
-		} );
 	}
 	
-	public void setOutputResult( String result ) {
+	
+	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
+	
+	public void setOutputText( String result ) {
 		this.outputText.setText( result );
 	}
 	
-	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
+	public TabPane getTabPane() {
+		return tabPane;
+	}
 	
 	public GeneratorTab getActiveTab() {
 		return (GeneratorTab) tabPane.getSelectionModel().getSelectedItem();
