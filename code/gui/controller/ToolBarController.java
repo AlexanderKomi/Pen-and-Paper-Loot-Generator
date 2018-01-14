@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 
 public class ToolBarController {
 	
-	private MiddleContentController mcc;
-	
 	@FXML
 	public void initialize() {
 		//System.out.println("ToolBarController initialized");
