@@ -26,3 +26,6 @@ out/production/Pen-and-Paper-Loot-Generator/gui/fxml/
 test/
 code/META-INF/
 out/production/Pen-and-Paper-Loot-Generator/META-INF/
+/resources/loot/.~lock.Waffen.csv#
+out/production/Pen-and-Paper-Loot-Generator/loot/
+resources/loot/.~lock.Waffen.csv#

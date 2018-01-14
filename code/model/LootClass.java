@@ -48,7 +48,13 @@ public class LootClass {
 		
 		sb.append( "\n\n\t Loot : \n" );
 		for ( Loot l : this.getItems() ) {
-			sb.append( l ).append( separator ).append( "\n" );
+			if ( l != null ) {
+				if ( this.columns == null ) {
+					System.out.println( " ---- COLUMNS ARE NULL" );
+				}
+				String x = l.toString( this.columns );
+				sb.append( x ).append( separator ).append( "\n" );
+			}
 		}
 		sb.deleteCharAt( sb.lastIndexOf( separator ) );
 		

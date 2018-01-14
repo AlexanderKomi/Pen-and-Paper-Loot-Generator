@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Loot {
 	
@@ -32,6 +33,46 @@ public class Loot {
 		sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( "\n" ) );
 		
 		return sb.toString();
+	}
+	
+	public String toString( ArrayList<String> columns ) {
+		
+		if ( columns != null ) {
+			
+			final String  descriptor = "\t:\t";
+			final String  separator  = "; ";
+			final String  breaker    = "\n";
+			StringBuilder sb         = new StringBuilder();
+			sb.append( columns.get( 0 ) ).append( descriptor ).append( this.getName() );
+			sb.append( separator ).append( breaker );
+			sb.append( columns.get( 1 ) ).append( descriptor ).append( this.getQualityAsNumber() );
+			sb.append( separator ).append( breaker );
+			
+			ListIterator<String> iter = columns.listIterator( 2 );
+			for ( String s : this.getOtherEntries() ) {
+				String x;
+				if ( s.isEmpty() || s.equals( " " ) ) {
+					x = " ";
+				}
+				else {
+					x = s;
+				}
+				if ( iter.hasNext() ) {
+					String content = iter.next();
+					if ( content != null ) {
+						sb.append( content ).append( descriptor ).append( x ).append( separator ).append( breaker );
+					}
+				}
+				else {
+					sb.append( x ).append( separator ).append( breaker );
+				}
+			}
+			sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( breaker ) );
+			
+			return sb.toString();
+		}
+		
+		return this.toString();
 	}
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------

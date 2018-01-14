@@ -19,7 +19,7 @@ public class IOConstants {
 	};
 	
 	public static final String[][] columnDefinitions = {
-			{ "Name", "Kategorie", "Typ", "Qualität", "Schaden", "Trefferchance", "Parade", "Magazin", "Beschreibung", "Anmerkungen", "Grundschaden", "Wurfschaden" },
+			{ "Name", "Kategorie", "Typ", "Qualität", "Grundschaden", "Wurfschaden", "Trefferchance", "Parade", "Magazin", "Beschreibung", "Anmerkungen" },
 			{ "Name", "Qualität", "Menge" }
 	};
 	
