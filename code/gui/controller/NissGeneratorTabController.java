@@ -1,7 +1,6 @@
 package gui.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
@@ -33,20 +32,6 @@ public class NissGeneratorTabController {
 	
 	@FXML
 	private ToggleGroup special;
-	
-	NissGeneratorTabController() {
-		FXMLLoader loader = new FXMLLoader( getClass().getResource( "gui/fxml/NissGeneratorTab.fxml" ) );
-		loader.setRoot( this );
-		loader.setController( this );
-		
-		try {
-			loader.load();
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
-	}
-	
 	
 	// --------------------------------------- GETTER AND SETTER ---------------------------------------
 	

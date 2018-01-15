@@ -3,7 +3,7 @@ package gui.elements;
 import javafx.scene.control.Tab;
 import model.generator.Generator;
 
-public class GeneratorTab extends Tab {
+public class GeneratorTab extends Tab implements Comparable<GeneratorTab> {
 	
 	private Generator generator;
 	
@@ -13,12 +13,22 @@ public class GeneratorTab extends Tab {
 	}
 	
 	public GeneratorTab( Generator g, Tab n ) {
-		super.setContent( n.getContent() );
 		this.generator = g;
 		this.setText( g.getName() );
+		super.setContent( n.getContent() );
 	}
 	
 	public String generateLoot() {
 		return generator.generateLoot();
+	}
+	
+	@Override
+	public boolean equals( Object obj ) {
+		return super.equals( obj );
+	}
+	
+	@Override
+	public int compareTo( GeneratorTab o ) {
+		return 0;
 	}
 }

@@ -5,7 +5,7 @@ import model.generator.Generator;
 public class NissGenerator extends Generator {
 	
 	public NissGenerator() {
-		super.setName( "Niss Generator" );
+		this.setName( "Niss Generator" );
 	}
 	
 	@Override

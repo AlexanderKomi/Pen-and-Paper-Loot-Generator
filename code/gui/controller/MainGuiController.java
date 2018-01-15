@@ -1,6 +1,5 @@
 package gui.controller;
 
-import gui.elements.GeneratorTab;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
@@ -36,7 +35,7 @@ public class MainGuiController {
 		middleContentController.getTabPane().getSelectionModel().selectedItemProperty().addListener(
 				( observableValue, oldTab, newTab ) -> {
 					//System.out.println( "Active tab changed from \t|" + oldTab.getText() + "|\t\t to \t\t|" + newTab.getText() + "|\t." );
-					toolBarController.setSelectedTab( (GeneratorTab) newTab );
+					toolBarController.setSelectedTab( middleContentController.getActiveTab() );
 				}
 		);
 	}

@@ -4,6 +4,7 @@ import gui.elements.GeneratorTab;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
 
 public class ToolBarController {
 	
@@ -22,8 +23,8 @@ public class ToolBarController {
 		return this.selectedTab;
 	}
 	
-	public void setSelectedTab( GeneratorTab selectedTab ) {
-		this.selectedTab = selectedTab;
+	public void setSelectedTab( Tab selectedTab ) {
+		this.selectedTab = (GeneratorTab) selectedTab;
 	}
 	
 	public String getResultOutput() {

@@ -9,12 +9,17 @@ import model.generator.Generator;
 import model.generator.LootGeneratorController;
 import model.generator.generators.NissGenerator;
 
+import java.util.ArrayList;
+
 public class MiddleContentController {
 	
 	@FXML
 	private Label   outputText;
 	@FXML
 	private TabPane tabPane;
+	ArrayList<GeneratorTab> activeTabs = new ArrayList<>();
+	@FXML
+	private NissGeneratorTabController nissGeneratorTabController;
 	
 	@FXML
 	public void initialize() {
@@ -23,17 +28,16 @@ public class MiddleContentController {
 	}
 	
 	private void createTabs() {
+		Tab t = new Tab();
+		t.setContent( nissGeneratorTabController.getRootBox() );
+		activeTabs.add( new GeneratorTab( new NissGenerator(), t ) );
+		
 		for ( Generator g : LootGeneratorController.getGenerators() ) {
 			GeneratorTab tab = new GeneratorTab( g );
+			activeTabs.add( tab );
 			tabPane.getTabs().add( tab );
 		}
-		
-		NissGeneratorTabController niss = new NissGeneratorTabController();
-		
-		Tab t = new Tab();
-		t.setContent( niss.getRootBox() );
-		
-		tabPane.getTabs().add( new GeneratorTab( new NissGenerator(), t ) );
+		activeTabs.forEach( s -> System.out.println( s.getText() ) );
 	}
 	
 	
@@ -52,7 +56,12 @@ public class MiddleContentController {
 	}
 	
 	public GeneratorTab getActiveTab() {
-		return (GeneratorTab) tabPane.getSelectionModel().getSelectedItem();
+		int i = tabPane.getSelectionModel().getSelectedIndex();
+		return activeTabs.get( i );
+	}
+	
+	public int getTabIndex( Tab t ) {
+		return tabPane.getTabs().indexOf( t );
 	}
 	
 	public int getActiveIndex() {
