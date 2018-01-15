@@ -107,27 +107,34 @@ public class ReadFile {
 		
 		try {
 			if ( files != null ) {
-				for ( File f : files ) {
-					String nameWithoutExtension = f.getName().substring( 0, f.getName().length() - IOConstants.fileType.length() );
-					for ( String s : IOConstants.lootClasses ) {
-						if ( s.equals( nameWithoutExtension ) ) {
+				if ( files.length != IOConstants.lootClasses.length ) {
+					
+					for ( int i = 0; i < files.length; i++ ) {
+						File   f                    = files[ i ];
+						String nameWithoutExtension = f.getName().substring( 0, f.getName().length() - IOConstants.fileType.length() );
+						if ( IOConstants.lootClasses[ i ].equals( nameWithoutExtension ) ) {
 							usebleFiles.add( f );
-							//System.out.println( "Found file and is viable lootclass : \t" + f.getName() );
 						}
+						System.out.println( "lootClasses[" + i + "] = " + IOConstants.lootClasses[ i ] + "\t;\t" + "Files[" + i + "] = " + files[ i ] );
 					}
+					files = new File[ usebleFiles.size() ];
+					usebleFiles.toArray( files );
+					
+					String exception = "Found files and lootclasses (in IOConstants) differ in length : " + sourceDirectory;
+					IOController.getLogger().addEntry( exception );
+					throw new Exception( exception );
 				}
 			}
 			else {
-				String exception = "ERROR : No resources found in : " + sourceDirectory;
+				String exception = "No resources found in : " + sourceDirectory;
 				IOController.getLogger().addEntry( exception );
 				throw new Exception( exception );
 			}
+			
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
 		}
-		files = new File[ usebleFiles.size() ];
-		usebleFiles.toArray( files );
 		return files;
 	}
 	
@@ -144,7 +151,6 @@ public class ReadFile {
 	}
 	
 	private boolean isExecutedFromJar() {
-		//System.out.println( "Location : " + GeneralConstants.getLocation() );
 		return GeneralConstants.getLocation().endsWith( ".jar" );
 	}
 }
