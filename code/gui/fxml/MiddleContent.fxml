@@ -17,13 +17,12 @@
     </ScrollPane>
     <ScrollPane fitToHeight="true" fitToWidth="true">
         <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" tabMinWidth="50.0">
-            <tabs>
-                <Tab text="Niss Generator">
-                    <content>
-                        <fx:include fx:id="nissGeneratorTab" source="NissGeneratorTab.fxml"/>
-                    </content>
-                </Tab>
-            </tabs>
+            <Tab text="Niss Generator">
+                <fx:include fx:id="nissGeneratorTab" source="tabs/NissGeneratorTab.fxml"/>
+            </Tab>
+            <Tab text="Alex Generator">
+                <fx:include fx:id="alexGeneratorTab" source="tabs/AlexGeneratorTab.fxml"/>
+            </Tab>
         </TabPane>
     </ScrollPane>
 </SplitPane>

@@ -31,8 +31,15 @@ public class LootClass {
 	}
 	
 	public Loot getRandomLoot() {
-		int randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
-		return items[ randomNum ];
+		int  randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
+		Loot l         = items[ randomNum ];
+		
+		while ( l == null ) {
+			randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
+			l = items[ randomNum ];
+		}
+		
+		return l;
 	}
 	
 	@Override
@@ -94,7 +101,7 @@ public class LootClass {
 		this.items = items;
 	}
 	
-	private String[] getColumns() {
+	public String[] getColumns() {
 		return columns;
 	}
 }

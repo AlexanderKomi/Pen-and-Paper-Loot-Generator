@@ -16,9 +16,11 @@ public class Loot {
 	
 	@Override
 	public String toString() {
-		String        separator = "; ";
-		StringBuilder sb        = new StringBuilder( this.getName() ).append( separator ).append( "\n" );
-		sb.append( this.getQualityAsNumber() ).append( separator ).append( "\n" );
+		final String separator = "; ";
+		final String breaker   = "\n";
+		
+		StringBuilder sb = new StringBuilder( this.getName() ).append( separator ).append( breaker );
+		sb.append( this.getQualityAsNumber() ).append( separator ).append( breaker );
 		for ( String s : this.getOtherEntries() ) {
 			String x;
 			if ( s.isEmpty() || s.equals( " " ) ) {
@@ -27,9 +29,9 @@ public class Loot {
 			else {
 				x = s;
 			}
-			sb.append( x ).append( separator ).append( "\n" );
+			sb.append( x ).append( separator ).append( breaker );
 		}
-		sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( "\n" ) );
+		sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( breaker ) );
 		
 		return sb.toString();
 	}
@@ -41,7 +43,9 @@ public class Loot {
 			final String  descriptor = "\t:\t";
 			final String  separator  = "; ";
 			final String  breaker    = "\n";
+			
 			StringBuilder sb         = new StringBuilder();
+			
 			sb.append( columns[ 0 ] ).append( descriptor ).append( this.getName() );
 			sb.append( separator ).append( breaker );
 			sb.append( columns[ 1 ] ).append( descriptor ).append( this.getQualityAsNumber() );

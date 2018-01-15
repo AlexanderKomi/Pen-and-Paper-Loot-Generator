@@ -15,7 +15,7 @@ public class GeneratorTab extends Tab implements Comparable<GeneratorTab> {
 	public GeneratorTab( Generator g, Tab n ) {
 		this.generator = g;
 		this.setText( g.getName() );
-		super.setContent( n.getContent() );
+		this.setContent( n.getContent() );
 	}
 	
 	public String generateLoot() {

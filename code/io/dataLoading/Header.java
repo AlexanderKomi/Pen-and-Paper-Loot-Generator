@@ -12,22 +12,13 @@ public class Header {
 	
 	Header( String name ) {
 		this.name = name;
-		/*
-		if ( !checkForRestrictions() ) {
-			// not restrictions set in IO Constants
-		}
-		*/
-	}
-	
-	private boolean checkForRestrictions() {
+		
 		for ( int i = 0; i < IOConstants.lootClasses.length; i++ ) {
 			if ( IOConstants.lootClasses[ i ].equals( name ) ) {
 				this.headerLength = IOConstants.headerLengths[ i ];
 				this.columns = IOConstants.columnDefinitions[ i ];
-				return true;
 			}
 		}
-		return false;
 	}
 	
 	

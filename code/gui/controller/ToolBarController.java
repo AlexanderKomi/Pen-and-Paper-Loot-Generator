@@ -1,6 +1,7 @@
 package gui.controller;
 
 import gui.elements.GeneratorTab;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -13,8 +14,10 @@ public class ToolBarController {
 	
 	@FXML
 	private void generateLootClicked() {
-		System.out.println( "-> Generate clicked : Active Tab : " + selectedTab.getText() );
-		resultOutput.set( this.selectedTab.generateLoot() );
+		Platform.runLater( () -> {
+			//System.out.println( "-> Generate clicked : Active Tab : " + selectedTab.getText() );
+			resultOutput.set( this.selectedTab.generateLoot() );
+		} );
 	}
 	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------

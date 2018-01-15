@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.141"
+            fx:controller="gui.controller.tabs.AlexGeneratorTabController">
+    <center>
+        <VBox spacing="10.0">
+            <children>
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="SOMETIMES">
+                            <children>
+                                <Label text="Waffenqualität"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
+                            <children>
+                                <ComboBox/>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <Separator prefWidth="200.0"/>
+            </children>
+        </VBox>
+    </center>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+</BorderPane>

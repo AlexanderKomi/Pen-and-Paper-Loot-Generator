@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="rootBox" maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141"
-      fx:controller="gui.controller.NissGeneratorTabController">
+      fx:controller="gui.controller.tabs.NissGeneratorTabController">
     <children>
         <HBox VBox.vgrow="ALWAYS">
             <children>

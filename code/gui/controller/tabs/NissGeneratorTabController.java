@@ -1,4 +1,4 @@
-package gui.controller;
+package gui.controller.tabs;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
