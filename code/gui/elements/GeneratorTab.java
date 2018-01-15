@@ -12,6 +12,12 @@ public class GeneratorTab extends Tab {
 		this.setText( g.getName() );
 	}
 	
+	public GeneratorTab( Generator g, Tab n ) {
+		super.setContent( n.getContent() );
+		this.generator = g;
+		this.setText( g.getName() );
+	}
+	
 	public String generateLoot() {
 		return generator.generateLoot();
 	}

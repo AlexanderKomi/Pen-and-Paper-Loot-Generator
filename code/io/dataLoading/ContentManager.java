@@ -24,7 +24,7 @@ public class ContentManager {
 		
 		ArrayList<LootClass> classes = createLootClasses( headerArray, contentArray );
 		LootController.setLootClasses( classes );
-		classes.forEach( System.out::println );
+		//classes.forEach( System.out::println );
 	}
 	
 	private String[] cutHeader( String[] contentArray ) {
