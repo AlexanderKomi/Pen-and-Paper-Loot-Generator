@@ -36,4 +36,7 @@ public class FileLogger {
 		logger.info( entry );
 	}
 	
+	public static Logger getLogger() {
+		return logger;
+	}
 }

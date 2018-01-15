@@ -1,36 +1,38 @@
 package model;
 
 import constants.IOConstants;
+import io.FileLogger;
 import io.dataLoading.Header;
 import io.dataLoading.LootClassCreator;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LootClass {
 	
-	private String name;
-	private ArrayList<String> columns = new ArrayList<>();
-	private ArrayList<Loot> items;
+	private String   name;
+	private String[] columns;
+	private Loot[]   items;
 	
 	public LootClass( Header header, String content ) {
 		this.name = header.getName();
-		this.columns.addAll( header.getColumns() );
+		this.columns = header.getColumns();
 		try {
-			int index = getIndex();
-			this.items = LootClassCreator.createItems( content, index );
+			int             index = getIndex();
+			ArrayList<Loot> list  = LootClassCreator.createItems( content, index );
+			items = new Loot[ list.size() ];
+			list.toArray( items );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
+			FileLogger.getLogger().info( e.getMessage() );
 			System.exit( 1 );
 		}
 	}
 	
-	private int getIndex() throws Exception {
-		for ( int i = 0; i < IOConstants.lootClasses.length; i++ ) {
-			if ( IOConstants.lootClasses[ i ].equals( this.name ) )
-				return i;
-		}
-		throw new Exception( "Not a valid LootClass" );
+	public Loot getRandomLoot() {
+		int randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
+		return items[ randomNum ];
 	}
 	
 	@Override
@@ -63,6 +65,14 @@ public class LootClass {
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
+	private int getIndex() throws Exception {
+		for ( int i = 0; i < IOConstants.lootClasses.length; i++ ) {
+			if ( IOConstants.lootClasses[ i ].equals( this.name ) )
+				return i;
+		}
+		throw new Exception( "Not a valid LootClass" );
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -71,15 +81,20 @@ public class LootClass {
 		this.name = name;
 	}
 	
-	private ArrayList<Loot> getItems() {
+	private Loot[] getItems() {
 		return items;
 	}
 	
 	public void setItems( ArrayList<Loot> items ) {
+		this.items = new Loot[ items.size() ];
+		items.toArray( this.items );
+	}
+	
+	public void setItems( Loot[] items ) {
 		this.items = items;
 	}
 	
-	private ArrayList<String> getColumns() {
+	private String[] getColumns() {
 		return columns;
 	}
 }

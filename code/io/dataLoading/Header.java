@@ -3,26 +3,27 @@ package io.dataLoading;
 import constants.IOConstants;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Header {
 	
-	private String name;
-	private int    headerLength;
-	private ArrayList<String> columns = new ArrayList<>();
+	private String   name;
+	private int      headerLength;
+	private String[] columns;
 	
 	Header( String name ) {
 		this.name = name;
+		/*
 		if ( !checkForRestrictions() ) {
 			// not restrictions set in IO Constants
 		}
+		*/
 	}
 	
 	private boolean checkForRestrictions() {
 		for ( int i = 0; i < IOConstants.lootClasses.length; i++ ) {
 			if ( IOConstants.lootClasses[ i ].equals( name ) ) {
 				this.headerLength = IOConstants.headerLengths[ i ];
-				this.columns.addAll( Arrays.asList( IOConstants.columnDefinitions[ i ] ) );
+				this.columns = IOConstants.columnDefinitions[ i ];
 				return true;
 			}
 		}
@@ -56,7 +57,7 @@ public class Header {
 		return name;
 	}
 	
-	public ArrayList<String> getColumns() {
+	public String[] getColumns() {
 		return columns;
 	}
 }

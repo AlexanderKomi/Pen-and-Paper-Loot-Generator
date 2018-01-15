@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 public class Loot {
 	
@@ -35,7 +34,7 @@ public class Loot {
 		return sb.toString();
 	}
 	
-	public String toString( ArrayList<String> columns ) {
+	public String toString( String[] columns ) {
 		
 		if ( columns != null ) {
 			
@@ -43,12 +42,12 @@ public class Loot {
 			final String  separator  = "; ";
 			final String  breaker    = "\n";
 			StringBuilder sb         = new StringBuilder();
-			sb.append( columns.get( 0 ) ).append( descriptor ).append( this.getName() );
+			sb.append( columns[ 0 ] ).append( descriptor ).append( this.getName() );
 			sb.append( separator ).append( breaker );
-			sb.append( columns.get( 1 ) ).append( descriptor ).append( this.getQualityAsNumber() );
+			sb.append( columns[ 1 ] ).append( descriptor ).append( this.getQualityAsNumber() );
 			sb.append( separator ).append( breaker );
 			
-			ListIterator<String> iter = columns.listIterator( 2 );
+			int i = 2;
 			for ( String s : this.getOtherEntries() ) {
 				String x;
 				if ( s.isEmpty() || s.equals( " " ) ) {
@@ -57,8 +56,9 @@ public class Loot {
 				else {
 					x = s;
 				}
-				if ( iter.hasNext() ) {
-					String content = iter.next();
+				
+				if ( i < columns.length ) {
+					String content = columns[ i ];
 					if ( content != null ) {
 						sb.append( content ).append( descriptor ).append( x ).append( separator ).append( breaker );
 					}
@@ -66,6 +66,7 @@ public class Loot {
 				else {
 					sb.append( x ).append( separator ).append( breaker );
 				}
+				i++;
 			}
 			sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( breaker ) );
 			
