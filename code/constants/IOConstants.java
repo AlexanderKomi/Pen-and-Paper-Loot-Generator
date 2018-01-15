@@ -7,10 +7,10 @@ public final class IOConstants {
 	public static final String fileEntrySeparator = ";";
 	public static final String fileRowSeparator   = "\n";
 	
-	public static final String[]  lootClasses                = {
+	public static final String[] lootClasses   = {
 			"Waffen", "Erste Hilfe", "Gifte"
 	};
-	public static final int[]     headerLengths              = {
+	public static final int[]    headerLengths = {
 			160, 28, 20
 	};
 	

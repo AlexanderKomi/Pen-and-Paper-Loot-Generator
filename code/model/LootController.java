@@ -11,7 +11,6 @@ public class LootController {
 	}
 	
 	public static Loot getRandomLootFromClass( String lootclass ) {
-		
 		try {
 			LootClass lootcl = getLootClassByName( lootclass );
 			return lootcl.getRandomLoot();

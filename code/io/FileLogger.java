@@ -32,11 +32,11 @@ public final class FileLogger {
 		}
 	}
 	
-	public void addEntry( String entry ) {
-		logger.info( entry );
-	}
-	
 	public static Logger getLogger() {
 		return logger;
+	}
+	
+	public void addEntry( String entry ) {
+		logger.info( entry );
 	}
 }

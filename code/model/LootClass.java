@@ -13,13 +13,14 @@ public class LootClass {
 	private String   name;
 	private String[] columns;
 	private Loot[]   items;
+	private int      index;
 	
 	public LootClass( Header header, String content ) {
 		this.name = header.getName();
 		this.columns = header.getColumns();
 		try {
-			int             index = getIndex();
-			ArrayList<Loot> list  = LootClassCreator.createItems( content, index );
+			this.index = getIndex();
+			ArrayList<Loot> list = LootClassCreator.createItems( content, index );
 			items = new Loot[ list.size() ];
 			list.toArray( items );
 		}
@@ -40,6 +41,78 @@ public class LootClass {
 		}
 		
 		return l;
+	}
+	
+	public ArrayList<String> filterDuplicates( String column ) {
+		
+		int i;
+		for ( i = 0; i < columns.length; i++ ) {
+			System.out.println( "columns [" + i + "] = " + columns[ i ] );
+			if ( columns[ i ].equals( column ) ) {
+				break;
+			}
+		}
+		
+		ArrayList<String> list;
+		if ( i == IOConstants.nameIndexes[ this.index ] ) {
+			list = filterName();
+		}
+		else if ( i == IOConstants.qualityIndexes[ this.index ] ) {
+			list = filterQuality();
+		}
+		else {
+			list = filterOtherEntries( i );
+		}
+		
+		return list;
+	}
+	
+	private ArrayList<String> filterName() {
+		ArrayList<String> list = new ArrayList<>();
+		
+		for ( Loot item : items ) {
+			if ( item != null ) {
+				String name = item.getName();
+				if ( !list.contains( name ) ) {
+					list.add( name );
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	private ArrayList<String> filterQuality() {
+		ArrayList<String> list = new ArrayList<>();
+		
+		for ( Loot item : items ) {
+			if ( item != null ) {
+				String quality = String.valueOf( item.getQuality() );
+				if ( !list.contains( String.valueOf( quality ) ) ) {
+					list.add( quality );
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	private ArrayList<String> filterOtherEntries( int i ) {
+		ArrayList<String> list = new ArrayList<>();
+		
+		for ( Loot item : items ) {
+			if ( item != null ) {
+				ArrayList<String> otherEntries = item.getOtherEntries();
+				if ( otherEntries != null ) {
+					String entry = otherEntries.get( i );
+					if ( !list.contains( entry ) ) {
+						System.out.println( " ENTRY : " + entry );
+						list.add( entry );
+					}
+				}
+			}
+		}
+		return list;
 	}
 	
 	@Override

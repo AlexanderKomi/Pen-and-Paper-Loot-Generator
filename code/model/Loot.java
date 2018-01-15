@@ -40,11 +40,11 @@ public class Loot {
 		
 		if ( columns != null ) {
 			
-			final String  descriptor = "\t:\t";
-			final String  separator  = "; ";
-			final String  breaker    = "\n";
+			final String descriptor = "\t:\t";
+			final String separator  = "; ";
+			final String breaker    = "\n";
 			
-			StringBuilder sb         = new StringBuilder();
+			StringBuilder sb = new StringBuilder();
 			
 			sb.append( columns[ 0 ] ).append( descriptor ).append( this.getName() );
 			sb.append( separator ).append( breaker );
@@ -83,7 +83,7 @@ public class Loot {
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
 	
-	private String getName() {
+	public String getName() {
 		return name;
 	}
 	
@@ -99,11 +99,15 @@ public class Loot {
 		this.qualityAsNumber = qualityAsNumber;
 	}
 	
-	private ArrayList<String> getOtherEntries() {
+	public ArrayList<String> getOtherEntries() {
 		return otherEntries;
 	}
 	
 	public void setOtherEntries( ArrayList<String> otherEntries ) {
 		this.otherEntries = otherEntries;
+	}
+	
+	public int getQuality() {
+		return qualityAsNumber;
 	}
 }
