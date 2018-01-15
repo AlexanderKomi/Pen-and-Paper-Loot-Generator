@@ -47,7 +47,6 @@ public class LootClassCreator {
 		int               quality = 0;
 		
 		for ( int i = 0; i < elements.length; i++ ) {
-			
 			if ( i == IOConstants.nameIndexes[ indexOfLootClass ] ) {
 				name = ( elements[ i ] );
 			}

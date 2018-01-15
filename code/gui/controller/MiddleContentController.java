@@ -6,8 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
-import model.generator.Generator;
-import model.generator.LootGeneratorController;
 import model.generator.generators.NissGenerator;
 
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ public class MiddleContentController {
 	@FXML
 	private TabPane tabPane;
 	
-	ArrayList<GeneratorTab> activeTabs = new ArrayList<>();
+	private ArrayList<GeneratorTab> activeTabs = new ArrayList<>();
 	
 	@FXML
 	private VBox                       nissGeneratorTab;
@@ -33,16 +31,9 @@ public class MiddleContentController {
 	}
 	
 	private void createTabs() {
-		Tab t = new Tab();
-		t.setContent( nissGeneratorTabController.getRootBox() );
-		activeTabs.add( new GeneratorTab( new NissGenerator(), t ) );
-		
-		for ( Generator g : LootGeneratorController.getGenerators() ) {
-			GeneratorTab tab = new GeneratorTab( g );
-			activeTabs.add( tab );
-			tabPane.getTabs().add( tab );
-		}
-		activeTabs.forEach( s -> System.out.println( s.getText() ) );
+		Tab tab = new Tab();
+		tab.setContent( this.nissGeneratorTabController.getRootBox() );
+		activeTabs.add( new GeneratorTab( new NissGenerator(), tab ) );
 	}
 	
 	
@@ -61,8 +52,7 @@ public class MiddleContentController {
 	}
 	
 	public GeneratorTab getActiveTab() {
-		int i = tabPane.getSelectionModel().getSelectedIndex();
-		return activeTabs.get( i );
+		return activeTabs.get( tabPane.getSelectionModel().getSelectedIndex() );
 	}
 	
 	public int getTabIndex( Tab t ) {
@@ -71,5 +61,17 @@ public class MiddleContentController {
 	
 	public int getActiveIndex() {
 		return tabPane.getSelectionModel().getSelectedIndex();
+	}
+	
+	public void setNissGeneratorTabController( NissGeneratorTabController nissGeneratorTabController ) {
+		this.nissGeneratorTabController = nissGeneratorTabController;
+	}
+	
+	public VBox getNissGeneratorTab() {
+		return nissGeneratorTab;
+	}
+	
+	public void setNissGeneratorTab( VBox nissGeneratorTab ) {
+		this.nissGeneratorTab = nissGeneratorTab;
 	}
 }

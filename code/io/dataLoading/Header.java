@@ -49,7 +49,6 @@ public class Header {
 		return extracted;
 	}
 	
-	
 	// END ------------ This is only for testing --------------
 	
 	// -------------------------------------------- GETTER AND SETTER --------------------------------------------------

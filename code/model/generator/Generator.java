@@ -9,7 +9,7 @@ public abstract class Generator {
 	
 	private String name;
 	
-	public abstract String generateLoot();
+	public abstract String generateLoot();  // This method produces the output! You need to implement this class in your Extended CLass
 	
 	//-------------------------------------- GETTER AND SETTER --------------------------------------
 	

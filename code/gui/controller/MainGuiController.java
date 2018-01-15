@@ -33,11 +33,17 @@ public class MainGuiController {
 		toolBarController.setSelectedTab( middleContentController.getActiveTab() );
 		
 		middleContentController.getTabPane().getSelectionModel().selectedItemProperty().addListener(
-				( observableValue, oldTab, newTab ) -> {
-					//System.out.println( "Active tab changed from \t|" + oldTab.getText() + "|\t\t to \t\t|" + newTab.getText() + "|\t." );
-					toolBarController.setSelectedTab( middleContentController.getActiveTab() );
-				}
+				( observableValue, oldTab, newTab ) -> toolBarController.setSelectedTab( middleContentController.getActiveTab() )
 		);
 	}
 	
+	// ----------------------------------------- GETTER AND SETTER -----------------------------------------
+	
+	public void setMiddleContentController( MiddleContentController middleContentController ) {
+		this.middleContentController = middleContentController;
+	}
+	
+	public void setToolBarController( ToolBarController toolBarController ) {
+		this.toolBarController = toolBarController;
+	}
 }

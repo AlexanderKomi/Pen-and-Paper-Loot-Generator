@@ -12,23 +12,23 @@ public class IOConstants {
 			"Waffen", "Erste Hilfe"
 	};
 	public static final int[]     headerLengths              = {
-			160, 0
+			160, 28
 	};
 	public static final boolean[] hasSpecialColumnDefinition = {
-			true, false
+			true, true
 	};
 	
 	public static final String[][] columnDefinitions = {
 			{ "Name", "Kategorie", "Typ", "Qualität", "Grundschaden", "Wurfschaden", "Trefferchance", "Parade", "Magazin", "Beschreibung", "Anmerkungen" },
-			{ "Name", "Qualität", "Menge" }
+			{ "Name", "Stufe", "Wirkung", "Anmerkung" }
 	};
 	
 	public static final int[] nameIndexes = {
-			0
+			0, 0
 	};
 	
 	public static final int[] qualityIndexes = {
-			3
+			3, 1
 	};
 	
 }

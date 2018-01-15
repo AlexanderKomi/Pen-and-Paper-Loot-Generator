@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 public class ReadFile {
 	
+	public ArrayList<String> fileNames = new ArrayList<>();
+	
 	public ArrayList<String> getContent() {
-		
 		if ( this.isExecutedFromJar() ) {  //Distinguish between jar and IDE execution
 			return findInJar();
 		}
@@ -27,8 +28,7 @@ public class ReadFile {
 			String        line = br.readLine();
 			
 			while ( line != null ) {
-				sb.append( line );
-				sb.append( System.lineSeparator() );
+				sb.append( line ).append( System.lineSeparator() );
 				line = br.readLine();
 			}
 			everything = sb.toString();
@@ -71,16 +71,15 @@ public class ReadFile {
 	
 	private ArrayList<String> findInJar() {
 		ArrayList<String> results = new ArrayList<>();
-		
 		for ( String lootClassName : IOConstants.lootClasses ) {
 			String content = findResource( IOConstants.resourceFolder + lootClassName + IOConstants.fileType );
 			if ( content != null ) {
-				//foundFileNames.add( lootClassName );
+				fileNames.add( lootClassName );
 				results.add( content );
 			}
 			else {
 				try {
-					String exception = "ERROR : No resources found in : " + IOConstants.resourceFolder + "/" + lootClassName + IOConstants.fileType;
+					String exception = "ERROR : No resources found in : " + IOConstants.resourceFolder + lootClassName + IOConstants.fileType;
 					IOController.getLogger().addEntry( exception );
 					throw new Exception( exception );
 				}
@@ -89,17 +88,9 @@ public class ReadFile {
 				}
 			}
 		}
-		
-		//results.forEach( System.out::println ); // Print all content
-		
 		return results;
 	}
 	
-	/**
-	 * When you wanna make restrictions to files read and used in the folder, you have to exclude it here.
-	 *
-	 * @return All files found in the directory with special ending from IOConstants.
-	 */
 	private File[] findInFiles() {
 		ArrayList<File> usebleFiles     = new ArrayList<>();
 		String          sourceDirectory = GeneralConstants.getLocation() + IOConstants.resourceFolder;
@@ -113,9 +104,9 @@ public class ReadFile {
 						File   f                    = files[ i ];
 						String nameWithoutExtension = f.getName().substring( 0, f.getName().length() - IOConstants.fileType.length() );
 						if ( IOConstants.lootClasses[ i ].equals( nameWithoutExtension ) ) {
+							fileNames.add( nameWithoutExtension );
 							usebleFiles.add( f );
 						}
-						System.out.println( "lootClasses[" + i + "] = " + IOConstants.lootClasses[ i ] + "\t;\t" + "Files[" + i + "] = " + files[ i ] );
 					}
 					files = new File[ usebleFiles.size() ];
 					usebleFiles.toArray( files );
@@ -145,6 +136,7 @@ public class ReadFile {
 	private ArrayList<String> getContentAsStrings( File[] files ) {
 		ArrayList<String> content = new ArrayList<>();
 		for ( File file : files ) {
+			fileNames.add( file.getName().substring( 0, file.getName().length() - IOConstants.fileType.length() ) );
 			content.add( readFile( file.getPath() ) );
 		}
 		return content;

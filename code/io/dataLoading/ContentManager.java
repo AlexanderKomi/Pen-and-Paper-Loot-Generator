@@ -11,27 +11,36 @@ public class ContentManager {
 	private static ReadFile reader = new ReadFile();
 	
 	public void createUsableData() {
-		// TODO : Extract usefull content from here to model classes
+		
 		ArrayList<String> content      = reader.getContent();
 		String[]          contentArray = new String[ content.size() ];
 		content.toArray( contentArray );
+		
 		
 		ArrayList<Header> headers     = createHeaders( contentArray );
 		Header[]          headerArray = new Header[ headers.size() ];
 		headers.toArray( headerArray );
 		
-		contentArray = cutHeader( contentArray );
+		contentArray = cutHeader( headerArray, contentArray );
 		
 		ArrayList<LootClass> classes = createLootClasses( headerArray, contentArray );
 		LootController.setLootClasses( classes );
 		//classes.forEach( System.out::println );
 	}
 	
-	private String[] cutHeader( String[] contentArray ) {
-		for ( int i = 0; i < contentArray.length; i++ ) {
-			int length = contentArray[ i ].length();
-			contentArray[ i ] = contentArray[ i ].substring( IOConstants.headerLengths[ i ], length );
+	private String[] cutHeader( Header[] headers, String[] contentArray ) {
+		
+		for ( int i = 0; i < headers.length; i++ ) {
+			for ( int j = 0; j < contentArray.length; j++ ) {
+				
+				if ( headers[ i ].getName().equals( IOConstants.lootClasses[ j ] ) ) {
+					int    length = contentArray[ i ].length();
+					String s      = contentArray[ i ].substring( IOConstants.headerLengths[ j ], length );
+					contentArray[ i ] = s;
+				}
+			}
 		}
+		
 		return contentArray;
 	}
 	
@@ -39,6 +48,7 @@ public class ContentManager {
 		ArrayList<LootClass> lootClasses = new ArrayList<>();
 		
 		for ( int i = 0; i < headers.length; i++ ) {
+			
 			LootClass c = new LootClass( headers[ i ], content[ i ] );
 			lootClasses.add( c );
 		}
@@ -50,7 +60,7 @@ public class ContentManager {
 		ArrayList<Header> headers = new ArrayList<>();
 		
 		for ( int i = 0; i < content.length; i++ ) {
-			headers.add( new Header( IOConstants.lootClasses[ i ] ) );
+			headers.add( new Header( reader.fileNames.get( i ) ) );
 		}
 		return headers;
 	}
