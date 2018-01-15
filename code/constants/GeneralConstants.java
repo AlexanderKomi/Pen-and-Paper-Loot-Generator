@@ -49,6 +49,10 @@ public final class GeneralConstants {
 		return path;
 	}
 	
+	public static boolean isExecutedFromJar() {
+		return GeneralConstants.getLocation().endsWith( ".jar" );
+	}
+	
 	public static String getLocation() {
 		return location;
 	}

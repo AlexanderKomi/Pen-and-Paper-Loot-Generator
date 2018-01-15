@@ -17,12 +17,15 @@ public class FileLogger {
 		
 		try {
 			// This block configure the logger with handler and formatter
-			String x = GeneralConstants.getLocation().substring( 1, GeneralConstants.getLocation().length() ) + "logfiles/" + "LogFile.log";
-			fh = new FileHandler( x );
-			logger.addHandler( fh );
-			SimpleFormatter formatter = new SimpleFormatter();
-			fh.setFormatter( formatter );
-			
+			String location = GeneralConstants.getLocation().substring( 1, GeneralConstants.getLocation().length() );
+			if ( !GeneralConstants.isExecutedFromJar() ) {
+				String x = location + "logfiles/" + "LogFile.log";
+				fh = new FileHandler( x );
+				logger.addHandler( fh );
+				SimpleFormatter formatter = new SimpleFormatter();
+				fh.setFormatter( formatter );
+				
+			}
 		}
 		catch ( SecurityException | IOException e ) {
 			e.printStackTrace();
