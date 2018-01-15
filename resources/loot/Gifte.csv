@@ -1,0 +1,5 @@
+Name;Stufe;Anmerkung
+schwaches Gift;1;
+normales Gift;2;
+starkes Gift;3;
+tödliches Gift;4;Wirkt bis Gegengift eingenommen wird

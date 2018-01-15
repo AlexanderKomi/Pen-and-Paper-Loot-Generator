@@ -39,12 +39,12 @@ public class MiddleContentController {
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
-	public void setOutputText( String result ) {
-		this.outputText.setText( result );
-	}
-	
 	public Label getOutputText() {
 		return outputText;
+	}
+	
+	public void setOutputText( String result ) {
+		this.outputText.setText( result );
 	}
 	
 	public TabPane getTabPane() {

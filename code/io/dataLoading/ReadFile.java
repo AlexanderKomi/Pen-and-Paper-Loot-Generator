@@ -100,18 +100,21 @@ public class ReadFile {
 			if ( files != null ) {
 				if ( files.length != IOConstants.lootClasses.length ) {
 					
-					for ( int i = 0; i < files.length; i++ ) {
-						File   f                    = files[ i ];
-						String nameWithoutExtension = f.getName().substring( 0, f.getName().length() - IOConstants.fileType.length() );
-						if ( IOConstants.lootClasses[ i ].equals( nameWithoutExtension ) ) {
-							fileNames.add( nameWithoutExtension );
-							usebleFiles.add( f );
+					for ( File file : files ) {
+						for ( int j = 0; j < IOConstants.lootClasses.length; j++ ) {
+							
+							String nameWithoutExtension = file.getName().substring( 0, file.getName().length() - IOConstants.fileType.length() );
+							
+							if ( IOConstants.lootClasses[ j ].equals( nameWithoutExtension ) ) {
+								fileNames.add( nameWithoutExtension );
+								usebleFiles.add( file );
+							}
 						}
 					}
 					files = new File[ usebleFiles.size() ];
 					usebleFiles.toArray( files );
 					
-					String exception = "Found files and lootclasses (in IOConstants) differ in length : " + sourceDirectory;
+					String exception = "Found files and loot-classes (in IOConstants) differ in length : " + sourceDirectory;
 					IOController.getLogger().addEntry( exception );
 					throw new Exception( exception );
 				}

@@ -8,11 +8,11 @@ import javafx.scene.control.ToolBar;
 public class MainGuiController {
 	
 	@FXML
-	public  MenuBar                 menuBar;
+	public MenuBar   menuBar;
 	@FXML
-	public  SplitPane               middleContent;
+	public SplitPane middleContent;
 	@FXML
-	public  ToolBar                 toolBar;
+	public ToolBar   toolBar;
 	
 	// ------ FXML - Controller
 	
@@ -20,7 +20,6 @@ public class MainGuiController {
 	private MiddleContentController middleContentController;
 	@FXML
 	private ToolBarController       toolBarController;
-	
 	
 	
 	@FXML
