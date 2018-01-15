@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.VBox;
 import model.generator.Generator;
 import model.generator.LootGeneratorController;
 import model.generator.generators.NissGenerator;
@@ -17,7 +18,11 @@ public class MiddleContentController {
 	private Label   outputText;
 	@FXML
 	private TabPane tabPane;
+	
 	ArrayList<GeneratorTab> activeTabs = new ArrayList<>();
+	
+	@FXML
+	private VBox                       nissGeneratorTab;
 	@FXML
 	private NissGeneratorTabController nissGeneratorTabController;
 	

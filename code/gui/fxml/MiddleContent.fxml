@@ -18,7 +18,7 @@
     <ScrollPane fitToHeight="true" fitToWidth="true">
         <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" tabMinWidth="50.0">
             <tabs>
-                <Tab text="Untitled Tab">
+                <Tab text="Niss Generator">
                     <content>
                         <fx:include fx:id="nissGeneratorTab" source="NissGeneratorTab.fxml"/>
                     </content>

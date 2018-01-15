@@ -3,6 +3,7 @@ package io.dataLoading;
 import constants.GeneralConstants;
 import constants.IOConstants;
 import io.Helper;
+import io.IOController;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -79,7 +80,9 @@ public class ReadFile {
 			}
 			else {
 				try {
-					throw new Exception( "ERROR : No resources found in : " + IOConstants.resourceFolder + "/" + lootClassName + IOConstants.fileType );
+					String exception = "ERROR : No resources found in : " + IOConstants.resourceFolder + "/" + lootClassName + IOConstants.fileType;
+					IOController.getLogger().addEntry( exception );
+					throw new Exception( exception );
 				}
 				catch ( Exception e ) {
 					e.printStackTrace();
@@ -115,7 +118,9 @@ public class ReadFile {
 				}
 			}
 			else {
-				throw new Exception( "ERROR : No resources found in : " + sourceDirectory );
+				String exception = "ERROR : No resources found in : " + sourceDirectory;
+				IOController.getLogger().addEntry( exception );
+				throw new Exception( exception );
 			}
 		}
 		catch ( Exception e ) {
