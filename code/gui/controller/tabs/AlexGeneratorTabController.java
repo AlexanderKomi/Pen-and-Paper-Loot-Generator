@@ -6,10 +6,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import model.LootController;
+import model.generator.generators.AlexGenerator;
 
 import java.util.ArrayList;
 
 public class AlexGeneratorTabController {
+	
+	private AlexGenerator alexGenerator = new AlexGenerator();
 	
 	@FXML
 	private ScrollPane rootPane;
@@ -187,5 +190,13 @@ public class AlexGeneratorTabController {
 	
 	public void setRootPane( ScrollPane rootPane ) {
 		this.rootPane = rootPane;
+	}
+	
+	public AlexGenerator getAlexGenerator() {
+		return alexGenerator;
+	}
+	
+	public void setAlexGenerator( AlexGenerator alexGenerator ) {
+		this.alexGenerator = alexGenerator;
 	}
 }

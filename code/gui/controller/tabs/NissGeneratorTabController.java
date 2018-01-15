@@ -3,8 +3,11 @@ package gui.controller.tabs;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import model.generator.generators.NissGenerator;
 
 public class NissGeneratorTabController {
+	
+	private NissGenerator nissGenerator = new NissGenerator();
 	
 	@FXML
 	private VBox rootBox;
@@ -38,5 +41,13 @@ public class NissGeneratorTabController {
 	
 	public VBox getRootBox() {
 		return rootBox;
+	}
+	
+	public NissGenerator getNissGenerator() {
+		return nissGenerator;
+	}
+	
+	public void setNissGenerator( NissGenerator nissGenerator ) {
+		this.nissGenerator = nissGenerator;
 	}
 }
