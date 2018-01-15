@@ -77,6 +77,14 @@ public class ReadFile {
 				//foundFileNames.add( lootClassName );
 				results.add( content );
 			}
+			else {
+				try {
+					throw new Exception( "ERROR : No resources found in : " + IOConstants.resourceFolder + "/" + lootClassName + IOConstants.fileType );
+				}
+				catch ( Exception e ) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		//results.forEach( System.out::println ); // Print all content
