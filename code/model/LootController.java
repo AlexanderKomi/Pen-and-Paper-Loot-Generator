@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LootController {
 	
@@ -8,6 +9,14 @@ public class LootController {
 	
 	public LootController( ArrayList<LootClass> lootClasses ) {
 		LootController.lootClasses = lootClasses;
+	}
+	
+	
+	public static Loot getRandomLoot() {
+		int       randomNum = ThreadLocalRandom.current().nextInt( 0, lootClasses.size() );
+		LootClass lootClass = lootClasses.get( randomNum );
+		
+		return lootClass.getRandomLoot();
 	}
 	
 	public static Loot getRandomLootFromClass( String lootclass ) {
@@ -21,6 +30,9 @@ public class LootController {
 		return null;
 	}
 	
+	public static Loot getRandomLootFromClass( LootClass lootClass ) {
+		return lootClass.getRandomLoot();
+	}
 	
 	// -------------------------------- GETTER AND SETTER -------------------------------------------
 	
@@ -31,6 +43,10 @@ public class LootController {
 			}
 		}
 		throw new Exception( "Class can not be found" );
+	}
+	
+	public static LootClass getLootClassByIndex( int index ) {
+		return lootClasses.get( index );
 	}
 	
 	public static ArrayList<LootClass> getLootClasses() {

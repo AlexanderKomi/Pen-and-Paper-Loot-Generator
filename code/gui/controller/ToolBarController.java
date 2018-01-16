@@ -15,7 +15,6 @@ public class ToolBarController {
 	@FXML
 	private void generateLootClicked() {
 		Platform.runLater( () -> {
-			//System.out.println( "-> Generate clicked : Active Tab : " + selectedTab.getText() );
 			resultOutput.set( this.selectedTab.generateLoot() );
 		} );
 	}

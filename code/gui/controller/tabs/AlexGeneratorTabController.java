@@ -1,18 +1,21 @@
 package gui.controller.tabs;
 
+import constants.IOConstants;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import model.LootController;
 import model.generator.generators.AlexGenerator;
+import model.generator.generators.Configuration;
 
 import java.util.ArrayList;
 
 public class AlexGeneratorTabController {
 	
-	private AlexGenerator alexGenerator = new AlexGenerator();
+	private AlexGenerator alexGenerator = new AlexGenerator( this );
 	
 	@FXML
 	private ScrollPane rootPane;
@@ -29,7 +32,7 @@ public class AlexGeneratorTabController {
 	@FXML
 	private CheckBox          amountWeaponCheckBox;
 	@FXML
-	private ComboBox<Integer> amountWeaponComboBox;
+	private TextField         amountWeaponField;
 	
 	//---------------------------------------- FIRST AID
 	@FXML
@@ -143,20 +146,21 @@ public class AlexGeneratorTabController {
 		//---------------------------------------- WEAPONS
 		categoryWeaponComboBox.getSelectionModel().selectFirst();
 		qualityWeaponComboBox.getSelectionModel().selectFirst();
-		amountWeaponComboBox.getSelectionModel().selectFirst();
 		//---------------------------------------- FIRST AID
 		levelFirstAidComboBox.getSelectionModel().selectFirst();
 		amountFirstAidComboBox.getSelectionModel().selectFirst();
 		//---------------------------------------- POISON
 		levelPoisonComboBox.getSelectionModel().selectFirst();
 		amountPoisonComboBox.getSelectionModel().selectFirst();
+		
+		setFieldOnlyNumber( amountWeaponField );
+		amountWeaponField.setText( "0" );
 	}
 	
 	private void disableComboBoxes() {
 		//---------------------------------------- WEAPONS
 		categoryWeaponComboBox.setDisable( true );
 		qualityWeaponComboBox.setDisable( true );
-		amountWeaponComboBox.setDisable( true );
 		//---------------------------------------- FIRST AID
 		levelFirstAidComboBox.setDisable( true );
 		amountFirstAidComboBox.setDisable( true );
@@ -169,7 +173,7 @@ public class AlexGeneratorTabController {
 		//---------------------------------------- WEAPONS
 		bindBox( categoryWeaponCheckBox, categoryWeaponComboBox );
 		bindBox( qualityWeaponCheckBox, qualityWeaponComboBox );
-		bindBox( amountWeaponCheckBox, amountWeaponComboBox );
+		bindField( amountWeaponCheckBox, amountWeaponField );
 		//---------------------------------------- FIRST AID
 		bindBox( levelFirstAidCheckBox, levelFirstAidComboBox );
 		bindBox( amountFirstAidCheckBox, amountFirstAidComboBox );
@@ -182,7 +186,98 @@ public class AlexGeneratorTabController {
 		check.selectedProperty().addListener( ( observable, oldValue, newValue ) -> combo.setDisable( !newValue ) );
 	}
 	
+	private void bindField( CheckBox check, TextField textField ) {
+		check.selectedProperty().addListener( ( observable, oldValue, newValue ) -> textField.setDisable( !newValue ) );
+	}
+	
+	private void setFieldOnlyNumber( TextField textField ) {
+		textField.textProperty().addListener( ( observable, oldValue, newValue ) -> {
+			if ( !newValue.matches( "\\d*" ) ) {
+				textField.setText( newValue.replaceAll( "[^\\d]", "" ) );
+			}
+		} );
+	}
+	
+	// ----------------------------------------  PUBLIC METHODS  ----------------------------------------
+	
+	public Configuration[] getConfiguration() {
+		Configuration[] configuration = new Configuration[ IOConstants.lootClasses.length ];
+		
+		configuration[ 0 ] = createWeaponConfig();
+		configuration[ 1 ] = createFirstAidConfig();
+		configuration[ 2 ] = createPoisonConfig();
+		
+		return configuration;
+	}
+	
+	private Configuration createWeaponConfig() {
+		Configuration configuration = null;
+		try {
+			int index        = LootController.getLootClassByName( "Waffen" ).getIndex();
+			int columnLength = IOConstants.columnDefinitions[ index ].length;
+			configuration = new Configuration( index, columnLength );
+			
+			if ( categoryWeaponCheckBox.isSelected() ) {
+				configuration.setConfig( 1, categoryWeaponComboBox.getSelectionModel().getSelectedItem() );
+			}
+			if ( qualityWeaponCheckBox.isSelected() ) {
+				configuration.setConfig( IOConstants.qualityIndexes[ index ], categoryWeaponComboBox.getSelectionModel().getSelectedItem() );
+			}
+			if ( amountWeaponCheckBox.isSelected() ) {
+				int selected = Integer.parseInt( amountWeaponField.getText() );
+				configuration.setAmount( selected );
+			}
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return configuration;
+	}
+	
+	private Configuration createFirstAidConfig() {
+		Configuration configuration = null;
+		try {
+			int index        = LootController.getLootClassByName( "Erste Hilfe" ).getIndex();
+			int columnLength = IOConstants.columnDefinitions[ index ].length;
+			configuration = new Configuration( index, columnLength );
+			
+			if ( levelFirstAidCheckBox.isSelected() ) {
+				configuration.setConfig( IOConstants.qualityIndexes[ index ], levelFirstAidComboBox.getSelectionModel().getSelectedItem() );
+			}
+			if ( amountFirstAidCheckBox.isSelected() ) {
+				configuration.setAmount( amountFirstAidComboBox.getSelectionModel().getSelectedIndex() );
+			}
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return configuration;
+	}
+	
+	private Configuration createPoisonConfig() {
+		Configuration configuration = null;
+		try {
+			int index        = LootController.getLootClassByName( "Gifte" ).getIndex();
+			int columnLength = IOConstants.columnDefinitions[ index ].length;
+			configuration = new Configuration( index, columnLength );
+			
+			if ( levelPoisonCheckBox.isSelected() ) {
+				configuration.setConfig( IOConstants.qualityIndexes[ index ], levelPoisonComboBox.getSelectionModel().getSelectedItem() );
+			}
+			if ( amountPoisonCheckBox.isSelected() ) {
+				configuration.setAmount( amountPoisonComboBox.getSelectionModel().getSelectedIndex() );
+			}
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return configuration;
+	}
+	
+	
+	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
+	
 	
 	public ScrollPane getRootPane() {
 		return rootPane;

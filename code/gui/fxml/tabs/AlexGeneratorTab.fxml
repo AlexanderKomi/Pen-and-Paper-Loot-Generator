@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" fitToHeight="true" fitToWidth="true"
-            minHeight="-Infinity"
-            minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141"
+            minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141"
             fx:controller="gui.controller.tabs.AlexGeneratorTabController">
 
 
@@ -49,8 +48,7 @@
                         <CheckBox fx:id="amountWeaponCheckBox" mnemonicParsing="false" text="Anzahl"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                        <ComboBox fx:id="amountWeaponComboBox" editable="true" prefWidth="100.0" promptText="0"
-                                  HBox.hgrow="SOMETIMES"/>
+                        <TextField fx:id="amountWeaponField" prefWidth="100.0" HBox.hgrow="SOMETIMES"/>
                     </HBox>
                 </HBox>
             </VBox>
