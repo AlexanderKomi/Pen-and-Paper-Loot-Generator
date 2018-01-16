@@ -1,6 +1,7 @@
 package gui.controller;
 
 import gui.controller.tabs.AlexGeneratorTabController;
+import gui.controller.tabs.DennisGeneratorTabController;
 import gui.controller.tabs.NissGeneratorTabController;
 import gui.elements.GeneratorTab;
 import javafx.fxml.FXML;
@@ -30,6 +31,9 @@ public class MiddleContentController {
 	@FXML
 	private AlexGeneratorTabController alexGeneratorTabController;
 	
+	@FXML
+	private DennisGeneratorTabController dennisGeneratorTabController;
+	
 	// END   ---------------- CUSTOM TABS ----------------   END
 	
 	@FXML
@@ -41,6 +45,13 @@ public class MiddleContentController {
 	private void createTabs() {
 		createNissTab();
 		createAlexTab();
+		createDennisTab();
+	}
+	
+	private void createDennisTab() {
+		Tab tab = new Tab( "Dennis Generator" );
+		tab.setContent( this.dennisGeneratorTabController.getRootPane() );
+		activeTabs.add( new GeneratorTab( this.dennisGeneratorTabController.getGenerator(), tab ) );
 	}
 	
 	private void createAlexTab() {

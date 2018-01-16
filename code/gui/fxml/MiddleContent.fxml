@@ -23,6 +23,9 @@
             <Tab text="Alex Generator">
                 <fx:include fx:id="alexGeneratorTab" source="tabs/AlexGeneratorTab.fxml"/>
             </Tab>
+            <Tab text="Dennis Generator">
+                <fx:include fx:id="dennisGeneratorTab" source="tabs/DennisGeneratorTab.fxml"/>
+            </Tab>
         </TabPane>
     </ScrollPane>
 </SplitPane>
