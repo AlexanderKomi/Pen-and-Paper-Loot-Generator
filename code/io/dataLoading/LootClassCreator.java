@@ -12,7 +12,10 @@ public class LootClassCreator {
 		String[]        rows = content.split( IOConstants.fileRowSeparator );
 		
 		for ( String row : deleteEmptyStart( rows ) ) {
-			loot.add( createLoot( row, indexOfLootClass ) );
+			Loot l = createLoot( row, indexOfLootClass );
+			if ( l != null ) {
+				loot.add( l );
+			}
 		}
 		return loot;
 	}

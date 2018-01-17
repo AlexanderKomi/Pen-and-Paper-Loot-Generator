@@ -26,27 +26,25 @@ public class ContentManager {
 		LootController.setLootClasses( classes );
 	}
 	
-	private String[] cutHeader( Header[] headers, String[] contentArray ) {
+	private String[] cutHeader( Header[] headers, String[] content ) {
 		
 		for ( int i = 0; i < headers.length; i++ ) {
-			for ( int j = 0; j < contentArray.length; j++ ) {
+			for ( int j = 0; j < content.length; j++ ) {
 				
 				if ( headers[ i ].getName().equals( IOConstants.lootClasses[ j ] ) ) {
-					int    length = contentArray[ i ].length();
-					String s      = contentArray[ i ].substring( IOConstants.headerLengths[ j ], length );
-					contentArray[ i ] = s;
+					int    length = content[ i ].length();
+					String s      = content[ i ].substring( IOConstants.headerLengths[ j ], length );
+					content[ i ] = s;
 				}
 			}
 		}
 		
-		return contentArray;
+		return content;
 	}
 	
 	private ArrayList<LootClass> createLootClasses( Header[] headers, String[] content ) {
 		ArrayList<LootClass> lootClasses = new ArrayList<>();
-		
 		for ( int i = 0; i < headers.length; i++ ) {
-			
 			LootClass c = new LootClass( headers[ i ], content[ i ] );
 			lootClasses.add( c );
 		}

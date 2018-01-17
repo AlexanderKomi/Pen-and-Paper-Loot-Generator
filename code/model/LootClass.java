@@ -43,7 +43,7 @@ public class LootClass {
 		return loot;
 	}
 	
-	public Loot getRandomLoot( Loot[] array ) {
+	private Loot getRandomLoot( Loot[] array ) {
 		int  randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
 		Loot loot      = array[ randomNum ];
 		
@@ -125,7 +125,6 @@ public class LootClass {
 				if ( otherEntries != null ) {
 					String entry = otherEntries.get( i );
 					if ( !list.contains( entry ) ) {
-						//System.out.println( " ENTRY : " + entry );
 						list.add( entry );
 					}
 				}
