@@ -4,21 +4,32 @@ import constants.IOConstants;
 import model.Loot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LootClassCreator {
 	
-	public static ArrayList<Loot> createItems( String content, int indexOfLootClass ) {
+	public static ArrayList<Loot> createItems( String content, String[] columns ) {
 		
 		ArrayList<Loot> loot = new ArrayList<>();
 		String[]        rows = content.split( IOConstants.fileRowSeparator );
 		
 		for ( String row : deleteEmptyStart( rows ) ) {
-			Loot l = createLoot( row, indexOfLootClass );
-			if ( l != null ) {
-				loot.add( l );
+			
+			ArrayList<String> list = createLoot( row );
+			
+			if ( list != null ) {
+				loot.add( new Loot( mergeListAndColumnsToLoot( list, columns ) ) );
 			}
 		}
 		return loot;
+	}
+	
+	private static HashMap<String, String> mergeListAndColumnsToLoot( ArrayList<String> list, String[] columns ) {
+		HashMap<String, String> map = new HashMap<>();
+		for ( int i = 0; i < columns.length; i++ ) {
+			map.put( columns[ i ], list.get( i ) );
+		}
+		return map;
 	}
 	
 	private static String[] deleteEmptyStart( String[] rows ) {
@@ -38,25 +49,25 @@ public class LootClassCreator {
 		return result;
 	}
 	
-	private static Loot createLoot( String row, int indexOfLootClass ) {
-		Loot loot;
+	private static ArrayList<String> createLoot( String row ) {
 		if ( row == null ) {
 			return null;
 		}
-		
 		String[] elements = row.split( IOConstants.fileEntrySeparator );
 		
-		ArrayList<String> list    = new ArrayList<>();
+		ArrayList<String> list = new ArrayList<>();
 		
-		for ( int i = 0; i < elements.length; i++ ) {
-			if ( elements[ i ] == null || elements[ i ].isEmpty() ) {
-				list.add( " " );
+		for ( String element : elements ) {
+			if ( element == null ) {
+				list.add( "zero" );
+			}
+			else if ( element.isEmpty() ) {
+				list.add( "x" );
 			}
 			else {
-				list.add( elements[ i ] );
+				list.add( element );
 			}
 		}
-		loot = new Loot( list );
-		return loot;
+		return list;
 	}
 }

@@ -107,7 +107,9 @@ public class AlexGeneratorTabController {
 			ArrayList<Integer> intList = new ArrayList<>();
 			list.forEach( s -> {
 				try {
-					intList.add( Integer.parseInt( s ) );
+					if ( s != null ) {
+						intList.add( Integer.parseInt( s ) );
+					}
 				}
 				catch ( Exception e ) {
 					e.printStackTrace();

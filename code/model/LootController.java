@@ -3,7 +3,6 @@ package model;
 import model.generator.Configuration;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class LootController {
 	
@@ -13,28 +12,6 @@ public class LootController {
 		LootController.lootClasses = lootClasses;
 	}
 	
-	
-	public static Loot getRandomLoot() {
-		int       randomNum = ThreadLocalRandom.current().nextInt( 0, lootClasses.size() );
-		LootClass lootClass = lootClasses.get( randomNum );
-		
-		return lootClass.getRandomLoot();
-	}
-	
-	public static Loot getRandomLootFromClass( String lootclass ) {
-		try {
-			LootClass lootcl = getLootClassByName( lootclass );
-			return lootcl.getRandomLoot();
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public static Loot getRandomLootFromClass( LootClass lootClass ) {
-		return lootClass.getRandomLoot();
-	}
 	
 	// -------------------------------- GETTER AND SETTER -------------------------------------------
 	

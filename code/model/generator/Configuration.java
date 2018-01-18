@@ -28,8 +28,7 @@ public class Configuration {
 		this.minQuality = new int[ lootClass.getColumns().length ];
 		this.maxQuality = new int[ lootClass.getColumns().length ];
 		
-		for ( int i = 0; i < searchAtColumnIndex.length; i++ ) {
-			searchAtColumnIndex[ i ] = false;
+		for ( int i = 0; i < minQuality.length; i++ ) {
 			minQuality[ i ] = 0;
 			maxQuality[ i ] = Integer.MAX_VALUE;
 		}
@@ -39,11 +38,17 @@ public class Configuration {
 		ArrayList<Loot> result = new ArrayList<>();
 		ArrayList<Loot> list   = createLootableItems();
 		
-		for ( int i = 0; i < getAmountOfLoot(); i++ ) {
-			Loot l = list.get( Generator.getRandomInt( 0, list.size() ) );
-			if ( l != null ) {
-				result.add( l );
+		if ( !list.isEmpty() ) {
+			for ( int i = 0; i < getAmountOfLoot(); i++ ) {
+				int  random = Generator.getRandomInt( 0, list.size() );
+				Loot l      = list.get( random );
+				if ( l != null ) {
+					result.add( l );
+				}
 			}
+		}
+		else {
+			System.out.println( " Attention : list for useable loot is empty. Look at : Configuration.createRandomLoot() for more information." );
 		}
 		return result;
 	}
@@ -51,43 +56,20 @@ public class Configuration {
 	
 	private ArrayList<Loot> createLootableItems() {
 		
-		ArrayList<Loot> loot = new ArrayList<>();
 		
-		for ( int i = 0; i < searchAtColumnIndex.length; i++ ) {
-			if ( searchAtColumnIndex[ i ] ) {
-				
-				for ( Loot item : lootClass.getItems() ) {
-					if ( item.getEntry( i ) != null ) {
-						
-						// Do specific restrictions to an item here!
-						
-							if ( fitsQualityRequirements( item ) ) {
-								loot.add( item );
-							}
-						
-						
-					}
-				}
-			}
-		}
-		
-		return loot;
+		return new ArrayList<>();
 	}
 	
-	private boolean fitsQualityRequirements( Loot loot ) {
+	private boolean fitsQualityRequirements( Loot loot, String qualityName ) {
 		int i           = lootClassQualityIndex;
-		int lootQuality = Integer.parseInt( loot.getEntry( i ) );
+		int lootQuality = Integer.parseInt( loot.getEntry( qualityName ) );
 		return minQuality[ i ] <= lootQuality && lootQuality <= maxQuality[ i ];
 	}
 	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
 	
 	
-	public void setSearchAtColumnIndex( int index, boolean value ) {
-		this.searchAtColumnIndex[ index ] = value;
-	}
-	
-	public int getAmountOfLoot() {
+	private int getAmountOfLoot() {
 		return amount;
 	}
 	
@@ -97,5 +79,9 @@ public class Configuration {
 	
 	public void setMinQualityAtIndex( int index, Integer selectedItem ) {
 		this.minQuality[ index ] = selectedItem;
+	}
+	
+	public void setSearchAtColumnIndex( int typ, boolean b ) {
+		this.searchAtColumnIndex[ typ ] = b;
 	}
 }

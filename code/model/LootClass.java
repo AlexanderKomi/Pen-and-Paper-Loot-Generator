@@ -5,10 +5,8 @@ import io.FileLogger;
 import io.dataLoading.Header;
 import io.dataLoading.LootClassCreator;
 import model.generator.Configuration;
-import model.generator.Generator;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class LootClass {
 	
@@ -23,7 +21,7 @@ public class LootClass {
 		this.columns = header.getColumns();
 		try {
 			this.index = getInitialIndex();
-			ArrayList<Loot> list = LootClassCreator.createItems( content, index );
+			ArrayList<Loot> list = LootClassCreator.createItems( content, columns );
 			//list.forEach( System.out::println );
 			items = new Loot[ list.size() ];
 			list.toArray( items );
@@ -36,50 +34,13 @@ public class LootClass {
 		configuration = new Configuration( this );
 	}
 	
-	public Loot getRandomLoot() {
-		int  randomNum = Generator.getRandomInt( 0, items.length );
-		Loot loot      = items[ randomNum ];
-		
-		while ( loot == null ) {
-			randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
-			loot = items[ randomNum ];
-		}
-		
-		return loot;
-	}
-	
-	private Loot getRandomLoot( Loot[] array ) throws Exception {
-		
-		if ( array.length > 0 ) {
-			int  randomNum = ThreadLocalRandom.current().nextInt( 0, array.length );
-			Loot loot      = array[ randomNum ];
-			
-			while ( loot == null ) {
-				randomNum = ThreadLocalRandom.current().nextInt( 0, array.length );
-				loot = array[ randomNum ];
-			}
-			return loot;
-		}
-		else {
-			throw new Exception( "Given array is empty." );
-		}
-		
-	}
-	
 	public ArrayList<String> filterDuplicatedEntries( String column ) {
 		ArrayList<String> list = new ArrayList<>();
 		
-		int i = getColumnIndex( column );
-		
 		for ( Loot item : items ) {
-			if ( item != null ) {
-				ArrayList<String> otherEntries = item.getEntries();
-				if ( otherEntries != null ) {
-					String entry = otherEntries.get( i );
-					if ( !list.contains( entry ) ) {
-						list.add( entry );
-					}
-				}
+			String entry = item.getEntries().get( column );
+			if ( !list.contains( entry ) ) {
+				list.add( entry );
 			}
 		}
 		return list;
@@ -115,20 +76,6 @@ public class LootClass {
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
-	private ArrayList<Loot> getAllFromCategory( String category ) {
-		
-		ArrayList<Loot> lootArrayList = new ArrayList<>();
-		
-		int i = getColumnIndex( category );
-		
-		for ( Loot l : items ) {
-			if ( l.getEntries().get( i ).equals( category ) ) {
-				lootArrayList.add( l );
-			}
-		}
-		return lootArrayList;
-	}
-	
 	private int getInitialIndex() throws Exception {
 		for ( int i = 0; i < IOConstants.lootClasses.length; i++ ) {
 			if ( IOConstants.lootClasses[ i ].equals( this.name ) )
@@ -143,7 +90,6 @@ public class LootClass {
 	
 	public int getColumnIndex( String column ) {
 		int i;
-		
 		for ( i = 0; i < columns.length; i++ ) {
 			if ( columns[ i ].equals( column ) ) {
 				break;

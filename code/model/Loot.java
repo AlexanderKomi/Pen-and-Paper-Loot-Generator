@@ -1,14 +1,12 @@
 package model;
 
-import constants.IOConstants;
-
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Loot {
 	
-	private ArrayList<String> entries;
+	private HashMap<String, String> entries;
 	
-	public Loot( ArrayList<String> otherEntries ) {
+	public Loot( HashMap<String, String> otherEntries ) {
 		this.entries = ( otherEntries );
 	}
 	
@@ -19,7 +17,7 @@ public class Loot {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		for ( String s : this.getEntries() ) {
+		for ( String s : this.getEntries().values() ) {
 			String x;
 			if ( s.isEmpty() || s.equals( " " ) ) {
 				x = " ";
@@ -45,7 +43,7 @@ public class Loot {
 			StringBuilder sb = new StringBuilder();
 			
 			int i = 0;
-			for ( String s : this.getEntries() ) {
+			for ( String s : this.getEntries().values() ) {
 				String x;
 				if ( s.isEmpty() || s.equals( " " ) ) {
 					x = " ";
@@ -75,19 +73,11 @@ public class Loot {
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
-	public String getEntry( int index ) {
-		return this.entries.get( index );
+	public String getEntry( String key ) {
+		return this.entries.get( key );
 	}
 	
-	public ArrayList<String> getEntries() {
+	public HashMap<String, String> getEntries() {
 		return entries;
-	}
-	
-	public void setEntries( ArrayList<String> entries ) {
-		this.entries = entries;
-	}
-	
-	public String getName( int lootClassIndex ) {
-		return entries.get( IOConstants.nameIndexes[ lootClassIndex ] );
 	}
 }

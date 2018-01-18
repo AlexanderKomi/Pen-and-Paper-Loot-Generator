@@ -22,7 +22,6 @@ public class AlexGenerator extends Generator {
 		
 		String result;
 		
-		//ArrayList<Configuration> array = this.tabController.getConfiguration();
 		this.tabController.initControllerConfig();
 		ArrayList<Configuration> array = LootController.getConfiguration();
 		if ( array == null ) {
@@ -36,7 +35,7 @@ public class AlexGenerator extends Generator {
 	}
 	
 	private String noConfigSet() {
-		return LootController.getRandomLoot().toString();
+		return "";
 	}
 	
 	private String withConfig( ArrayList<Configuration> list ) {
