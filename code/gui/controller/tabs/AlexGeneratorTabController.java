@@ -1,5 +1,6 @@
 package gui.controller.tabs;
 
+import gui.util.AlexConfigUtils;
 import gui.util.AlexGuiUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -13,7 +14,6 @@ import model.generator.generators.AlexGenerator;
 public class AlexGeneratorTabController {
 	
 	private AlexGenerator alexGenerator = new AlexGenerator( this );
-	
 	
 	@FXML
 	private ScrollPane rootPane;
@@ -183,17 +183,10 @@ public class AlexGeneratorTabController {
 	}
 	
 	private void createWeaponConfig( LootClass lootClass ) {
-		lootClass.getConfiguration().setSearchForCategory( categoryWeaponCheckBox.isSelected() );
-		lootClass.getConfiguration().setCategory( categoryWeaponComboBox.getSelectionModel().getSelectedItem() );
-		
-		lootClass.getConfiguration().setSearchForType( typeWeaponCheckBox.isSelected() );
-		lootClass.getConfiguration().setType( typeWeaponComboBox.getSelectionModel().getSelectedItem() );
-		
-		lootClass.getConfiguration().setSearchMinQuality( minQualityWeaponCheckBox.isSelected() );
-		lootClass.getConfiguration().setMinQuality( minQualityWeaponComboBox.getSelectionModel().getSelectedItem() );
-		
-		lootClass.getConfiguration().setSearchMaxQuality( maxQualityWeaponCheckBox.isSelected() );
-		lootClass.getConfiguration().setMaxQuality( maxQualityWeaponComboBox.getSelectionModel().getSelectedItem() );
+		AlexConfigUtils.setCategory( lootClass, categoryWeaponCheckBox, categoryWeaponComboBox );
+		AlexConfigUtils.setType( lootClass, typeWeaponCheckBox, typeWeaponComboBox );
+		AlexConfigUtils.setMinQuality( lootClass, minQualityWeaponCheckBox, minQualityWeaponComboBox );
+		AlexConfigUtils.setMaxQuality( lootClass, maxQualityWeaponCheckBox, maxQualityWeaponComboBox );
 		
 		if ( amountWeaponCheckBox.isSelected() ) {
 			int selected = Integer.parseInt( amountWeaponField.getText() );
@@ -202,11 +195,8 @@ public class AlexGeneratorTabController {
 	}
 	
 	private void createFirstAidConfig( LootClass lootClass ) {
-		lootClass.getConfiguration().setSearchMinQuality( minLevelFirstAidCheckBox.isSelected() );
-		lootClass.getConfiguration().setMinQuality( minLevelFirstAidComboBox.getSelectionModel().getSelectedIndex() );
-		
-		lootClass.getConfiguration().setSearchMaxQuality( maxLevelFirstAidCheckBox.isSelected() );
-		lootClass.getConfiguration().setMaxQuality( maxLevelFirstAidComboBox.getSelectionModel().getSelectedItem() );
+		AlexConfigUtils.setMinQuality( lootClass, minLevelFirstAidCheckBox, minLevelFirstAidComboBox );
+		AlexConfigUtils.setMaxQuality( lootClass, maxLevelFirstAidCheckBox, maxLevelFirstAidComboBox );
 		
 		if ( amountFirstAidCheckBox.isSelected() ) {
 			int selected = Integer.parseInt( amountFirstAidField.getText() );
@@ -215,11 +205,8 @@ public class AlexGeneratorTabController {
 	}
 	
 	private void createPoisonConfig( LootClass lootClass ) {
-		lootClass.getConfiguration().setSearchMinQuality( minLevelPoisonCheckBox.isSelected() );
-		lootClass.getConfiguration().setMinQuality( minLevelPoisonComboBox.getSelectionModel().getSelectedIndex() );
-		
-		lootClass.getConfiguration().setSearchMaxQuality( maxLevelPoisonCheckBox.isSelected() );
-		lootClass.getConfiguration().setMaxQuality( maxLevelPoisonComboBox.getSelectionModel().getSelectedItem() );
+		AlexConfigUtils.setMinQuality( lootClass, minLevelPoisonCheckBox, minLevelPoisonComboBox );
+		AlexConfigUtils.setMaxQuality( lootClass, maxLevelPoisonCheckBox, maxLevelPoisonComboBox );
 		
 		if ( amountPoisonCheckBox.isSelected() ) {
 			int selected = Integer.parseInt( amountPoisonField.getText() );
@@ -229,7 +216,6 @@ public class AlexGeneratorTabController {
 	}
 	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
-	
 	
 	public ScrollPane getRootPane() {
 		return rootPane;
