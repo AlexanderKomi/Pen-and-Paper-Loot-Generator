@@ -3,7 +3,6 @@ package io.dataLoading;
 import constants.GeneralConstants;
 import constants.IOConstants;
 import io.Helper;
-import io.IOController;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class ReadFile {
 			else {
 				try {
 					String exception = "ERROR : No resources found in : " + IOConstants.resourceFolder + lootClassName + IOConstants.fileType;
-					IOController.getLogger().addEntry( exception );
+					//IOController.getLogger().addEntry( exception );
 					throw new Exception( exception );
 				}
 				catch ( Exception e ) {
@@ -115,13 +114,13 @@ public class ReadFile {
 					usebleFiles.toArray( files );
 					
 					String exception = "Found files and loot-classes (in IOConstants) differ in length : " + sourceDirectory;
-					IOController.getLogger().addEntry( exception );
+					//IOController.getLogger().addEntry( exception );
 					throw new Exception( exception );
 				}
 			}
 			else {
 				String exception = "No resources found in : " + sourceDirectory;
-				IOController.getLogger().addEntry( exception );
+				//IOController.getLogger().addEntry( exception );
 				throw new Exception( exception );
 			}
 			

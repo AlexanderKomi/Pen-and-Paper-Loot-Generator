@@ -12,66 +12,30 @@ public class Loot {
 	
 	@Override
 	public String toString() {
-		final String separator = "; ";
+		final String separator = "\t; \t";
 		final String breaker   = "\n";
 		
 		StringBuilder sb = new StringBuilder();
 		
-		for ( String s : this.getEntries().values() ) {
-			String x;
-			if ( s.isEmpty() || s.equals( " " ) ) {
-				x = " ";
-			}
-			else {
-				x = s;
-			}
-			sb.append( x ).append( separator ).append( breaker );
+		for ( String s : entries.keySet() ) {
+			sb.append( s ).append( separator ).append( entries.get( s ) ).append( breaker );
 		}
-		sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( breaker ) );
+		
+		sb.deleteCharAt( sb.lastIndexOf( separator ) );
 		
 		return sb.toString();
 	}
 	
-	public String toString( String[] columns ) {
-		
-		if ( columns != null ) {
-			
-			final String descriptor = "\t:\t";
-			final String separator  = "; ";
-			final String breaker    = "\n";
-			
-			StringBuilder sb = new StringBuilder();
-			
-			int i = 0;
-			for ( String s : this.getEntries().values() ) {
-				String x;
-				if ( s.isEmpty() || s.equals( " " ) ) {
-					x = " ";
-				}
-				else {
-					x = s;
-				}
-				
-				if ( i < columns.length ) {
-					String content = columns[ i ];
-					if ( content != null ) {
-						sb.append( content ).append( descriptor ).append( x ).append( separator ).append( breaker );
-					}
-				}
-				else {
-					sb.append( x ).append( separator ).append( breaker );
-				}
-				i++;
-			}
-			sb.deleteCharAt( sb.lastIndexOf( separator ) ).deleteCharAt( sb.lastIndexOf( breaker ) );
-			
-			return sb.toString();
-		}
-		
-		return this.toString();
-	}
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
+	
+	public boolean containsKey( String key ) {
+		return this.entries.containsKey( key );
+	}
+	
+	public boolean containsValue( String value ) {
+		return this.entries.containsValue( value );
+	}
 	
 	public String getEntry( String key ) {
 		return this.entries.get( key );

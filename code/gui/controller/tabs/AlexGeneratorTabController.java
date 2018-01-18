@@ -224,14 +224,12 @@ public class AlexGeneratorTabController {
 	private void createWeaponConfig( LootClass lootClass ) {
 		try {
 			
-			if ( categoryWeaponCheckBox.isSelected() ) {
-				lootClass.getConfiguration().setSearchAtColumnIndex( lootClass.getColumnIndex( "Typ" ), true );
-			}
-			if ( qualityWeaponCheckBox.isSelected() ) {
-				int index = lootClass.getColumnIndex( "Qualität" );
-				lootClass.getConfiguration().setSearchAtColumnIndex( index, true );
-				lootClass.getConfiguration().setMinQualityAtIndex( index, qualityWeaponComboBox.getSelectionModel().getSelectedItem() );
-			}
+			lootClass.getConfiguration().setSearchForType( categoryWeaponCheckBox.isSelected() );
+			lootClass.getConfiguration().setType( categoryWeaponComboBox.getSelectionModel().getSelectedItem() );
+			
+			lootClass.getConfiguration().setSearchMaxQuality( qualityWeaponCheckBox.isSelected() );
+			lootClass.getConfiguration().setMaxQuality( qualityWeaponComboBox.getSelectionModel().getSelectedItem() );
+			
 			if ( amountWeaponCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountWeaponField.getText() );
 				lootClass.getConfiguration().setAmount( selected );
@@ -244,12 +242,9 @@ public class AlexGeneratorTabController {
 	
 	private void createFirstAidConfig( LootClass lootClass ) {
 		try {
+			lootClass.getConfiguration().setSearchMaxQuality( levelFirstAidCheckBox.isSelected() );
+			lootClass.getConfiguration().setMaxQuality( levelFirstAidComboBox.getSelectionModel().getSelectedItem() );
 			
-			if ( levelFirstAidCheckBox.isSelected() ) {
-				int index = lootClass.getColumnIndex( "Stufe" );
-				lootClass.getConfiguration().setSearchAtColumnIndex( index, true );
-				lootClass.getConfiguration().setMinQualityAtIndex( index, levelFirstAidComboBox.getSelectionModel().getSelectedItem() );
-			}
 			if ( amountFirstAidCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountFirstAidField.getText() );
 				lootClass.getConfiguration().setAmount( selected );
@@ -262,12 +257,9 @@ public class AlexGeneratorTabController {
 	
 	private void createPoisonConfig( LootClass lootClass ) {
 		try {
+			lootClass.getConfiguration().setSearchMaxQuality( levelPoisonCheckBox.isSelected() );
+			lootClass.getConfiguration().setMaxQuality( levelPoisonComboBox.getSelectionModel().getSelectedItem() );
 			
-			if ( levelPoisonCheckBox.isSelected() ) {
-				int index = lootClass.getColumnIndex( "Stufe" );
-				lootClass.getConfiguration().setSearchAtColumnIndex( index, true );
-				lootClass.getConfiguration().setMinQualityAtIndex( index, levelPoisonComboBox.getSelectionModel().getSelectedItem() );
-			}
 			if ( amountPoisonCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountPoisonField.getText() );
 				lootClass.getConfiguration().setAmount( selected );

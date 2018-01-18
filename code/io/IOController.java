@@ -5,7 +5,7 @@ import io.dataLoading.ContentManager;
 
 public class IOController {
 	
-	private static FileLogger     logger = new FileLogger();
+	//private static FileLogger     logger = new FileLogger();
 	private static ContentManager c      = new ContentManager();
 	
 	public static void loadStartingData() {
@@ -16,7 +16,7 @@ public class IOController {
 			try {
 				String exception = "\tArrays in IOConstants don't have the same length." + "\n"
 						+ "\tPlease check all Arrays for the same length." + "\n";
-				logger.addEntry( exception );
+				//logger.addEntry( exception );
 				throw new Exception( exception );
 			}
 			catch ( Exception e ) {
@@ -24,8 +24,9 @@ public class IOController {
 			}
 		}
 	}
-	
+	/*
 	public static FileLogger getLogger() {
 		return logger;
 	}
+	*/
 }

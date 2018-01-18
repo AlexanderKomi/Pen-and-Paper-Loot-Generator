@@ -65,7 +65,7 @@ public class LootClass {
 				if ( this.columns == null ) {
 					System.out.println( " ---- COLUMNS ARE NULL" );
 				}
-				String x = l.toString( this.columns );
+				String x = l.toString();
 				sb.append( x ).append( separator ).append( "\n" );
 			}
 		}

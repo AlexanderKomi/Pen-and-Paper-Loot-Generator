@@ -9,29 +9,23 @@ import java.util.ArrayList;
 public class Configuration {
 	
 	private LootClass lootClass;
-	private boolean[] searchAtColumnIndex;
 	private int amount = 0;
 	
-	private int   lootClassQualityIndex;
-	private int[] minQuality;
-	private int[] maxQuality;
+	private boolean searchFixValueQuality = false;
+	private boolean searchMinQuality      = false;
+	private boolean searchMaxQuality      = false;
+	
+	private int fixQuality;
+	private int minQuality;
+	private int maxQuality;
+	
+	
+	private boolean searchForType = false;
+	private String type;
 	
 	
 	public Configuration( LootClass lootClass ) {
 		this.lootClass = lootClass;
-		setDefaultValues();
-	}
-	
-	private void setDefaultValues() {
-		this.lootClassQualityIndex = IOConstants.qualityIndexes[ lootClass.getIndex() ];
-		this.searchAtColumnIndex = new boolean[ lootClass.getColumns().length ];
-		this.minQuality = new int[ lootClass.getColumns().length ];
-		this.maxQuality = new int[ lootClass.getColumns().length ];
-		
-		for ( int i = 0; i < minQuality.length; i++ ) {
-			minQuality[ i ] = 0;
-			maxQuality[ i ] = Integer.MAX_VALUE;
-		}
 	}
 	
 	public ArrayList<Loot> createRandomLoot() {
@@ -39,37 +33,84 @@ public class Configuration {
 		ArrayList<Loot> list   = createLootableItems();
 		
 		if ( !list.isEmpty() ) {
-			for ( int i = 0; i < getAmountOfLoot(); i++ ) {
+			
+			for ( int i = 0; i < getAmount(); i++ ) {
 				int  random = Generator.getRandomInt( 0, list.size() );
 				Loot l      = list.get( random );
 				if ( l != null ) {
 					result.add( l );
 				}
 			}
+			
 		}
 		else {
-			System.out.println( " Attention : list for useable loot is empty. Look at : Configuration.createRandomLoot() for more information." );
+			System.out.println( " Attention : list for useable loot is empty. LootClass : " + lootClass.getName() + " \nLook at : Configuration.createRandomLoot() for more information." );
 		}
 		return result;
 	}
 	
 	
 	private ArrayList<Loot> createLootableItems() {
+		ArrayList<Loot> list = new ArrayList<>();
 		
+		for ( Loot loot : lootClass.getItems() ) {
+			if ( loot != null ) {
+				
+				if ( fitsQualityRequirements( loot ) ) {
+					if ( fitsTypeRequirements( loot ) ) {
+						list.add( loot );
+					}
+				}
+			}
+			else {
+				System.out.println( " LOOT IS NULL " );
+			}
+		}
 		
-		return new ArrayList<>();
+		return list;
 	}
 	
-	private boolean fitsQualityRequirements( Loot loot, String qualityName ) {
-		int i           = lootClassQualityIndex;
-		int lootQuality = Integer.parseInt( loot.getEntry( qualityName ) );
-		return minQuality[ i ] <= lootQuality && lootQuality <= maxQuality[ i ];
+	private boolean fitsQualityRequirements( Loot loot ) {
+		// get Entry in Loot
+		int    index            = IOConstants.qualityIndexes[ lootClass.getIndex() ];
+		String quality          = lootClass.getColumns()[ index ];
+		String lootQualityEntry = loot.getEntries().get( quality );
+		
+		// compare value from loot
+		int lootQuality = Integer.parseInt( lootQualityEntry );
+		
+		//System.out.println("Comparing : " +loot.getEntries().get( "Name" )+" , "+ lootQuality);
+		
+		return compareQualityRequirements( lootQuality );
 	}
 	
+	private boolean compareQualityRequirements( int lootQuality ) {
+		
+		if ( searchMinQuality ) {
+			if ( minQuality > lootQuality ) {
+				return false;
+			}
+		}
+		if ( searchMaxQuality ) {
+			if ( maxQuality < lootQuality ) {
+				return false;
+			}
+		}
+		if ( searchFixValueQuality ) {
+			return fixQuality == lootQuality;
+		}
+		return true;
+	}
+	
+	private boolean fitsTypeRequirements( Loot loot ) {
+		if ( searchForType ) {
+			return loot.getEntries().values().contains( type );
+		}
+		return true;
+	}
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
 	
-	
-	private int getAmountOfLoot() {
+	private int getAmount() {
 		return amount;
 	}
 	
@@ -77,11 +118,35 @@ public class Configuration {
 		this.amount = amount;
 	}
 	
-	public void setMinQualityAtIndex( int index, Integer selectedItem ) {
-		this.minQuality[ index ] = selectedItem;
+	public void setFixQuality( int fixQuality ) {
+		this.fixQuality = fixQuality;
 	}
 	
-	public void setSearchAtColumnIndex( int typ, boolean b ) {
-		this.searchAtColumnIndex[ typ ] = b;
+	public void setMaxQuality( int maxQuality ) {
+		this.maxQuality = maxQuality;
+	}
+	
+	public void setMinQuality( int minQuality ) {
+		this.minQuality = minQuality;
+	}
+	
+	public void setSearchFixValueQuality( boolean searchFixValueQuality ) {
+		this.searchFixValueQuality = searchFixValueQuality;
+	}
+	
+	public void setSearchMaxQuality( boolean searchMaxQuality ) {
+		this.searchMaxQuality = searchMaxQuality;
+	}
+	
+	public void setSearchMinQuality( boolean searchMinQuality ) {
+		this.searchMinQuality = searchMinQuality;
+	}
+	
+	public void setSearchForType( boolean searchForType ) {
+		this.searchForType = searchForType;
+	}
+	
+	public void setType( String type ) {
+		this.type = type;
 	}
 }
