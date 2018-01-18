@@ -4,6 +4,7 @@ import constants.IOConstants;
 import io.FileLogger;
 import io.dataLoading.Header;
 import io.dataLoading.LootClassCreator;
+import model.generator.Configuration;
 import model.generator.Generator;
 
 import java.util.ArrayList;
@@ -11,10 +12,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class LootClass {
 	
-	private String   name;
-	private String[] columns;
-	private Loot[]   items;
-	private int      index;
+	private Configuration configuration;
+	private String        name;
+	private String[]      columns;
+	private Loot[]        items;
+	private int           index;
 	
 	public LootClass( Header header, String content ) {
 		this.name = header.getName();
@@ -31,6 +33,7 @@ public class LootClass {
 			FileLogger.getLogger().info( e.getMessage() );
 			System.exit( 1 );
 		}
+		configuration = new Configuration( this );
 	}
 	
 	public Loot getRandomLoot() {
@@ -61,20 +64,6 @@ public class LootClass {
 			throw new Exception( "Given array is empty." );
 		}
 		
-	}
-	
-	public Loot getRandomLootWithCategory( String category ) {
-		ArrayList<Loot> lootArrayList = getAllFromCategory( category );
-		Loot[]          array         = new Loot[ lootArrayList.size() ];
-		lootArrayList.toArray( array );
-		
-		try {
-			return getRandomLoot( array );
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-			return null;
-		}
 	}
 	
 	public ArrayList<String> filterDuplicatedEntries( String column ) {
@@ -186,5 +175,13 @@ public class LootClass {
 	
 	public String[] getColumns() {
 		return columns;
+	}
+	
+	public Configuration getConfiguration() {
+		return configuration;
+	}
+	
+	public void setConfiguration( Configuration configuration ) {
+		this.configuration = configuration;
 	}
 }

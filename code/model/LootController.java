@@ -1,5 +1,7 @@
 package model;
 
+import model.generator.Configuration;
+
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -55,5 +57,13 @@ public class LootController {
 	
 	public static void setLootClasses( ArrayList<LootClass> lootClasses ) {
 		LootController.lootClasses = lootClasses;
+	}
+	
+	public static ArrayList<Configuration> getConfiguration() {
+		ArrayList<Configuration> list = new ArrayList<>();
+		for ( LootClass l : lootClasses ) {
+			list.add( l.getConfiguration() );
+		}
+		return list;
 	}
 }

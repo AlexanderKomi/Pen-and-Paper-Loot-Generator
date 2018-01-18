@@ -22,7 +22,9 @@ public class AlexGenerator extends Generator {
 		
 		String result;
 		
-		ArrayList<Configuration> array = this.tabController.getConfiguration();
+		//ArrayList<Configuration> array = this.tabController.getConfiguration();
+		this.tabController.initControllerConfig();
+		ArrayList<Configuration> array = LootController.getConfiguration();
 		if ( array == null ) {
 			result = noConfigSet();
 		}
@@ -39,9 +41,12 @@ public class AlexGenerator extends Generator {
 	
 	private String withConfig( ArrayList<Configuration> list ) {
 		StringBuilder   result = new StringBuilder();
+		
 		ArrayList<Loot> loot   = new ArrayList<>();
+		
 		for ( Configuration c : list ) {
-			loot.addAll( c.createRandomLoot() );
+			ArrayList<Loot> helper = c.createRandomLoot();
+			loot.addAll( helper );
 		}
 		
 		for ( Loot item : loot ) {

@@ -40,7 +40,10 @@ public class Configuration {
 		ArrayList<Loot> list   = createLootableItems();
 		
 		for ( int i = 0; i < getAmountOfLoot(); i++ ) {
-			result.add( list.get( Generator.getRandomInt( 0, list.size() ) ) );
+			Loot l = list.get( Generator.getRandomInt( 0, list.size() ) );
+			if ( l != null ) {
+				result.add( l );
+			}
 		}
 		return result;
 	}
@@ -58,14 +61,9 @@ public class Configuration {
 						
 						// Do specific restrictions to an item here!
 						
-						if ( i == lootClassQualityIndex ) {
 							if ( fitsQualityRequirements( item ) ) {
 								loot.add( item );
 							}
-						}
-						else {
-							loot.add( item );
-						}
 						
 						
 					}
@@ -81,6 +79,7 @@ public class Configuration {
 		int lootQuality = Integer.parseInt( loot.getEntry( i ) );
 		return minQuality[ i ] <= lootQuality && lootQuality <= maxQuality[ i ];
 	}
+	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
 	
 	

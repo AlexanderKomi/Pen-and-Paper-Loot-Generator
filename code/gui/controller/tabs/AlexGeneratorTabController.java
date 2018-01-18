@@ -8,7 +8,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import model.LootClass;
 import model.LootController;
-import model.generator.Configuration;
 import model.generator.generators.AlexGenerator;
 
 import java.util.ArrayList;
@@ -59,7 +58,13 @@ public class AlexGeneratorTabController {
 		initializeComboBoxes();
 		setDefaultValues();
 		disableElements();
-		bindValues();
+		bindGuiValues();
+		bindCategoryValues();
+		initControllerConfig();
+	}
+	
+	private void bindCategoryValues() {
+	
 	}
 	
 	// ----------------------------- initialize boxes -----------------------------
@@ -171,7 +176,7 @@ public class AlexGeneratorTabController {
 		amountPoisonField.setDisable( true );
 	}
 	
-	private void bindValues() {
+	private void bindGuiValues() {
 		//---------------------------------------- WEAPONS
 		bindBox( categoryWeaponCheckBox, categoryWeaponComboBox );
 		bindBox( qualityWeaponCheckBox, qualityWeaponComboBox );
@@ -202,86 +207,74 @@ public class AlexGeneratorTabController {
 	
 	// ----------------------------------------  PUBLIC METHODS  ----------------------------------------
 	
-	public ArrayList<Configuration> getConfiguration() {
-		ArrayList<Configuration> configuration = new ArrayList<>();
-		
-		configuration.add( createWeaponConfig() );
-		configuration.add( createFirstAidConfig() );
-		configuration.add( createPoisonConfig() );
-		
-		return configuration;
+	public void initControllerConfig() {
+		try {
+			createWeaponConfig( LootController.getLootClassByName( "Waffen" ) );
+			createFirstAidConfig( LootController.getLootClassByName( "Erste Hilfe" ) );
+			createPoisonConfig( LootController.getLootClassByName( "Gifte" ) );
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+		}
 	}
 	
-	private Configuration createWeaponConfig() {
-		Configuration configuration = null;
+	
+	private void createWeaponConfig( LootClass lootClass ) {
 		try {
-			LootClass lootClass = LootController.getLootClassByName( "Waffen" );
-			configuration = new Configuration( lootClass );
 			
 			if ( categoryWeaponCheckBox.isSelected() ) {
-				configuration.setSearchAtColumnIndex( lootClass.getColumnIndex( "Typ" ), true );
+				lootClass.getConfiguration().setSearchAtColumnIndex( lootClass.getColumnIndex( "Typ" ), true );
 			}
 			if ( qualityWeaponCheckBox.isSelected() ) {
 				int index = lootClass.getColumnIndex( "Qualität" );
-				configuration.setSearchAtColumnIndex( index, true );
-				configuration.setMinQualityAtIndex( index, qualityWeaponComboBox.getSelectionModel().getSelectedItem() );
+				lootClass.getConfiguration().setSearchAtColumnIndex( index, true );
+				lootClass.getConfiguration().setMinQualityAtIndex( index, qualityWeaponComboBox.getSelectionModel().getSelectedItem() );
 			}
 			if ( amountWeaponCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountWeaponField.getText() );
-				configuration.setAmount( selected );
+				lootClass.getConfiguration().setAmount( selected );
 			}
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
 		}
-		return configuration;
 	}
 	
-	private Configuration createFirstAidConfig() {
-		Configuration configuration = null;
+	private void createFirstAidConfig( LootClass lootClass ) {
 		try {
-			LootClass lootClass = LootController.getLootClassByName( "Erste Hilfe" );
-			configuration = new Configuration( lootClass );
 			
 			if ( levelFirstAidCheckBox.isSelected() ) {
 				int index = lootClass.getColumnIndex( "Stufe" );
-				configuration.setSearchAtColumnIndex( index, true );
-				configuration.setMinQualityAtIndex( index, levelFirstAidComboBox.getSelectionModel().getSelectedItem() );
+				lootClass.getConfiguration().setSearchAtColumnIndex( index, true );
+				lootClass.getConfiguration().setMinQualityAtIndex( index, levelFirstAidComboBox.getSelectionModel().getSelectedItem() );
 			}
 			if ( amountFirstAidCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountFirstAidField.getText() );
-				configuration.setAmount( selected );
+				lootClass.getConfiguration().setAmount( selected );
 			}
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
 		}
-		return configuration;
 	}
 	
-	private Configuration createPoisonConfig() {
-		Configuration configuration = null;
+	private void createPoisonConfig( LootClass lootClass ) {
 		try {
-			LootClass lootClass = LootController.getLootClassByName( "Gifte" );
-			configuration = new Configuration( lootClass );
 			
 			if ( levelPoisonCheckBox.isSelected() ) {
 				int index = lootClass.getColumnIndex( "Stufe" );
-				configuration.setSearchAtColumnIndex( index, true );
-				configuration.setMinQualityAtIndex( index, levelPoisonComboBox.getSelectionModel().getSelectedItem() );
+				lootClass.getConfiguration().setSearchAtColumnIndex( index, true );
+				lootClass.getConfiguration().setMinQualityAtIndex( index, levelPoisonComboBox.getSelectionModel().getSelectedItem() );
 			}
 			if ( amountPoisonCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountPoisonField.getText() );
-				configuration.setAmount( selected );
+				lootClass.getConfiguration().setAmount( selected );
 			}
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
 		}
-		return configuration;
 	}
-	
-	
 	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
 	
