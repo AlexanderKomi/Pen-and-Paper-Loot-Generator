@@ -21,7 +21,6 @@ public class AlexGenerator extends Generator {
 	public String generateLoot() {
 		
 		String result;
-		
 		this.tabController.initControllerConfig();
 		ArrayList<Configuration> array = LootController.getConfiguration();
 		if ( array == null ) {
@@ -39,9 +38,9 @@ public class AlexGenerator extends Generator {
 	}
 	
 	private String withConfig( ArrayList<Configuration> list ) {
-		StringBuilder   result = new StringBuilder();
+		StringBuilder result = new StringBuilder();
 		
-		ArrayList<Loot> loot   = new ArrayList<>();
+		ArrayList<Loot> loot = new ArrayList<>();
 		
 		for ( Configuration c : list ) {
 			ArrayList<Loot> helper = c.createRandomLoot();

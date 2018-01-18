@@ -59,13 +59,9 @@ public class AlexGeneratorTabController {
 		setDefaultValues();
 		disableElements();
 		bindGuiValues();
-		bindCategoryValues();
 		initControllerConfig();
 	}
 	
-	private void bindCategoryValues() {
-	
-	}
 	
 	// ----------------------------- initialize boxes -----------------------------
 	
@@ -223,7 +219,6 @@ public class AlexGeneratorTabController {
 	
 	private void createWeaponConfig( LootClass lootClass ) {
 		try {
-			
 			lootClass.getConfiguration().setSearchForType( categoryWeaponCheckBox.isSelected() );
 			lootClass.getConfiguration().setType( categoryWeaponComboBox.getSelectionModel().getSelectedItem() );
 			

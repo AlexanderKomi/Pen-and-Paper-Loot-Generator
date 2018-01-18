@@ -37,9 +37,7 @@ public class Configuration {
 			for ( int i = 0; i < getAmount(); i++ ) {
 				int  random = Generator.getRandomInt( 0, list.size() );
 				Loot l      = list.get( random );
-				if ( l != null ) {
-					result.add( l );
-				}
+				result.add( l );
 			}
 			
 		}
@@ -51,23 +49,25 @@ public class Configuration {
 	
 	
 	private ArrayList<Loot> createLootableItems() {
+		
 		ArrayList<Loot> list = new ArrayList<>();
 		
 		for ( Loot loot : lootClass.getItems() ) {
-			if ( loot != null ) {
-				
-				if ( fitsQualityRequirements( loot ) ) {
-					if ( fitsTypeRequirements( loot ) ) {
-						list.add( loot );
-					}
-				}
+			
+			if ( fitsRequirements( loot ) ) {
+				list.add( loot );
 			}
-			else {
-				System.out.println( " LOOT IS NULL " );
-			}
+			
 		}
 		
 		return list;
+	}
+	
+	private boolean fitsRequirements( Loot loot ) {
+		if ( fitsQualityRequirements( loot ) ) {
+			return fitsTypeRequirements( loot );
+		}
+		return false;
 	}
 	
 	private boolean fitsQualityRequirements( Loot loot ) {
@@ -130,23 +130,23 @@ public class Configuration {
 		this.minQuality = minQuality;
 	}
 	
-	public void setSearchFixValueQuality( boolean searchFixValueQuality ) {
-		this.searchFixValueQuality = searchFixValueQuality;
-	}
-	
-	public void setSearchMaxQuality( boolean searchMaxQuality ) {
-		this.searchMaxQuality = searchMaxQuality;
-	}
-	
-	public void setSearchMinQuality( boolean searchMinQuality ) {
-		this.searchMinQuality = searchMinQuality;
-	}
-	
 	public void setSearchForType( boolean searchForType ) {
 		this.searchForType = searchForType;
 	}
 	
 	public void setType( String type ) {
 		this.type = type;
+	}
+	
+	public void setSearchMinQuality( boolean searchMinQuality ) {
+		this.searchMinQuality = searchMinQuality;
+	}
+	
+	public void setSearchMaxQuality( boolean searchMaxQuality ) {
+		this.searchMaxQuality = searchMaxQuality;
+	}
+	
+	public void setSearchFixValueQuality( boolean searchFixValueQuality ) {
+		this.searchFixValueQuality = searchFixValueQuality;
 	}
 }

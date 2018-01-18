@@ -6,7 +6,7 @@ import io.dataLoading.ContentManager;
 public class IOController {
 	
 	//private static FileLogger     logger = new FileLogger();
-	private static ContentManager c      = new ContentManager();
+	private static ContentManager c = new ContentManager();
 	
 	public static void loadStartingData() {
 		if ( IOConstants.checkArrayLength() ) {

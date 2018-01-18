@@ -110,13 +110,13 @@ public class LootClass {
 		return items;
 	}
 	
+	public void setItems( Loot[] items ) {
+		this.items = items;
+	}
+	
 	public void setItems( ArrayList<Loot> items ) {
 		this.items = new Loot[ items.size() ];
 		items.toArray( this.items );
-	}
-	
-	public void setItems( Loot[] items ) {
-		this.items = items;
 	}
 	
 	public String[] getColumns() {

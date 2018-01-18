@@ -11,11 +11,11 @@ public abstract class Generator {
 	
 	private String name;
 	
-	public abstract String generateLoot();  // This method produces the output! You need to implement this class in your Extended CLass
-	
 	public static int getRandomInt( int min, int max ) {
 		return ThreadLocalRandom.current().nextInt( min, max );
 	}
+	
+	public abstract String generateLoot();  // This method produces the output! You need to implement this class in your Extended CLass
 	//-------------------------------------- GETTER AND SETTER --------------------------------------
 	
 	public String getName() {
