@@ -1,8 +1,6 @@
 package gui.controller.tabs;
 
 import gui.util.AlexGuiUtil;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -19,8 +17,6 @@ public class AlexGeneratorTabController {
 	
 	private AlexGenerator alexGenerator = new AlexGenerator( this );
 	
-	
-	private StringProperty categorySelected = new SimpleStringProperty();
 	
 	@FXML
 	private ScrollPane rootPane;
@@ -91,39 +87,14 @@ public class AlexGeneratorTabController {
 	
 	private void initializeWeaponBoxes( LootClass lootClass ) {
 		
-		categoryWeaponComboBox.setItems( FXCollections.observableArrayList(
-				lootClass.filterDuplicatedEntries( "Kategorie" )
-		) );
+		AlexGuiUtil.fillStringComboBox( categoryWeaponComboBox, lootClass, "Kategorie" );
+		AlexGuiUtil.fillStringComboBox( typeWeaponComboBox, lootClass, "Typ" );
+		AlexGuiUtil.bindDependency( lootClass, categoryWeaponComboBox, typeWeaponComboBox, "Kategorie", "Typ" );
 		
-		typeWeaponComboBox.setItems( FXCollections.observableArrayList(
-				lootClass.filterDuplicatedEntries( "Typ" )
-		) );
+		AlexGuiUtil.fillIntComboBox( minQualityWeaponComboBox, lootClass, "Qualität" );
+		AlexGuiUtil.fillIntComboBox( maxQualityWeaponComboBox, lootClass, "Qualität" );
+		AlexGuiUtil.minMaxDependency( minQualityWeaponComboBox, maxQualityWeaponComboBox );
 		
-		ArrayList<String>      list    = lootClass.filterDuplicatedEntries( "Qualität" );
-			ArrayList<Integer> intList = new ArrayList<>();
-			list.forEach( s -> {
-				try {
-					intList.add( Integer.parseInt( s ) );
-				}
-				catch ( Exception e ) {
-					e.printStackTrace();
-				}
-			} );
-		minQualityWeaponComboBox.setItems( FXCollections.observableArrayList(
-					intList
-			) );
-		maxQualityWeaponComboBox.setItems( FXCollections.observableArrayList(
-				intList
-		) );
-		
-		// BINDING STUFF
-		categorySelected.bind( categoryWeaponComboBox.getSelectionModel().selectedItemProperty() );
-		categorySelected.addListener( ( observable, oldValue, newValue ) -> {
-			typeWeaponComboBox.setItems( FXCollections.observableArrayList(
-					lootClass.filterDuplicatesWithDependency( "Typ", "Kategorie", categoryWeaponComboBox.getSelectionModel().getSelectedItem() )
-			) );
-			typeWeaponComboBox.getSelectionModel().selectFirst();
-		} );
 	}
 	
 	private void initializeFirstAidBoxes( LootClass lootClass ) {
@@ -171,7 +142,7 @@ public class AlexGeneratorTabController {
 		categoryWeaponComboBox.getSelectionModel().selectFirst();
 		typeWeaponComboBox.getSelectionModel().selectFirst();
 		minQualityWeaponComboBox.getSelectionModel().selectFirst();
-		maxQualityWeaponComboBox.getSelectionModel().selectFirst();
+		maxQualityWeaponComboBox.getSelectionModel().selectLast();
 		AlexGuiUtil.setFieldOnlyNumber( amountWeaponField );
 		amountWeaponField.setText( "0" );
 		//---------------------------------------- FIRST AID
