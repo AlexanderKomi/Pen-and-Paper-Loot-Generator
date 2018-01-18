@@ -20,8 +20,7 @@ public class Loot {
 		for ( String s : entries.keySet() ) {
 			sb.append( s ).append( separator ).append( entries.get( s ) ).append( breaker );
 		}
-		
-		sb.deleteCharAt( sb.lastIndexOf( separator ) );
+		sb.append( breaker );
 		
 		return sb.toString();
 	}

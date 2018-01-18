@@ -85,23 +85,4 @@ public class MiddleContentController {
 		return activeTabs.get( tabPane.getSelectionModel().getSelectedIndex() );
 	}
 	
-	public int getTabIndex( Tab t ) {
-		return tabPane.getTabs().indexOf( t );
-	}
-	
-	public int getActiveIndex() {
-		return tabPane.getSelectionModel().getSelectedIndex();
-	}
-	
-	public void setNissGeneratorTabController( NissGeneratorTabController nissGeneratorTabController ) {
-		this.nissGeneratorTabController = nissGeneratorTabController;
-	}
-	
-	public VBox getNissGeneratorTab() {
-		return nissGeneratorTab;
-	}
-	
-	public void setNissGeneratorTab( VBox nissGeneratorTab ) {
-		this.nissGeneratorTab = nissGeneratorTab;
-	}
 }

@@ -35,15 +35,12 @@ public class LootClass {
 	}
 	
 	public ArrayList<String> filterDuplicatedEntries( String column ) {
-		ArrayList<String> list = new ArrayList<>();
-		
-		for ( Loot item : items ) {
-			String entry = item.getEntries().get( column );
-			if ( !list.contains( entry ) ) {
-				list.add( entry );
-			}
-		}
-		return list;
+		return Filter.filterDuplicatedEntries( this.items, column );
+	}
+	
+	public ArrayList<String> filterDuplicatesWithDependency( String column, String dependencyColumn, String dependencyValue ) {
+		ArrayList<Loot> lootList = Filter.filterDependency( this.items, dependencyColumn, dependencyValue );
+		return Filter.filterDuplicatedEntries( lootList, column );
 	}
 	
 	@Override

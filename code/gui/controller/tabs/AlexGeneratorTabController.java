@@ -1,5 +1,8 @@
 package gui.controller.tabs;
 
+import gui.util.AlexGuiUtil;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -16,6 +19,9 @@ public class AlexGeneratorTabController {
 	
 	private AlexGenerator alexGenerator = new AlexGenerator( this );
 	
+	
+	private StringProperty categorySelected = new SimpleStringProperty();
+	
 	@FXML
 	private ScrollPane rootPane;
 	
@@ -25,9 +31,17 @@ public class AlexGeneratorTabController {
 	@FXML
 	private ComboBox<String>  categoryWeaponComboBox;
 	@FXML
-	private CheckBox          qualityWeaponCheckBox;
+	private CheckBox          typeWeaponCheckBox;
 	@FXML
-	private ComboBox<Integer> qualityWeaponComboBox;
+	private ComboBox<String>  typeWeaponComboBox;
+	@FXML
+	private CheckBox          minQualityWeaponCheckBox;
+	@FXML
+	private ComboBox<Integer> minQualityWeaponComboBox;
+	@FXML
+	private CheckBox          maxQualityWeaponCheckBox;
+	@FXML
+	private ComboBox<Integer> maxQualityWeaponComboBox;
 	@FXML
 	private CheckBox          amountWeaponCheckBox;
 	@FXML
@@ -62,22 +76,30 @@ public class AlexGeneratorTabController {
 		initControllerConfig();
 	}
 	
-	
 	// ----------------------------- initialize boxes -----------------------------
 	
 	private void initializeComboBoxes() {
-		initializeWeaponBoxes();
-		initializeFirstAidBoxes();
-		initializePoisonBoxes();
+		try {
+			initializeWeaponBoxes( LootController.getLootClassByName( "Waffen" ) );
+			initializeFirstAidBoxes( LootController.getLootClassByName( "Erste Hilfe" ) );
+			initializePoisonBoxes( LootController.getLootClassByName( "Gifte" ) );
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+		}
 	}
 	
-	private void initializeWeaponBoxes() {
-		try {
-			categoryWeaponComboBox.setItems( FXCollections.observableArrayList(
-					LootController.getLootClassByName( "Waffen" ).filterDuplicatedEntries( "Typ" )
-			) );
-			
-			ArrayList<String>  list    = LootController.getLootClassByName( "Waffen" ).filterDuplicatedEntries( "Qualität" );
+	private void initializeWeaponBoxes( LootClass lootClass ) {
+		
+		categoryWeaponComboBox.setItems( FXCollections.observableArrayList(
+				lootClass.filterDuplicatedEntries( "Kategorie" )
+		) );
+		
+		typeWeaponComboBox.setItems( FXCollections.observableArrayList(
+				lootClass.filterDuplicatedEntries( "Typ" )
+		) );
+		
+		ArrayList<String>      list    = lootClass.filterDuplicatedEntries( "Qualität" );
 			ArrayList<Integer> intList = new ArrayList<>();
 			list.forEach( s -> {
 				try {
@@ -87,19 +109,25 @@ public class AlexGeneratorTabController {
 					e.printStackTrace();
 				}
 			} );
-			
-			qualityWeaponComboBox.setItems( FXCollections.observableArrayList(
+		minQualityWeaponComboBox.setItems( FXCollections.observableArrayList(
 					intList
 			) );
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
+		maxQualityWeaponComboBox.setItems( FXCollections.observableArrayList(
+				intList
+		) );
+		
+		// BINDING STUFF
+		categorySelected.bind( categoryWeaponComboBox.getSelectionModel().selectedItemProperty() );
+		categorySelected.addListener( ( observable, oldValue, newValue ) -> {
+			typeWeaponComboBox.setItems( FXCollections.observableArrayList(
+					lootClass.filterDuplicatesWithDependency( "Typ", "Kategorie", categoryWeaponComboBox.getSelectionModel().getSelectedItem() )
+			) );
+			typeWeaponComboBox.getSelectionModel().selectFirst();
+		} );
 	}
 	
-	private void initializeFirstAidBoxes() {
-		try {
-			ArrayList<String>  list    = LootController.getLootClassByName( "Erste Hilfe" ).filterDuplicatedEntries( "Stufe" );
+	private void initializeFirstAidBoxes( LootClass lootClass ) {
+		ArrayList<String>      list    = lootClass.filterDuplicatedEntries( "Stufe" );
 			ArrayList<Integer> intList = new ArrayList<>();
 			list.forEach( s -> {
 				try {
@@ -115,15 +143,11 @@ public class AlexGeneratorTabController {
 			levelFirstAidComboBox.setItems( FXCollections.observableArrayList(
 					intList
 			) );
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
+		
 	}
 	
-	private void initializePoisonBoxes() {
-		try {
-			ArrayList<String>  list    = LootController.getLootClassByName( "Gifte" ).filterDuplicatedEntries( "Stufe" );
+	private void initializePoisonBoxes( LootClass lootClass ) {
+		ArrayList<String>      list    = lootClass.filterDuplicatedEntries( "Stufe" );
 			ArrayList<Integer> intList = new ArrayList<>();
 			list.forEach( s -> {
 				try {
@@ -137,34 +161,35 @@ public class AlexGeneratorTabController {
 			levelPoisonComboBox.setItems( FXCollections.observableArrayList(
 					intList
 			) );
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
+		
 	}
 	
-	// ----------------------------- initialization -----------------------------
+	// ----------------------------- GUI initialization -----------------------------
 	
 	private void setDefaultValues() {
 		//---------------------------------------- WEAPONS
 		categoryWeaponComboBox.getSelectionModel().selectFirst();
-		qualityWeaponComboBox.getSelectionModel().selectFirst();
-		setFieldOnlyNumber( amountWeaponField );
+		typeWeaponComboBox.getSelectionModel().selectFirst();
+		minQualityWeaponComboBox.getSelectionModel().selectFirst();
+		maxQualityWeaponComboBox.getSelectionModel().selectFirst();
+		AlexGuiUtil.setFieldOnlyNumber( amountWeaponField );
 		amountWeaponField.setText( "0" );
 		//---------------------------------------- FIRST AID
 		levelFirstAidComboBox.getSelectionModel().selectFirst();
-		setFieldOnlyNumber( amountFirstAidField );
+		AlexGuiUtil.setFieldOnlyNumber( amountFirstAidField );
 		amountFirstAidField.setText( "0" );
 		//---------------------------------------- POISON
 		levelPoisonComboBox.getSelectionModel().selectFirst();
-		setFieldOnlyNumber( amountPoisonField );
+		AlexGuiUtil.setFieldOnlyNumber( amountPoisonField );
 		amountPoisonField.setText( "0" );
 	}
 	
 	private void disableElements() {
 		//---------------------------------------- WEAPONS
 		categoryWeaponComboBox.setDisable( true );
-		qualityWeaponComboBox.setDisable( true );
+		typeWeaponComboBox.setDisable( true );
+		minQualityWeaponComboBox.setDisable( true );
+		maxQualityWeaponComboBox.setDisable( true );
 		amountWeaponField.setDisable( true );
 		//---------------------------------------- FIRST AID
 		levelFirstAidComboBox.setDisable( true );
@@ -176,34 +201,24 @@ public class AlexGeneratorTabController {
 	
 	private void bindGuiValues() {
 		//---------------------------------------- WEAPONS
-		bindBox( categoryWeaponCheckBox, categoryWeaponComboBox );
-		bindBox( qualityWeaponCheckBox, qualityWeaponComboBox );
-		bindField( amountWeaponCheckBox, amountWeaponField );
+		AlexGuiUtil.bindBox( categoryWeaponCheckBox, categoryWeaponComboBox );
+		AlexGuiUtil.bindBox( typeWeaponCheckBox, typeWeaponComboBox );
+		AlexGuiUtil.bindBox( minQualityWeaponCheckBox, minQualityWeaponComboBox );
+		AlexGuiUtil.bindBox( maxQualityWeaponCheckBox, maxQualityWeaponComboBox );
+		AlexGuiUtil.bindField( amountWeaponCheckBox, amountWeaponField );
 		//---------------------------------------- FIRST AID
-		bindBox( levelFirstAidCheckBox, levelFirstAidComboBox );
-		bindField( amountFirstAidCheckBox, amountFirstAidField );
+		AlexGuiUtil.bindBox( levelFirstAidCheckBox, levelFirstAidComboBox );
+		AlexGuiUtil.bindField( amountFirstAidCheckBox, amountFirstAidField );
 		//---------------------------------------- POISON
-		bindBox( levelPoisonCheckBox, levelPoisonComboBox );
-		bindField( amountPoisonCheckBox, amountPoisonField );
+		AlexGuiUtil.bindBox( levelPoisonCheckBox, levelPoisonComboBox );
+		AlexGuiUtil.bindField( amountPoisonCheckBox, amountPoisonField );
+		
+		
+		
+		
 	}
 	
-	private void bindBox( CheckBox check, ComboBox combo ) {
-		check.selectedProperty().addListener( ( observable, oldValue, newValue ) -> combo.setDisable( !newValue ) );
-	}
-	
-	private void bindField( CheckBox check, TextField textField ) {
-		check.selectedProperty().addListener( ( observable, oldValue, newValue ) -> textField.setDisable( !newValue ) );
-	}
-	
-	private void setFieldOnlyNumber( TextField textField ) {
-		textField.textProperty().addListener( ( observable, oldValue, newValue ) -> {
-			if ( !newValue.matches( "\\d*" ) ) {
-				textField.setText( newValue.replaceAll( "[^\\d]", "" ) );
-			}
-		} );
-	}
-	
-	// ----------------------------------------  PUBLIC METHODS  ----------------------------------------
+	// ----------------------------------------  CONFIG initialization  ----------------------------------------
 	
 	public void initControllerConfig() {
 		try {
@@ -216,27 +231,27 @@ public class AlexGeneratorTabController {
 		}
 	}
 	
-	
 	private void createWeaponConfig( LootClass lootClass ) {
-		try {
-			lootClass.getConfiguration().setSearchForType( categoryWeaponCheckBox.isSelected() );
-			lootClass.getConfiguration().setType( categoryWeaponComboBox.getSelectionModel().getSelectedItem() );
-			
-			lootClass.getConfiguration().setSearchMaxQuality( qualityWeaponCheckBox.isSelected() );
-			lootClass.getConfiguration().setMaxQuality( qualityWeaponComboBox.getSelectionModel().getSelectedItem() );
+		
+		lootClass.getConfiguration().setSearchForCategory( categoryWeaponCheckBox.isSelected() );
+		lootClass.getConfiguration().setCategory( categoryWeaponComboBox.getSelectionModel().getSelectedItem() );
+		
+		lootClass.getConfiguration().setSearchForType( typeWeaponCheckBox.isSelected() );
+		lootClass.getConfiguration().setType( typeWeaponComboBox.getSelectionModel().getSelectedItem() );
+		
+		lootClass.getConfiguration().setSearchMinQuality( minQualityWeaponCheckBox.isSelected() );
+		lootClass.getConfiguration().setMinQuality( minQualityWeaponComboBox.getSelectionModel().getSelectedItem() );
+		
+		lootClass.getConfiguration().setSearchMaxQuality( maxQualityWeaponCheckBox.isSelected() );
+		lootClass.getConfiguration().setMaxQuality( maxQualityWeaponComboBox.getSelectionModel().getSelectedItem() );
 			
 			if ( amountWeaponCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountWeaponField.getText() );
 				lootClass.getConfiguration().setAmount( selected );
 			}
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
 	}
 	
 	private void createFirstAidConfig( LootClass lootClass ) {
-		try {
 			lootClass.getConfiguration().setSearchMaxQuality( levelFirstAidCheckBox.isSelected() );
 			lootClass.getConfiguration().setMaxQuality( levelFirstAidComboBox.getSelectionModel().getSelectedItem() );
 			
@@ -244,14 +259,10 @@ public class AlexGeneratorTabController {
 				int selected = Integer.parseInt( amountFirstAidField.getText() );
 				lootClass.getConfiguration().setAmount( selected );
 			}
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	private void createPoisonConfig( LootClass lootClass ) {
-		try {
 			lootClass.getConfiguration().setSearchMaxQuality( levelPoisonCheckBox.isSelected() );
 			lootClass.getConfiguration().setMaxQuality( levelPoisonComboBox.getSelectionModel().getSelectedItem() );
 			
@@ -259,10 +270,7 @@ public class AlexGeneratorTabController {
 				int selected = Integer.parseInt( amountPoisonField.getText() );
 				lootClass.getConfiguration().setAmount( selected );
 			}
-		}
-		catch ( Exception e ) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
@@ -272,15 +280,7 @@ public class AlexGeneratorTabController {
 		return rootPane;
 	}
 	
-	public void setRootPane( ScrollPane rootPane ) {
-		this.rootPane = rootPane;
-	}
-	
 	public AlexGenerator getAlexGenerator() {
 		return alexGenerator;
-	}
-	
-	public void setAlexGenerator( AlexGenerator alexGenerator ) {
-		this.alexGenerator = alexGenerator;
 	}
 }

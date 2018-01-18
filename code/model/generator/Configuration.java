@@ -11,6 +11,7 @@ public class Configuration {
 	private LootClass lootClass;
 	private int amount = 0;
 	
+	//--------------------------------------------- QUALITY
 	private boolean searchFixValueQuality = false;
 	private boolean searchMinQuality      = false;
 	private boolean searchMaxQuality      = false;
@@ -19,9 +20,15 @@ public class Configuration {
 	private int minQuality;
 	private int maxQuality;
 	
-	
+	//--------------------------------------------- TYPE
 	private boolean searchForType = false;
 	private String type;
+	
+	
+	//--------------------------------------------- CATEGORY
+	private boolean searchForCategory = false;
+	private String category;
+	
 	
 	
 	public Configuration( LootClass lootClass ) {
@@ -53,21 +60,34 @@ public class Configuration {
 		ArrayList<Loot> list = new ArrayList<>();
 		
 		for ( Loot loot : lootClass.getItems() ) {
-			
 			if ( fitsRequirements( loot ) ) {
 				list.add( loot );
 			}
-			
 		}
 		
 		return list;
 	}
 	
 	private boolean fitsRequirements( Loot loot ) {
-		if ( fitsQualityRequirements( loot ) ) {
-			return fitsTypeRequirements( loot );
-		}
+		if ( fitsQualityRequirements( loot ) )
+			if ( fitsTypeRequirements( loot ) )
+				return fitsCategoryRequirements( loot );
+		
 		return false;
+	}
+	
+	private boolean fitsCategoryRequirements( Loot loot ) {
+		if ( searchForCategory ) {
+			return loot.getEntries().values().contains( category );
+		}
+		return true;
+	}
+	
+	private boolean fitsTypeRequirements( Loot loot ) {
+		if ( searchForType ) {
+			return loot.getEntries().values().contains( type );
+		}
+		return true;
 	}
 	
 	private boolean fitsQualityRequirements( Loot loot ) {
@@ -102,12 +122,7 @@ public class Configuration {
 		return true;
 	}
 	
-	private boolean fitsTypeRequirements( Loot loot ) {
-		if ( searchForType ) {
-			return loot.getEntries().values().contains( type );
-		}
-		return true;
-	}
+	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
 	
 	private int getAmount() {
@@ -148,5 +163,21 @@ public class Configuration {
 	
 	public void setSearchFixValueQuality( boolean searchFixValueQuality ) {
 		this.searchFixValueQuality = searchFixValueQuality;
+	}
+	
+	public boolean isSearchForCategory() {
+		return searchForCategory;
+	}
+	
+	public void setSearchForCategory( boolean searchForCategory ) {
+		this.searchForCategory = searchForCategory;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+	
+	public void setCategory( String category ) {
+		this.category = category;
 	}
 }

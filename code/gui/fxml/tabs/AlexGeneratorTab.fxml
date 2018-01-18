@@ -27,19 +27,49 @@
             </Separator>
             <VBox spacing="5.0" VBox.vgrow="SOMETIMES">
                 <HBox alignment="CENTER" spacing="5.0">
-                    <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                        <CheckBox fx:id="categoryWeaponCheckBox" mnemonicParsing="false" text="Typ"/>
-                    </HBox>
-                    <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                        <ComboBox fx:id="categoryWeaponComboBox" prefWidth="100.0" HBox.hgrow="SOMETIMES"/>
-                    </HBox>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                            <children>
+                                <CheckBox fx:id="categoryWeaponCheckBox" mnemonicParsing="false" text="Kategorie"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
+                            <children>
+                                <ComboBox fx:id="categoryWeaponComboBox" prefWidth="100.0" HBox.hgrow="SOMETIMES"/>
+                            </children>
+                        </HBox>
+                    </children>
                 </HBox>
                 <HBox alignment="CENTER" spacing="5.0">
                     <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                        <CheckBox fx:id="qualityWeaponCheckBox" mnemonicParsing="false" text="max. Qualität"/>
+                        <CheckBox fx:id="typeWeaponCheckBox" mnemonicParsing="false" text="Typ"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                        <ComboBox fx:id="qualityWeaponComboBox" prefWidth="100.0" promptText="1 - 5"
+                        <ComboBox fx:id="typeWeaponComboBox" prefWidth="100.0" HBox.hgrow="SOMETIMES"/>
+                    </HBox>
+                </HBox>
+                <HBox alignment="CENTER" spacing="5.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                            <children>
+                                <CheckBox fx:id="minQualityWeaponCheckBox" mnemonicParsing="false"
+                                          text="min. Qualität"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
+                            <children>
+                                <ComboBox fx:id="minQualityWeaponComboBox" prefWidth="100.0" promptText="1 - 5"
+                                          HBox.hgrow="SOMETIMES"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" spacing="5.0">
+                    <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                        <CheckBox fx:id="maxQualityWeaponCheckBox" mnemonicParsing="false" text="max. Qualität"/>
+                    </HBox>
+                    <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
+                        <ComboBox fx:id="maxQualityWeaponComboBox" prefWidth="100.0" promptText="1 - 5"
                                   HBox.hgrow="SOMETIMES"/>
                     </HBox>
                 </HBox>
