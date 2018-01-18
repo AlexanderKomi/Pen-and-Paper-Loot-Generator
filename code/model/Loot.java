@@ -75,6 +75,9 @@ public class Loot {
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
+	public String getEntry( int index ) {
+		return this.entries.get( index );
+	}
 	
 	public ArrayList<String> getEntries() {
 		return entries;

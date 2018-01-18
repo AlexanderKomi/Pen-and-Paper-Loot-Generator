@@ -222,7 +222,9 @@ public class AlexGeneratorTabController {
 				configuration.setSearchAtColumnIndex( lootClass.getColumnIndex( "Typ" ), true );
 			}
 			if ( qualityWeaponCheckBox.isSelected() ) {
-				configuration.setSearchAtColumnIndex( lootClass.getColumnIndex( "Qualität" ), true );
+				int index = lootClass.getColumnIndex( "Qualität" );
+				configuration.setSearchAtColumnIndex( index, true );
+				configuration.setMinQualityAtIndex( index, qualityWeaponComboBox.getSelectionModel().getSelectedItem() );
 			}
 			if ( amountWeaponCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountWeaponField.getText() );
@@ -242,7 +244,9 @@ public class AlexGeneratorTabController {
 			configuration = new Configuration( lootClass );
 			
 			if ( levelFirstAidCheckBox.isSelected() ) {
-				configuration.setSearchAtColumnIndex( lootClass.getColumnIndex( "Stufe" ), true );
+				int index = lootClass.getColumnIndex( "Stufe" );
+				configuration.setSearchAtColumnIndex( index, true );
+				configuration.setMinQualityAtIndex( index, levelFirstAidComboBox.getSelectionModel().getSelectedItem() );
 			}
 			if ( amountFirstAidCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountFirstAidField.getText() );
@@ -262,7 +266,9 @@ public class AlexGeneratorTabController {
 			configuration = new Configuration( lootClass );
 			
 			if ( levelPoisonCheckBox.isSelected() ) {
-				configuration.setSearchAtColumnIndex( lootClass.getColumnIndex( "Stufe" ), true );
+				int index = lootClass.getColumnIndex( "Stufe" );
+				configuration.setSearchAtColumnIndex( index, true );
+				configuration.setMinQualityAtIndex( index, levelPoisonComboBox.getSelectionModel().getSelectedItem() );
 			}
 			if ( amountPoisonCheckBox.isSelected() ) {
 				int selected = Integer.parseInt( amountPoisonField.getText() );

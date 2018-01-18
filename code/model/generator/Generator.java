@@ -1,5 +1,7 @@
 package model.generator;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * When you want to create a new generator:
  * <p>
@@ -11,6 +13,9 @@ public abstract class Generator {
 	
 	public abstract String generateLoot();  // This method produces the output! You need to implement this class in your Extended CLass
 	
+	public static int getRandomInt( int min, int max ) {
+		return ThreadLocalRandom.current().nextInt( min, max );
+	}
 	//-------------------------------------- GETTER AND SETTER --------------------------------------
 	
 	public String getName() {

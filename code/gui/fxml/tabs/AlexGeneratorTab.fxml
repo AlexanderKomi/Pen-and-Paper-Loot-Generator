@@ -36,7 +36,7 @@
                 </HBox>
                 <HBox alignment="CENTER" spacing="5.0">
                     <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                        <CheckBox fx:id="qualityWeaponCheckBox" mnemonicParsing="false" text="Qualität"/>
+                        <CheckBox fx:id="qualityWeaponCheckBox" mnemonicParsing="false" text="max. Qualität"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
                         <ComboBox fx:id="qualityWeaponComboBox" prefWidth="100.0" promptText="1 - 5"
@@ -76,7 +76,7 @@
             <VBox spacing="5.0" VBox.vgrow="SOMETIMES">
                 <HBox alignment="CENTER" spacing="5.0">
                     <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                        <CheckBox fx:id="levelFirstAidCheckBox" mnemonicParsing="false" text="Stufe"/>
+                        <CheckBox fx:id="levelFirstAidCheckBox" mnemonicParsing="false" text="max. Stufe"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
                         <ComboBox fx:id="levelFirstAidComboBox" prefWidth="100.0" promptText="1 - 5"
@@ -116,7 +116,7 @@
             <VBox spacing="5.0" VBox.vgrow="SOMETIMES">
                 <HBox alignment="CENTER" spacing="5.0">
                     <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                        <CheckBox fx:id="levelPoisonCheckBox" mnemonicParsing="false" text="Stufe"/>
+                        <CheckBox fx:id="levelPoisonCheckBox" mnemonicParsing="false" text="max. Stufe"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
                         <ComboBox fx:id="levelPoisonComboBox" prefWidth="100.0" promptText="1 - 5"

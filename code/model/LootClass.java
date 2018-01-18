@@ -4,6 +4,7 @@ import constants.IOConstants;
 import io.FileLogger;
 import io.dataLoading.Header;
 import io.dataLoading.LootClassCreator;
+import model.generator.Generator;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -33,7 +34,7 @@ public class LootClass {
 	}
 	
 	public Loot getRandomLoot() {
-		int  randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
+		int  randomNum = Generator.getRandomInt( 0, items.length );
 		Loot loot      = items[ randomNum ];
 		
 		while ( loot == null ) {
@@ -170,7 +171,7 @@ public class LootClass {
 		this.name = name;
 	}
 	
-	private Loot[] getItems() {
+	public Loot[] getItems() {
 		return items;
 	}
 	

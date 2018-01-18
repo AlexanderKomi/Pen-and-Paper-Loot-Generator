@@ -1,6 +1,7 @@
 package model.generator.generators;
 
 import gui.controller.tabs.AlexGeneratorTabController;
+import model.Loot;
 import model.LootController;
 import model.generator.Configuration;
 import model.generator.Generator;
@@ -37,7 +38,15 @@ public class AlexGenerator extends Generator {
 	}
 	
 	private String withConfig( ArrayList<Configuration> list ) {
-		StringBuilder result = new StringBuilder();
+		StringBuilder   result = new StringBuilder();
+		ArrayList<Loot> loot   = new ArrayList<>();
+		for ( Configuration c : list ) {
+			loot.addAll( c.createRandomLoot() );
+		}
+		
+		for ( Loot item : loot ) {
+			result.append( item.toString() );
+		}
 		
 		return result.toString();
 	}

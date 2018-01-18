@@ -25,7 +25,7 @@ public final class IOConstants {
 	};
 	
 	public static final int[] qualityIndexes = {
-			1, 1, 1
+			3, 1, 1
 	};
 	
 	public static boolean checkArrayLength() {
