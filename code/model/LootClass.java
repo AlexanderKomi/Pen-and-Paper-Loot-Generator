@@ -19,8 +19,9 @@ public class LootClass {
 		this.name = header.getName();
 		this.columns = header.getColumns();
 		try {
-			this.index = getIndex();
+			this.index = getInitialIndex();
 			ArrayList<Loot> list = LootClassCreator.createItems( content, index );
+			//list.forEach( System.out::println );
 			items = new Loot[ list.size() ];
 			list.toArray( items );
 		}
@@ -43,85 +44,46 @@ public class LootClass {
 		return loot;
 	}
 	
-	private Loot getRandomLoot( Loot[] array ) {
-		int  randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
-		Loot loot      = array[ randomNum ];
+	private Loot getRandomLoot( Loot[] array ) throws Exception {
 		
-		while ( loot == null ) {
-			randomNum = ThreadLocalRandom.current().nextInt( 0, items.length );
-			loot = array[ randomNum ];
+		if ( array.length > 0 ) {
+			int  randomNum = ThreadLocalRandom.current().nextInt( 0, array.length );
+			Loot loot      = array[ randomNum ];
+			
+			while ( loot == null ) {
+				randomNum = ThreadLocalRandom.current().nextInt( 0, array.length );
+				loot = array[ randomNum ];
+			}
+			return loot;
+		}
+		else {
+			throw new Exception( "Given array is empty." );
 		}
 		
-		return loot;
 	}
 	
 	public Loot getRandomLootWithCategory( String category ) {
 		ArrayList<Loot> lootArrayList = getAllFromCategory( category );
 		Loot[]          array         = new Loot[ lootArrayList.size() ];
 		lootArrayList.toArray( array );
-		return getRandomLoot( array );
+		
+		try {
+			return getRandomLoot( array );
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
-	public ArrayList<String> filterDuplicates( String column ) {
-		
-		int i;
-		for ( i = 0; i < columns.length; i++ ) {
-			//System.out.println( "columns [" + i + "] = " + columns[ i ] );
-			if ( columns[ i ].equals( column ) ) {
-				break;
-			}
-		}
-		
-		ArrayList<String> list;
-		if ( i == IOConstants.nameIndexes[ this.index ] ) {
-			list = filterName();
-		}
-		else if ( i == IOConstants.qualityIndexes[ this.index ] ) {
-			list = filterQuality();
-		}
-		else {
-			list = filterOtherEntries( i );
-		}
-		
-		return list;
-	}
-	
-	private ArrayList<String> filterName() {
+	public ArrayList<String> filterDuplicatedEntries( String column ) {
 		ArrayList<String> list = new ArrayList<>();
+		
+		int i = getColumnIndex( column );
 		
 		for ( Loot item : items ) {
 			if ( item != null ) {
-				String name = item.getName();
-				if ( !list.contains( name ) ) {
-					list.add( name );
-				}
-			}
-		}
-		
-		return list;
-	}
-	
-	private ArrayList<String> filterQuality() {
-		ArrayList<String> list = new ArrayList<>();
-		
-		for ( Loot item : items ) {
-			if ( item != null ) {
-				String quality = String.valueOf( item.getQuality() );
-				if ( !list.contains( String.valueOf( quality ) ) ) {
-					list.add( quality );
-				}
-			}
-		}
-		
-		return list;
-	}
-	
-	private ArrayList<String> filterOtherEntries( int i ) {
-		ArrayList<String> list = new ArrayList<>();
-		
-		for ( Loot item : items ) {
-			if ( item != null ) {
-				ArrayList<String> otherEntries = item.getOtherEntries();
+				ArrayList<String> otherEntries = item.getEntries();
 				if ( otherEntries != null ) {
 					String entry = otherEntries.get( i );
 					if ( !list.contains( entry ) ) {
@@ -163,32 +125,41 @@ public class LootClass {
 	
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
-	public ArrayList<Loot> getAllFromCategory( String category ) {
-		
-		// TODO : Need to filter name and quality.
+	private ArrayList<Loot> getAllFromCategory( String category ) {
 		
 		ArrayList<Loot> lootArrayList = new ArrayList<>();
-		int             index         = 0;
-		for ( int i = 0; i < columns.length; i++ ) {
-			if ( category.equals( columns[ i ] ) ) {
-				index = i;
-			}
-		}
+		
+		int i = getColumnIndex( category );
 		
 		for ( Loot l : items ) {
-			if ( l.getOtherEntries().get( index ).equals( category ) ) {
+			if ( l.getEntries().get( i ).equals( category ) ) {
 				lootArrayList.add( l );
 			}
 		}
 		return lootArrayList;
 	}
 	
-	public int getIndex() throws Exception {
+	private int getInitialIndex() throws Exception {
 		for ( int i = 0; i < IOConstants.lootClasses.length; i++ ) {
 			if ( IOConstants.lootClasses[ i ].equals( this.name ) )
 				return i;
 		}
 		throw new Exception( "Not a valid LootClass" );
+	}
+	
+	public int getIndex() {
+		return index;
+	}
+	
+	public int getColumnIndex( String column ) {
+		int i;
+		
+		for ( i = 0; i < columns.length; i++ ) {
+			if ( columns[ i ].equals( column ) ) {
+				break;
+			}
+		}
+		return i;
 	}
 	
 	public String getName() {

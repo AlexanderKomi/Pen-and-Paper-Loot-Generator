@@ -1,17 +1,15 @@
 package model;
 
+import constants.IOConstants;
+
 import java.util.ArrayList;
 
 public class Loot {
 	
-	private String            name;
-	private int               qualityAsNumber;
-	private ArrayList<String> otherEntries;
+	private ArrayList<String> entries;
 	
-	public Loot( String name, int qualityAsNumber, ArrayList<String> otherEntries ) {
-		this.name = name;
-		this.qualityAsNumber = qualityAsNumber;
-		this.otherEntries = ( otherEntries );
+	public Loot( ArrayList<String> otherEntries ) {
+		this.entries = ( otherEntries );
 	}
 	
 	@Override
@@ -19,9 +17,9 @@ public class Loot {
 		final String separator = "; ";
 		final String breaker   = "\n";
 		
-		StringBuilder sb = new StringBuilder( this.getName() ).append( separator ).append( breaker );
-		sb.append( this.getQualityAsNumber() ).append( separator ).append( breaker );
-		for ( String s : this.getOtherEntries() ) {
+		StringBuilder sb = new StringBuilder();
+		
+		for ( String s : this.getEntries() ) {
 			String x;
 			if ( s.isEmpty() || s.equals( " " ) ) {
 				x = " ";
@@ -46,13 +44,8 @@ public class Loot {
 			
 			StringBuilder sb = new StringBuilder();
 			
-			sb.append( columns[ 0 ] ).append( descriptor ).append( this.getName() );
-			sb.append( separator ).append( breaker );
-			sb.append( columns[ 1 ] ).append( descriptor ).append( this.getQualityAsNumber() );
-			sb.append( separator ).append( breaker );
-			
-			int i = 2;
-			for ( String s : this.getOtherEntries() ) {
+			int i = 0;
+			for ( String s : this.getEntries() ) {
 				String x;
 				if ( s.isEmpty() || s.equals( " " ) ) {
 					x = " ";
@@ -83,31 +76,15 @@ public class Loot {
 	// ------------------------------------------ GETTER AND SETTER ------------------------------------------
 	
 	
-	public String getName() {
-		return name;
+	public ArrayList<String> getEntries() {
+		return entries;
 	}
 	
-	public void setName( String name ) {
-		this.name = name;
+	public void setEntries( ArrayList<String> entries ) {
+		this.entries = entries;
 	}
 	
-	private int getQualityAsNumber() {
-		return qualityAsNumber;
-	}
-	
-	public void setQualityAsNumber( int qualityAsNumber ) {
-		this.qualityAsNumber = qualityAsNumber;
-	}
-	
-	public ArrayList<String> getOtherEntries() {
-		return otherEntries;
-	}
-	
-	public void setOtherEntries( ArrayList<String> otherEntries ) {
-		this.otherEntries = otherEntries;
-	}
-	
-	public int getQuality() {
-		return qualityAsNumber;
+	public String getName( int lootClassIndex ) {
+		return entries.get( IOConstants.nameIndexes[ lootClassIndex ] );
 	}
 }

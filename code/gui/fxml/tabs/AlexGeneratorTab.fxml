@@ -28,7 +28,7 @@
             <VBox spacing="5.0" VBox.vgrow="SOMETIMES">
                 <HBox alignment="CENTER" spacing="5.0">
                     <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                        <CheckBox fx:id="categoryWeaponCheckBox" mnemonicParsing="false" text="Kategorie"/>
+                        <CheckBox fx:id="categoryWeaponCheckBox" mnemonicParsing="false" text="Typ"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
                         <ComboBox fx:id="categoryWeaponComboBox" prefWidth="100.0" HBox.hgrow="SOMETIMES"/>
@@ -88,8 +88,7 @@
                         <CheckBox fx:id="amountFirstAidCheckBox" mnemonicParsing="false" text="Anzahl"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                        <ComboBox fx:id="amountFirstAidComboBox" editable="true" prefWidth="100.0" promptText="0"
-                                  HBox.hgrow="SOMETIMES"/>
+                        <TextField fx:id="amountFirstAidField" prefWidth="100.0"/>
                     </HBox>
                 </HBox>
             </VBox>
@@ -129,8 +128,7 @@
                         <CheckBox fx:id="amountPoisonCheckBox" mnemonicParsing="false" text="Anzahl"/>
                     </HBox>
                     <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                        <ComboBox fx:id="amountPoisonComboBox" editable="true" prefWidth="100.0" promptText="0"
-                                  HBox.hgrow="SOMETIMES"/>
+                        <TextField fx:id="amountPoisonField" prefWidth="100.0"/>
                     </HBox>
                 </HBox>
             </VBox>

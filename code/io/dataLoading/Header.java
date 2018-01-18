@@ -17,6 +17,17 @@ public class Header {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder( name ).append( ": ( " );
+		for ( String s : columns ) {
+			sb.append( s ).append( ", " );
+		}
+		sb.deleteCharAt( sb.lastIndexOf( ", " ) );
+		sb.append( " )" );
+		return sb.toString();
+	}
+	
 	// -------------------------------------------- GETTER AND SETTER --------------------------------------------------
 	public String getName() {
 		return name;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class LootClassCreator {
 	
 	public static ArrayList<Loot> createItems( String content, int indexOfLootClass ) {
+		
 		ArrayList<Loot> loot = new ArrayList<>();
 		String[]        rows = content.split( IOConstants.fileRowSeparator );
 		
@@ -46,31 +47,16 @@ public class LootClassCreator {
 		String[] elements = row.split( IOConstants.fileEntrySeparator );
 		
 		ArrayList<String> list    = new ArrayList<>();
-		String            name    = "";
-		int               quality = 0;
 		
 		for ( int i = 0; i < elements.length; i++ ) {
-			if ( i == IOConstants.nameIndexes[ indexOfLootClass ] ) {
-				name = ( elements[ i ] );
-			}
-			else if ( i == IOConstants.qualityIndexes[ indexOfLootClass ] ) {
-				quality = ( Integer.parseInt( elements[ i ] ) );
+			if ( elements[ i ] == null || elements[ i ].isEmpty() ) {
+				list.add( " " );
 			}
 			else {
-				
-				if ( elements[ i ] == null || elements[ i ].isEmpty() ) {
-					list.add( " " );
-				}
-				else {
-					list.add( elements[ i ] );
-				}
-				
+				list.add( elements[ i ] );
 			}
-			
 		}
-		//list.forEach( System.out::println );
-		loot = new Loot( name, quality, list );
-		//loot.getOtherEntries().forEach(  System.out::println );
+		loot = new Loot( list );
 		return loot;
 	}
 }
