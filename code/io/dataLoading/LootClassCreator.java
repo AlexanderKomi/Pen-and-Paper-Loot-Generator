@@ -59,10 +59,10 @@ public class LootClassCreator {
 		
 		for ( String element : elements ) {
 			if ( element == null ) {
-				list.add( " " );
+				list.add( "0" );
 			}
 			else if ( element.isEmpty() ) {
-				list.add( " " );
+				list.add( "0" );
 			}
 			else {
 				list.add( element );

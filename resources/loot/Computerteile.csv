@@ -1,0 +1,15 @@
+Name;Stufe (1 häufig bis 5 sehr selten);Kategorie 1;Kategorie 2;Kategorie 3
+Drähte;1;Verbinder;;
+Kabel;1;Verbinder;;
+USB-Stick;3;Mikrochip;Speicher;
+Mikrowellenchip;5;Mikrochip;;
+Handy;3;Display;Speicher;Knopf
+Laptop;5;Display;Speicher;Knopf
+Fernseher;3;Display;Mirkochip;
+Taster;1;Knopf;;
+Batterie;3;Energiequelle;;
+Akku;3;Energiequelle;;
+SSD;5;Speicher;Mirkochip;
+Festplatte;4;Speicher;Mirkochip;
+Lautsprecher;2;Lautsprecher;;
+Mirkofon;2;Mirkofon;;

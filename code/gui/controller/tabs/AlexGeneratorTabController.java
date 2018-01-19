@@ -98,6 +98,24 @@ public class AlexGeneratorTabController {
 	@FXML
 	private TextField         amountMiscField;
 	
+	//---------------------------------------- COMPUTERPARTS (CP)
+	@FXML
+	private CheckBox          nameCPCheckBox;
+	@FXML
+	private ComboBox<String>  nameCPComboBox;
+	@FXML
+	private CheckBox          minQualityCPCheckBox;
+	@FXML
+	private ComboBox<Integer> minQualityCPComboBox;
+	@FXML
+	private CheckBox          maxQualityCPCheckBox;
+	@FXML
+	private ComboBox<Integer> maxQualityCPComboBox;
+	@FXML
+	private CheckBox          amountCPCheckBox;
+	@FXML
+	private TextField         amountCPTextField;
+	
 	
 	@FXML
 	private void initialize() {
@@ -116,6 +134,7 @@ public class AlexGeneratorTabController {
 			initializeFirstAidBoxes( LootController.getLootClassByName( "Erste Hilfe" ) );
 			initializePoisonBoxes( LootController.getLootClassByName( "Gifte" ) );
 			initializeMiscBoxes( LootController.getLootClassByName( "Kram" ) );
+			initializeCPBoxes( LootController.getLootClassByName( "Computerteile" ) );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
@@ -160,9 +179,18 @@ public class AlexGeneratorTabController {
 		AlexGuiUtil.minMaxDependency( minQualityMiscComboBox, maxQualityMiscComboBox );
 	}
 	
+	private void initializeCPBoxes( LootClass lootClass ) {
+		AlexGuiUtil.fillStringComboBox( nameCPComboBox, lootClass, "Name" );
+		
+		AlexGuiUtil.fillIntComboBox( minQualityCPComboBox, lootClass, "Stufe" );
+		AlexGuiUtil.fillIntComboBox( maxQualityCPComboBox, lootClass, "Stufe" );
+		AlexGuiUtil.minMaxDependency( minQualityCPComboBox, maxQualityCPComboBox );
+	}
 	// ----------------------------- GUI initialization -----------------------------
 	
 	private void setDefaultValues() {
+		String initialAmountValue = "0";
+		
 		//---------------------------------------- WEAPONS
 		nameWeaponComboBox.getSelectionModel().selectFirst();
 		categoryWeaponComboBox.getSelectionModel().selectFirst();
@@ -170,25 +198,31 @@ public class AlexGeneratorTabController {
 		minQualityWeaponComboBox.getSelectionModel().selectFirst();
 		maxQualityWeaponComboBox.getSelectionModel().selectLast();
 		AlexGuiUtil.setFieldOnlyNumber( amountWeaponField );
-		amountWeaponField.setText( "0" );
+		amountWeaponField.setText( initialAmountValue );
 		//---------------------------------------- FIRST AID
 		nameFirstAidComboBox.getSelectionModel().selectFirst();
 		minLevelFirstAidComboBox.getSelectionModel().selectFirst();
 		maxLevelFirstAidComboBox.getSelectionModel().selectLast();
 		AlexGuiUtil.setFieldOnlyNumber( amountFirstAidField );
-		amountFirstAidField.setText( "0" );
+		amountFirstAidField.setText( initialAmountValue );
 		//---------------------------------------- POISON
 		namePoisonComboBox.getSelectionModel().selectFirst();
 		minLevelPoisonComboBox.getSelectionModel().selectFirst();
 		maxLevelPoisonComboBox.getSelectionModel().selectLast();
 		AlexGuiUtil.setFieldOnlyNumber( amountPoisonField );
-		amountPoisonField.setText( "0" );
+		amountPoisonField.setText( initialAmountValue );
 		//---------------------------------------- MISC
 		nameMiscComboBox.getSelectionModel().selectFirst();
 		minQualityMiscComboBox.getSelectionModel().selectFirst();
 		maxQualityMiscComboBox.getSelectionModel().selectLast();
 		AlexGuiUtil.setFieldOnlyNumber( amountMiscField );
-		amountMiscField.setText( "0" );
+		amountMiscField.setText( initialAmountValue );
+		//---------------------------------------- COMPUTERPARTS
+		nameCPComboBox.getSelectionModel().selectFirst();
+		minQualityCPComboBox.getSelectionModel().selectFirst();
+		maxQualityCPComboBox.getSelectionModel().selectLast();
+		AlexGuiUtil.setFieldOnlyNumber( amountCPTextField );
+		amountCPTextField.setText( initialAmountValue );
 	}
 	
 	private void disableElements() {
@@ -214,31 +248,41 @@ public class AlexGeneratorTabController {
 		minQualityMiscComboBox.setDisable( true );
 		maxQualityMiscComboBox.setDisable( true );
 		amountMiscField.setDisable( true );
+		//---------------------------------------- COMPUTERPARTS
+		nameCPComboBox.setDisable( true );
+		minQualityCPComboBox.setDisable( true );
+		maxQualityCPComboBox.setDisable( true );
+		amountCPTextField.setDisable( true );
 	}
 	
 	private void bindGuiValues() {
-		//---------------------------------------- WEAPONS
+		//-------------------------------------------------------------------------------- WEAPONS
 		AlexGuiUtil.bindBox( nameWeaponCheckBox, nameWeaponComboBox );
 		AlexGuiUtil.bindBox( categoryWeaponCheckBox, categoryWeaponComboBox );
 		AlexGuiUtil.bindBox( typeWeaponCheckBox, typeWeaponComboBox );
 		AlexGuiUtil.bindBox( minQualityWeaponCheckBox, minQualityWeaponComboBox );
 		AlexGuiUtil.bindBox( maxQualityWeaponCheckBox, maxQualityWeaponComboBox );
 		AlexGuiUtil.bindField( amountWeaponCheckBox, amountWeaponField );
-		//---------------------------------------- FIRST AID
+		//-------------------------------------------------------------------------------- FIRST AID
 		AlexGuiUtil.bindBox( nameFirstAidCheckBox, nameFirstAidComboBox );
 		AlexGuiUtil.bindBox( minLevelFirstAidCheckBox, minLevelFirstAidComboBox );
 		AlexGuiUtil.bindBox( maxLevelFirstAidCheckBox, maxLevelFirstAidComboBox );
 		AlexGuiUtil.bindField( amountFirstAidCheckBox, amountFirstAidField );
-		//---------------------------------------- POISON
+		//-------------------------------------------------------------------------------- POISON
 		AlexGuiUtil.bindBox( namePoisonCheckBox, namePoisonComboBox );
 		AlexGuiUtil.bindBox( minLevelPoisonCheckBox, minLevelPoisonComboBox );
 		AlexGuiUtil.bindBox( maxLevelPoisonCheckBox, maxLevelPoisonComboBox );
 		AlexGuiUtil.bindField( amountPoisonCheckBox, amountPoisonField );
-		//---------------------------------------- MISC
+		//-------------------------------------------------------------------------------- MISC
 		AlexGuiUtil.bindBox( nameMiscCheckBox, nameMiscComboBox );
 		AlexGuiUtil.bindBox( minQualityMiscCheckBox, minQualityMiscComboBox );
 		AlexGuiUtil.bindBox( maxQualityMiscCheckBox, maxQualityMiscComboBox );
 		AlexGuiUtil.bindField( amountMiscCheckBox, amountMiscField );
+		//-------------------------------------------------------------------------------- COMPUTERPARTS
+		AlexGuiUtil.bindBox( nameCPCheckBox, nameCPComboBox );
+		AlexGuiUtil.bindBox( minQualityCPCheckBox, minQualityCPComboBox );
+		AlexGuiUtil.bindBox( maxQualityCPCheckBox, maxQualityCPComboBox );
+		AlexGuiUtil.bindField( amountCPCheckBox, amountCPTextField );
 	}
 	
 	// ----------------------------------------  CONFIG initialization  ----------------------------------------
@@ -249,6 +293,7 @@ public class AlexGeneratorTabController {
 			createFirstAidConfig( LootController.getLootClassByName( "Erste Hilfe" ) );
 			createPoisonConfig( LootController.getLootClassByName( "Gifte" ) );
 			createMiscConfig( LootController.getLootClassByName( "Kram" ) );
+			createCPConfig( LootController.getLootClassByName( "Computerteile" ) );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
@@ -296,6 +341,17 @@ public class AlexGeneratorTabController {
 		
 		if ( amountMiscCheckBox.isSelected() ) {
 			int selected = Integer.parseInt( amountMiscField.getText() );
+			lootClass.getConfiguration().setAmount( selected );
+		}
+	}
+	
+	private void createCPConfig( LootClass lootClass ) {
+		AlexConfigUtils.setName( lootClass, nameCPCheckBox, nameCPComboBox );
+		AlexConfigUtils.setMinQuality( lootClass, minQualityCPCheckBox, minQualityCPComboBox );
+		AlexConfigUtils.setMaxQuality( lootClass, maxQualityCPCheckBox, maxQualityCPComboBox );
+		
+		if ( amountCPCheckBox.isSelected() ) {
+			int selected = Integer.parseInt( amountCPTextField.getText() );
 			lootClass.getConfiguration().setAmount( selected );
 		}
 	}
