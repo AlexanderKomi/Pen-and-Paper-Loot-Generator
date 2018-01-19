@@ -1,6 +1,6 @@
 package model;
 
-import constants.IOConstants;
+import io.IOConstants;
 
 import java.util.ArrayList;
 

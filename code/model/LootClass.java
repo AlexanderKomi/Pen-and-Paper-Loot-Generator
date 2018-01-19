@@ -1,7 +1,7 @@
 package model;
 
-import constants.IOConstants;
 import io.FileLogger;
+import io.IOConstants;
 import io.dataLoading.Header;
 import io.dataLoading.LootClassCreator;
 import model.generator.Configuration;

@@ -1,8 +1,8 @@
 package io.dataLoading;
 
 import constants.GeneralConstants;
-import constants.IOConstants;
 import io.Helper;
+import io.IOConstants;
 
 import java.io.*;
 import java.util.ArrayList;

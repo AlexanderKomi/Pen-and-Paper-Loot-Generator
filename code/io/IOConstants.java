@@ -1,4 +1,4 @@
-package constants;
+package io;
 
 public final class IOConstants {
 	

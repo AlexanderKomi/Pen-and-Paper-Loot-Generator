@@ -1,6 +1,6 @@
 package model.generator;
 
-import constants.IOConstants;
+import io.IOConstants;
 import model.Loot;
 import model.LootClass;
 

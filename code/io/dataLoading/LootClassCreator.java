@@ -1,6 +1,6 @@
 package io.dataLoading;
 
-import constants.IOConstants;
+import io.IOConstants;
 import model.Loot;
 
 import java.util.ArrayList;
