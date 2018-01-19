@@ -1,5 +1,5 @@
 import arguments.Arguments;
-import controller.MainController;
+import io.IOController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -49,7 +49,7 @@ public class LootGenerator extends Application {
 	}
 	
 	private void beforeGuiInit() {
-		MainController.initialize();
+		IOController.loadStartingData();
 	}
 	
 	private void afterGuiInit() {

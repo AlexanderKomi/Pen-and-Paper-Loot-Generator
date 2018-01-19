@@ -27,4 +27,8 @@ public final class AlexConfigUtils {
 		
 	}
 	
+	public static void setName( LootClass lootClass, CheckBox checkBox, ComboBox<String> comboBox ) {
+		lootClass.getConfiguration().setSearchForName( checkBox.isSelected() );
+		lootClass.getConfiguration().setName( comboBox.getSelectionModel().getSelectedItem() );
+	}
 }

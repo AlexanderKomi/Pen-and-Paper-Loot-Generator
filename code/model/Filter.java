@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public final class Filter {
 	
+	private Filter() {
+	}
+	
 	public static ArrayList<String> filterDuplicatedEntries( Loot[] items, String column ) {
 		ArrayList<String> list = new ArrayList<>();
 		

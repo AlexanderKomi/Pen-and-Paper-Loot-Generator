@@ -30,6 +30,10 @@ public class Configuration {
 	private String category;
 	
 	
+	//--------------------------------------------- NAME
+	private boolean searchForName = false;
+	private String name;
+	
 	
 	public Configuration( LootClass lootClass ) {
 		this.lootClass = lootClass;
@@ -69,11 +73,21 @@ public class Configuration {
 	}
 	
 	private boolean fitsRequirements( Loot loot ) {
-		if ( fitsQualityRequirements( loot ) )
-			if ( fitsTypeRequirements( loot ) )
-				return fitsCategoryRequirements( loot );
-		
+		if ( fitsQualityRequirements( loot ) ) {
+			if ( fitsTypeRequirements( loot ) ) {
+				if ( fitsNameRequirements( loot ) ) {
+					return fitsCategoryRequirements( loot );
+				}
+			}
+		}
 		return false;
+	}
+	
+	private boolean fitsNameRequirements( Loot loot ) {
+		if ( searchForName ) {
+			return loot.getEntries().values().contains( name );
+		}
+		return true;
 	}
 	
 	private boolean fitsCategoryRequirements( Loot loot ) {
@@ -179,5 +193,21 @@ public class Configuration {
 	
 	public void setCategory( String category ) {
 		this.category = category;
+	}
+	
+	public boolean isSearchForName() {
+		return searchForName;
+	}
+	
+	public void setSearchForName( boolean searchForName ) {
+		this.searchForName = searchForName;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName( String name ) {
+		this.name = name;
 	}
 }

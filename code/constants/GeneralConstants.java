@@ -30,7 +30,7 @@ public final class GeneralConstants {
 	 *
 	 * */
 	public static final  String   current_version = "0.1a";
-	public static final  String[] authors         = { "Alexander Komischke" };
+	public static final  String[] authors         = { "Alexander Komischke", "Dennis Sellemann" };
 	private static final String[] stable_versions = {};
 	private static final String[] versions        = { current_version };
 	private static       String   location        = getMainLocation();
