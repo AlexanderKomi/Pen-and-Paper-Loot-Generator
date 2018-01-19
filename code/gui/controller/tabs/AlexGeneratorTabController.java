@@ -104,6 +104,10 @@ public class AlexGeneratorTabController {
 	@FXML
 	private ComboBox<String>  nameCPComboBox;
 	@FXML
+	private CheckBox          categoryCPCheckBox;
+	@FXML
+	private ComboBox<String>  categoryCPComboBox;
+	@FXML
 	private CheckBox          minQualityCPCheckBox;
 	@FXML
 	private ComboBox<Integer> minQualityCPComboBox;
@@ -182,6 +186,8 @@ public class AlexGeneratorTabController {
 	private void initializeCPBoxes( LootClass lootClass ) {
 		AlexGuiUtil.fillStringComboBox( nameCPComboBox, lootClass, "Name" );
 		
+		AlexGuiUtil.fillStringComboBox( categoryCPComboBox, lootClass, "Kategorie 1", "Kategorie 2", "Kategorie 3" );
+		
 		AlexGuiUtil.fillIntComboBox( minQualityCPComboBox, lootClass, "Stufe" );
 		AlexGuiUtil.fillIntComboBox( maxQualityCPComboBox, lootClass, "Stufe" );
 		AlexGuiUtil.minMaxDependency( minQualityCPComboBox, maxQualityCPComboBox );
@@ -219,6 +225,7 @@ public class AlexGeneratorTabController {
 		amountMiscField.setText( initialAmountValue );
 		//---------------------------------------- COMPUTERPARTS
 		nameCPComboBox.getSelectionModel().selectFirst();
+		categoryCPComboBox.getSelectionModel().selectFirst();
 		minQualityCPComboBox.getSelectionModel().selectFirst();
 		maxQualityCPComboBox.getSelectionModel().selectLast();
 		AlexGuiUtil.setFieldOnlyNumber( amountCPTextField );
@@ -250,6 +257,7 @@ public class AlexGeneratorTabController {
 		amountMiscField.setDisable( true );
 		//---------------------------------------- COMPUTERPARTS
 		nameCPComboBox.setDisable( true );
+		categoryCPComboBox.setDisable( true );
 		minQualityCPComboBox.setDisable( true );
 		maxQualityCPComboBox.setDisable( true );
 		amountCPTextField.setDisable( true );
@@ -280,6 +288,7 @@ public class AlexGeneratorTabController {
 		AlexGuiUtil.bindField( amountMiscCheckBox, amountMiscField );
 		//-------------------------------------------------------------------------------- COMPUTERPARTS
 		AlexGuiUtil.bindBox( nameCPCheckBox, nameCPComboBox );
+		AlexGuiUtil.bindBox( categoryCPCheckBox, categoryCPComboBox );
 		AlexGuiUtil.bindBox( minQualityCPCheckBox, minQualityCPComboBox );
 		AlexGuiUtil.bindBox( maxQualityCPCheckBox, maxQualityCPComboBox );
 		AlexGuiUtil.bindField( amountCPCheckBox, amountCPTextField );

@@ -2,6 +2,7 @@ package constants;
 
 public final class IOConstants {
 	
+	public static final String replaceCharacter   = "";
 	public static final String resourceFolder     = "loot/";
 	public static final String fileType           = ".csv";
 	public static final String fileEntrySeparator = ";";

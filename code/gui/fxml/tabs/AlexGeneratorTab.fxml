@@ -265,34 +265,38 @@
                             <CheckBox fx:id="nameCPCheckBox" mnemonicParsing="false" text="Name"/>
                         </HBox>
                         <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                            <ComboBox fx:id="nameCPComboBox" prefWidth="100.0"
+                            <ComboBox fx:id="nameCPComboBox" prefWidth="100.0" HBox.hgrow="SOMETIMES"/>
+                        </HBox>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="5.0">
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                            <CheckBox fx:id="categoryCPCheckBox" mnemonicParsing="false" text="Kategorie"/>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
+                            <ComboBox fx:id="categoryCPComboBox" prefWidth="100.0" HBox.hgrow="SOMETIMES"/>
+                        </HBox>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="5.0" VBox.vgrow="SOMETIMES">
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                            <CheckBox fx:id="minQualityCPCheckBox" mnemonicParsing="false" text="min. Qualität"/>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
+                            <ComboBox fx:id="minQualityCPComboBox" prefWidth="100.0" promptText="1 - 5"
                                       HBox.hgrow="SOMETIMES"/>
                         </HBox>
                     </HBox>
                     <HBox alignment="CENTER" spacing="5.0" VBox.vgrow="SOMETIMES">
                         <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                            <CheckBox fx:id="minQualityCPCheckBox" mnemonicParsing="false"
-                                      text="min. Qualität"/>
+                            <CheckBox fx:id="maxQualityCPCheckBox" mnemonicParsing="false" text="max. Qualität"/>
                         </HBox>
                         <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                            <ComboBox fx:id="minQualityCPComboBox" prefWidth="100.0"
-                                      promptText="1 - 5" HBox.hgrow="SOMETIMES"/>
+                            <ComboBox fx:id="maxQualityCPComboBox" prefWidth="100.0" promptText="1 - 5"
+                                      HBox.hgrow="SOMETIMES"/>
                         </HBox>
                     </HBox>
                     <HBox alignment="CENTER" spacing="5.0" VBox.vgrow="SOMETIMES">
                         <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                            <CheckBox fx:id="maxQualityCPCheckBox" mnemonicParsing="false"
-                                      text="max. Qualität"/>
-                        </HBox>
-                        <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
-                            <ComboBox fx:id="maxQualityCPComboBox" prefWidth="100.0"
-                                      promptText="1 - 5" HBox.hgrow="SOMETIMES"/>
-                        </HBox>
-                    </HBox>
-                    <HBox alignment="CENTER" spacing="5.0" VBox.vgrow="SOMETIMES">
-                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                            <CheckBox fx:id="amountCPCheckBox" mnemonicParsing="false"
-                                      text="Anzahl"/>
+                            <CheckBox fx:id="amountCPCheckBox" mnemonicParsing="false" text="Anzahl"/>
                         </HBox>
                         <HBox alignment="CENTER" HBox.hgrow="SOMETIMES">
                             <TextField fx:id="amountCPTextField" prefWidth="100.0"/>

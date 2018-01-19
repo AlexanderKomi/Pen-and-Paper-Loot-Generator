@@ -38,6 +38,14 @@ public class LootClass {
 		return Filter.filterDuplicatedEntries( this.items, column );
 	}
 	
+	public ArrayList<String> filterDuplicatedEntries( ArrayList<String> columns ) {
+		return Filter.filterDuplicatedEntries( this.items, columns );
+	}
+	
+	public ArrayList<String> filterDuplicatedEntries( String[] columns ) {
+		return Filter.filterDuplicatedEntries( this.items, columns );
+	}
+	
 	public ArrayList<String> filterDuplicatesWithDependency( String column, String dependencyColumn, String dependencyValue ) {
 		ArrayList<Loot> lootList = Filter.filterDependency( this.items, dependencyColumn, dependencyValue );
 		return Filter.filterDuplicatedEntries( lootList, column );

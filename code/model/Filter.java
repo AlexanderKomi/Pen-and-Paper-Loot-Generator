@@ -1,5 +1,7 @@
 package model;
 
+import constants.IOConstants;
+
 import java.util.ArrayList;
 
 public final class Filter {
@@ -26,6 +28,54 @@ public final class Filter {
 			String entry = item.getEntries().get( column );
 			if ( !list.contains( entry ) ) {
 				list.add( entry );
+			}
+		}
+		return list;
+	}
+	
+	public static ArrayList<String> filterDuplicatedEntries( Loot[] items, ArrayList<String> columns ) {
+		ArrayList<String> list = new ArrayList<>();
+		
+		for ( Loot item : items ) {
+			for ( String column : columns ) {
+				String entry = item.getEntries().get( column );
+				if ( !list.contains( entry ) ) {
+					if ( !entry.equals( IOConstants.replaceCharacter ) ) {
+						list.add( entry );
+						
+					}
+				}
+			}
+		}
+		return list;
+	}
+	
+	public static ArrayList<String> filterDuplicatedEntries( Loot[] items, String[] columns ) {
+		ArrayList<String> list = new ArrayList<>();
+		
+		for ( Loot item : items ) {
+			for ( String column : columns ) {
+				String entry = item.getEntries().get( column );
+				if ( !list.contains( entry ) ) {
+					if ( !entry.equals( IOConstants.replaceCharacter ) ) {
+						list.add( entry );
+						
+					}
+				}
+			}
+		}
+		return list;
+	}
+	
+	public static ArrayList<String> filterDuplicatedEntries( ArrayList<Loot> items, ArrayList<String> columns ) {
+		ArrayList<String> list = new ArrayList<>();
+		
+		for ( Loot item : items ) {
+			for ( String column : columns ) {
+				String entry = item.getEntries().get( column );
+				if ( !list.contains( entry ) ) {
+					list.add( entry );
+				}
 			}
 		}
 		return list;

@@ -35,6 +35,22 @@ public final class AlexGuiUtil {
 		return list;
 	}
 	
+	public static ArrayList<String> fillStringComboBox( ComboBox<String> comboBox, LootClass lootClass, ArrayList<String> columns ) {
+		ArrayList<String> list = lootClass.filterDuplicatedEntries( columns );
+		comboBox.setItems( FXCollections.observableArrayList(
+				list
+		) );
+		return list;
+	}
+	
+	public static ArrayList<String> fillStringComboBox( ComboBox<String> comboBox, LootClass lootClass, String... columns ) {
+		ArrayList<String> list = lootClass.filterDuplicatedEntries( columns );
+		comboBox.setItems( FXCollections.observableArrayList(
+				list
+		) );
+		return list;
+	}
+	
 	public static ArrayList<Integer> fillIntComboBox( ComboBox<Integer> comboBox, LootClass lootClass, String column ) {
 		ArrayList<String>  list    = lootClass.filterDuplicatedEntries( column );
 		ArrayList<Integer> intList = new ArrayList<>();
