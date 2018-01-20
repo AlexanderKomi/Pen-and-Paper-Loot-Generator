@@ -25,6 +25,7 @@ public class MiddleContentController {
 	
 	@FXML
 	private VBox                       nissGeneratorTab;
+
 	@FXML
 	private NissGeneratorTabController nissGeneratorTabController;
 	

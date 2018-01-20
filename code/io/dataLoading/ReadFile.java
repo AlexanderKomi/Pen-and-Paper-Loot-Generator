@@ -94,7 +94,7 @@ public class ReadFile {
 		ArrayList<File> usebleFiles     = new ArrayList<>();
 		String          sourceDirectory = GeneralConstants.getLocation() + IOConstants.resourceFolder;
 		File[]          files           = finder( sourceDirectory );
-		
+		/*
 		try {
 			if ( files != null ) {
 				if ( files.length != IOConstants.lootClasses.length ) {
@@ -128,6 +128,7 @@ public class ReadFile {
 		catch ( Exception e ) {
 			e.printStackTrace();
 		}
+		*/
 		return files;
 	}
 	
@@ -137,10 +138,12 @@ public class ReadFile {
 	
 	private ArrayList<String> getContentAsStrings( File[] files ) {
 		ArrayList<String> content = new ArrayList<>();
+		/*
 		for ( File file : files ) {
 			fileNames.add( file.getName().substring( 0, file.getName().length() - IOConstants.fileType.length() ) );
 			content.add( readFile( file.getPath() ) );
 		}
+		*/
 		return content;
 	}
 	

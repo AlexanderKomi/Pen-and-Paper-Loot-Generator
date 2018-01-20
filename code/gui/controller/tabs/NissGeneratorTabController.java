@@ -8,172 +8,219 @@ import javafx.scene.layout.VBox;
 import model.generator.generators.NissGenerator;
 
 public class NissGeneratorTabController {
-	
-	private NissGenerator nissGenerator = new NissGenerator();
 
-	@FXML
-	private VBox rootBox;
+    private NissGenerator nissGenerator = new NissGenerator(this);
 
-	@FXML
-	private RadioButton rb_waffenlos;
+    // --- Fxml -----------------------------------------------------------------------------------
 
-	@FXML
-	private ToggleGroup waffentyp;
+    @FXML
+    private VBox rootBox;
 
-	@FXML
-	private RadioButton rb_scharf;
+    @FXML
+    private Label label_magazin;
 
-	@FXML
-	private RadioButton rb_stumpf;
+    // --- RadioButtons ---------------------------------------------------------------------------
 
-	@FXML
-	private RadioButton rb_spitz;
+    @FXML
+    private RadioButton rb_weaponless;
 
-	@FXML
-	private RadioButton rb_wurf;
+    @FXML
+    private RadioButton rb_sharp;
 
-	@FXML
-	private RadioButton rb_pistole;
+    @FXML
+    private RadioButton rb_blunt;
 
-	@FXML
-	private RadioButton rb_gewehr;
+    @FXML
+    private RadioButton rb_pointy;
 
-	@FXML
-	private RadioButton rb_bogen;
+    @FXML
+    private RadioButton rb_throwing;
 
-	@FXML
-	private Label label_magazin;
+    @FXML
+    private RadioButton rb_pistol;
 
-	@FXML
-	private RadioButton rb_klassifizierung_benutzer;
+    @FXML
+    private RadioButton rb_gun_crossbow;
 
-	@FXML
-	private ToggleGroup klassifizierung;
+    @FXML
+    private RadioButton rb_bow;
 
-	@FXML
-	private RadioButton rb_klassifizierung_schlecht;
+    @FXML
+    private RadioButton rb_classification_user;
 
-	@FXML
-	private RadioButton rb_klassifizierung_mittel;
+    @FXML
+    private RadioButton rb_classification_poor;
 
-	@FXML
-	private RadioButton rb_klassifizierung_gut;
+    @FXML
+    private RadioButton rb_classification_medium;
 
-	@FXML
-	private RadioButton rb_klassifizierung_legendär;
+    @FXML
+    private RadioButton rb_classification_good;
 
-	@FXML
-	private RadioButton rb_zustand_zufällig;
+    @FXML
+    private RadioButton rb_classification_legendary;
 
-	@FXML
-	private ToggleGroup zustand;
+    @FXML
+    private RadioButton rb_quality_random;
 
-	@FXML
-	private RadioButton rb_zustand_1;
+    @FXML
+    private RadioButton rb_quality_1;
 
-	@FXML
-	private RadioButton rb_zustand_2;
+    @FXML
+    private RadioButton rb_quality_2;
 
-	@FXML
-	private RadioButton rb_zustand_3;
+    @FXML
+    private RadioButton rb_quality_3;
 
-	@FXML
-	private RadioButton rb_zustand_4;
+    @FXML
+    private RadioButton rb_quality_4;
 
-	@FXML
-	private RadioButton rb_zustand_5;
+    @FXML
+    private RadioButton rb_quality_5;
 
-	@FXML
-	private RadioButton rb_schaden_zufällig;
+    @FXML
+    private RadioButton rb_damage_random;
 
-	@FXML
-	private ToggleGroup schaden;
+    @FXML
+    private RadioButton rb_damage_weak;
 
-	@FXML
-	private RadioButton rb_schaden_schwach;
+    @FXML
+    private RadioButton rb_damage_medium;
 
-	@FXML
-	private RadioButton rb_schaden_mittel;
+    @FXML
+    private RadioButton rb_damage_strong;
 
-	@FXML
-	private RadioButton rb_schaden_stark;
+    @FXML
+    private RadioButton rb_hitchance_random;
 
-	@FXML
-	private RadioButton rb_trefferchance_zufällig;
+    @FXML
+    private RadioButton rb_hitchance_poor;
 
-	@FXML
-	private ToggleGroup trefferchance;
+    @FXML
+    private RadioButton rb_hitchance_medium;
 
-	@FXML
-	private RadioButton rb_trefferchance_schlecht;
+    @FXML
+    private RadioButton rb_hitchance_good;
 
-	@FXML
-	private RadioButton rb_trefferchance_mittel;
+    @FXML
+    private RadioButton rb_parade_random;
 
-	@FXML
-	private RadioButton rb_trefferchance_gut;
+    @FXML
+    private RadioButton rb_parade_poor;
 
-	@FXML
-	private RadioButton rb_parade_zufällig;
+    @FXML
+    private RadioButton rb_parade_medium;
 
-	@FXML
-	private ToggleGroup parade;
+    @FXML
+    private RadioButton rb_parade_good;
 
-	@FXML
-	private RadioButton rb_parade_schlecht;
+    @FXML
+    private RadioButton rb_magazine_random;
 
-	@FXML
-	private RadioButton rb_parade_mittel;
+    @FXML
+    private RadioButton rb_magazine_little;
 
-	@FXML
-	private RadioButton rb_parade_gut;
+    @FXML
+    private RadioButton rb_magazine_medium;
 
-	@FXML
-	private RadioButton rb_magazin_zufällig;
+    @FXML
+    private RadioButton rb_magazine_much;
 
-	@FXML
-	private ToggleGroup magazin;
+    @FXML
+    private RadioButton rb_addition_random;
 
-	@FXML
-	private RadioButton rb_magazin_wenig;
+    @FXML
+    private RadioButton rb_addition_no;
 
-	@FXML
-	private RadioButton rb_magazin_mittel;
+    @FXML
+    private RadioButton rb_addition_negative;
 
-	@FXML
-	private RadioButton rb_magazin_viel;
+    @FXML
+    private RadioButton rb_addition_neutral;
 
-	@FXML
-	private RadioButton rb_zusatz_zufällig;
-
-	@FXML
-	private ToggleGroup zusatz;
-
-	@FXML
-	private RadioButton rb_zusatz_keinen;
-
-	@FXML
-	private RadioButton rb_zusatz_negativ;
-
-	@FXML
-	private RadioButton rb_zusatz_neutral;
-
-	@FXML
-	private RadioButton rb_zusatz_positiv;
+    @FXML
+    private RadioButton rb_addition_positive;
 
 
-	// --------------------------------------- GETTER AND SETTER ---------------------------------------
-	
-	
-	public VBox getRootBox() {
-		return rootBox;
-	}
-	
-	public NissGenerator getNissGenerator() {
-		return nissGenerator;
-	}
-	
-	public void setNissGenerator( NissGenerator nissGenerator ) {
-		this.nissGenerator = nissGenerator;
-	}
+    // --- ToggleGroups ---------------------------------------------------------------------------
+
+
+    @FXML
+    private ToggleGroup addition;
+
+    @FXML
+    private ToggleGroup classification;
+
+    @FXML
+    private ToggleGroup damage;
+
+    @FXML
+    private ToggleGroup hitchance;
+
+    @FXML
+    private ToggleGroup magazine;
+
+    @FXML
+    private ToggleGroup parade;
+
+    @FXML
+    private ToggleGroup quality;
+
+    @FXML
+    private ToggleGroup weaponType;
+
+
+    // --- Getter and Setter ----------------------------------------------------------------------
+
+
+    public VBox getRootBox() {
+        return rootBox;
+    }
+
+    public NissGenerator getNissGenerator() {
+        return nissGenerator;
+    }
+
+    public void setNissGenerator(NissGenerator nissGenerator) {
+        this.nissGenerator = nissGenerator;
+    }
+
+    public String getWeaponType() {return (String) weaponType.getSelectedToggle().getUserData();}
+
+    public String getClassification() {return (String) classification.getSelectedToggle().getUserData();}
+
+    public String getQuality(){return (String) quality.getSelectedToggle().getUserData();}
+
+    public String getDamage(){return (String) damage.getSelectedToggle().getUserData();}
+
+    public String getHitchance(){return (String) hitchance.getSelectedToggle().getUserData();}
+
+    public String getParade(){return (String) parade.getSelectedToggle().getUserData();}
+
+    public String getMagazine(){return (String) magazine.getSelectedToggle().getUserData();}
+
+    public String getAddition(){return (String) addition.getSelectedToggle().getUserData();}
+
+    // --- Methods --------------------------------------------------------------------------------
+
+    /**
+     * Passes all selected values as an StringArray using "RadioButton".getUserData().
+     *
+     * @return values Array of all selected values
+     */
+    public String[] getValues() {
+
+        String[] values = new String[8];
+
+        values[0] = getWeaponType();
+        values[1] = getClassification();
+        values[2] = getQuality();
+        values[3] = getDamage();
+        values[4] = getHitchance();
+        values[5] = getParade();
+        values[6] = getMagazine();
+        values[7] = getAddition();
+
+        return values;
+    }
 }

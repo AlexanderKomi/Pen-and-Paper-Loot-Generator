@@ -31,7 +31,7 @@
                                         </Label>
                                         <Pane VBox.vgrow="ALWAYS"/>
                                         <RadioButton mnemonicParsing="false" selected="true" text="Waffenlos"
-                                                     VBox.vgrow="ALWAYS">
+                                                     VBox.vgrow="ALWAYS" userData="weaponless">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -44,7 +44,7 @@
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
                                         <RadioButton mnemonicParsing="false" selected="true" text="Scharfe"
-                                                     toggleGroup="$weaponType" VBox.vgrow="ALWAYS">
+                                                     toggleGroup="$weaponType" VBox.vgrow="ALWAYS" userData="sharp">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -54,7 +54,7 @@
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
                                         <RadioButton mnemonicParsing="false" text="Stumpfe" toggleGroup="$weaponType"
-                                                     VBox.vgrow="ALWAYS">
+                                                     VBox.vgrow="ALWAYS" userData="blunt">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -64,7 +64,7 @@
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
                                         <RadioButton mnemonicParsing="false" text="Spitze" toggleGroup="$weaponType"
-                                                     VBox.vgrow="ALWAYS">
+                                                     VBox.vgrow="ALWAYS" userData="pointy">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -80,7 +80,7 @@
                                         </Separator>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
                                         <RadioButton mnemonicParsing="false" text="Wurf" toggleGroup="$weaponType"
-                                                     VBox.vgrow="ALWAYS">
+                                                     VBox.vgrow="ALWAYS" userData="throwing">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -90,7 +90,7 @@
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
                                         <RadioButton mnemonicParsing="false" text="Pistole" toggleGroup="$weaponType"
-                                                     VBox.vgrow="ALWAYS">
+                                                     VBox.vgrow="ALWAYS" userData="pistol">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -99,7 +99,7 @@
                                             </VBox.margin>
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
-                                        <RadioButton mnemonicParsing="false" text="Gewehr" VBox.vgrow="ALWAYS">
+                                        <RadioButton mnemonicParsing="false" text="Gewehr" VBox.vgrow="ALWAYS" userData="gun_crossbow">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -108,8 +108,8 @@
                                             </VBox.margin>
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
-                                        <RadioButton mnemonicParsing="false" text="Bogen / Armbrust"
-                                                     VBox.vgrow="ALWAYS">
+                                        <RadioButton mnemonicParsing="false" text="Bogen"
+                                                     VBox.vgrow="ALWAYS" userData="bow">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                             </padding>
@@ -211,7 +211,7 @@
                                         <HBox alignment="CENTER_LEFT">
                                             <children>
                                                 <RadioButton mnemonicParsing="false" selected="true" text="benutzer"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="user">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -220,25 +220,25 @@
                                                     </toggleGroup>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="schlecht"
-                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS" userData="poor">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="mittel"
-                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS" userData="medium">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="gut"
-                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS" userData="good">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="legendär"
-                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$classification" HBox.hgrow="ALWAYS" userData="legendary">
                                                     <padding>
                                                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                                     </padding>
@@ -252,40 +252,40 @@
                                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <RadioButton mnemonicParsing="false" selected="true" text="zufällig"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="random">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                     <toggleGroup>
-                                                        <ToggleGroup fx:id="quallity"/>
+                                                        <ToggleGroup fx:id="quality"/>
                                                     </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="1" toggleGroup="$quallity"
-                                                             HBox.hgrow="ALWAYS">
+                                                <RadioButton mnemonicParsing="false" text="1" toggleGroup="$quality"
+                                                             HBox.hgrow="ALWAYS" userData="1">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="2" toggleGroup="$quallity"
-                                                             HBox.hgrow="ALWAYS">
+                                                <RadioButton mnemonicParsing="false" text="2" toggleGroup="$quality"
+                                                             HBox.hgrow="ALWAYS" userData="2">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="3" toggleGroup="$quallity"
-                                                             HBox.hgrow="ALWAYS">
+                                                <RadioButton mnemonicParsing="false" text="3" toggleGroup="$quality"
+                                                             HBox.hgrow="ALWAYS" userData="3">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="4" toggleGroup="$quallity"
-                                                             HBox.hgrow="ALWAYS">
+                                                <RadioButton mnemonicParsing="false" text="4" toggleGroup="$quality"
+                                                             HBox.hgrow="ALWAYS" userData="4">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="5" toggleGroup="$quallity"
-                                                             HBox.hgrow="ALWAYS">
+                                                <RadioButton mnemonicParsing="false" text="5" toggleGroup="$quality"
+                                                             HBox.hgrow="ALWAYS" userData="5">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -296,7 +296,7 @@
                                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <RadioButton mnemonicParsing="false" selected="true" text="zufällig"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="random">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -305,19 +305,19 @@
                                                     </toggleGroup>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="schwach"
-                                                             toggleGroup="$damage" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$damage" HBox.hgrow="ALWAYS" userData="weak">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="mittel" toggleGroup="$damage"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="medium">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="stark" toggleGroup="$damage"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="strong">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -328,28 +328,28 @@
                                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <RadioButton mnemonicParsing="false" selected="true" text="zufällig"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="random">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                     <toggleGroup>
-                                                        <ToggleGroup fx:id="hitChance"/>
+                                                        <ToggleGroup fx:id="hitchance"/>
                                                     </toggleGroup>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="schlecht"
-                                                             toggleGroup="$hitChance" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$hitchance" HBox.hgrow="ALWAYS" userData="poor">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="mittel"
-                                                             toggleGroup="$hitChance" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$hitchance" HBox.hgrow="ALWAYS" userData="medium">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="gut" toggleGroup="$hitChance"
-                                                             HBox.hgrow="ALWAYS">
+                                                <RadioButton mnemonicParsing="false" text="gut" toggleGroup="$hitchance"
+                                                             HBox.hgrow="ALWAYS" userData="good">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -360,7 +360,7 @@
                                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <RadioButton mnemonicParsing="false" selected="true" text="zufällig"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="random">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -369,19 +369,19 @@
                                                     </toggleGroup>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="schlecht"
-                                                             toggleGroup="$parade" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$parade" HBox.hgrow="ALWAYS" userData="poor">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="mittel" toggleGroup="$parade"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="medium">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="gut" toggleGroup="$parade"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="good">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -392,28 +392,28 @@
                                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <RadioButton disable="true" mnemonicParsing="false" selected="true"
-                                                             text="zufällig" HBox.hgrow="ALWAYS">
+                                                             text="zufällig" HBox.hgrow="ALWAYS" userData="random">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                     <toggleGroup>
-                                                        <ToggleGroup fx:id="magazin"/>
+                                                        <ToggleGroup fx:id="magazine"/>
                                                     </toggleGroup>
                                                 </RadioButton>
                                                 <RadioButton disable="true" mnemonicParsing="false" text="wenig"
-                                                             toggleGroup="$magazin" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$magazine" HBox.hgrow="ALWAYS" userData="little">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton disable="true" mnemonicParsing="false" text="mittel"
-                                                             toggleGroup="$magazin" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$magazine" HBox.hgrow="ALWAYS" userData="medium">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton disable="true" mnemonicParsing="false" text="viel"
-                                                             toggleGroup="$magazin" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$magazine" HBox.hgrow="ALWAYS" userData="much">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
@@ -424,34 +424,34 @@
                                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <RadioButton mnemonicParsing="false" selected="true" text="zufällig"
-                                                             HBox.hgrow="ALWAYS">
+                                                             HBox.hgrow="ALWAYS" userData="random">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                     <toggleGroup>
-                                                        <ToggleGroup fx:id="special"/>
+                                                        <ToggleGroup fx:id="addition"/>
                                                     </toggleGroup>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="keinen"
-                                                             toggleGroup="$special" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$addition" HBox.hgrow="ALWAYS" userData="no">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="negativ"
-                                                             toggleGroup="$special" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$addition" HBox.hgrow="ALWAYS" userData="negative">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="neutral"
-                                                             toggleGroup="$special" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$addition" HBox.hgrow="ALWAYS" userData="neutral">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>
                                                 </RadioButton>
                                                 <RadioButton mnemonicParsing="false" text="positiv"
-                                                             toggleGroup="$special" HBox.hgrow="ALWAYS">
+                                                             toggleGroup="$addition" HBox.hgrow="ALWAYS" userData="positive">
                                                     <HBox.margin>
                                                         <Insets left="5.0" right="5.0"/>
                                                     </HBox.margin>

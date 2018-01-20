@@ -3,8 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.29797979797979796" prefHeight="700.0"
-           prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141"
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.29797979797979796" prefHeight="-Infinity"
+           prefWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141"
            fx:controller="gui.controller.MiddleContentController">
     <ScrollPane fitToHeight="true" fitToWidth="true">
         <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
