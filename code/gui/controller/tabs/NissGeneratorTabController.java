@@ -169,6 +169,9 @@ public class NissGeneratorTabController {
     @FXML
     private ToggleGroup weaponType;
 
+    // --- Methods --------------------------------------------------------------------------------
+
+
 
     // --- Getter and Setter ----------------------------------------------------------------------
 
@@ -201,26 +204,4 @@ public class NissGeneratorTabController {
 
     public String getAddition(){return (String) addition.getSelectedToggle().getUserData();}
 
-    // --- Methods --------------------------------------------------------------------------------
-
-    /**
-     * Passes all selected values as an StringArray using "RadioButton".getUserData().
-     *
-     * @return values Array of all selected values
-     */
-    public String[] getValues() {
-
-        String[] values = new String[8];
-
-        values[0] = getWeaponType();
-        values[1] = getClassification();
-        values[2] = getQuality();
-        values[3] = getDamage();
-        values[4] = getHitchance();
-        values[5] = getParade();
-        values[6] = getMagazine();
-        values[7] = getAddition();
-
-        return values;
-    }
 }
