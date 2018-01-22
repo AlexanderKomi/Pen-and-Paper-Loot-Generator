@@ -195,7 +195,7 @@ public class AlexGeneratorTabController {
 	// ----------------------------- GUI initialization -----------------------------
 	
 	private void setDefaultValues() {
-		String initialAmountValue = "0";
+		String initialAmountValue = "1";
 		
 		//---------------------------------------- WEAPONS
 		nameWeaponComboBox.getSelectionModel().selectFirst();
@@ -320,6 +320,9 @@ public class AlexGeneratorTabController {
 			int selected = Integer.parseInt( amountWeaponField.getText() );
 			lootClass.getConfiguration().setAmount( selected );
 		}
+		else {
+			lootClass.getConfiguration().setAmount( 0 );
+		}
 	}
 	
 	private void createFirstAidConfig( LootClass lootClass ) {
@@ -330,6 +333,9 @@ public class AlexGeneratorTabController {
 			int selected = Integer.parseInt( amountFirstAidField.getText() );
 			lootClass.getConfiguration().setAmount( selected );
 		}
+		else {
+			lootClass.getConfiguration().setAmount( 0 );
+		}
 	}
 	
 	private void createPoisonConfig( LootClass lootClass ) {
@@ -339,6 +345,9 @@ public class AlexGeneratorTabController {
 		if ( amountPoisonCheckBox.isSelected() ) {
 			int selected = Integer.parseInt( amountPoisonField.getText() );
 			lootClass.getConfiguration().setAmount( selected );
+		}
+		else {
+			lootClass.getConfiguration().setAmount( 0 );
 		}
 		
 	}
@@ -352,6 +361,9 @@ public class AlexGeneratorTabController {
 			int selected = Integer.parseInt( amountMiscField.getText() );
 			lootClass.getConfiguration().setAmount( selected );
 		}
+		else {
+			lootClass.getConfiguration().setAmount( 0 );
+		}
 	}
 	
 	private void createCPConfig( LootClass lootClass ) {
@@ -362,6 +374,9 @@ public class AlexGeneratorTabController {
 		if ( amountCPCheckBox.isSelected() ) {
 			int selected = Integer.parseInt( amountCPTextField.getText() );
 			lootClass.getConfiguration().setAmount( selected );
+		}
+		else {
+			lootClass.getConfiguration().setAmount( 0 );
 		}
 	}
 	
