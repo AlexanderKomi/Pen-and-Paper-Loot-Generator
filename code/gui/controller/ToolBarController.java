@@ -19,6 +19,11 @@ public class ToolBarController {
 		} );
 	}
 	
+	@FXML
+	private void saveGeneratedLootClicked() {
+	
+	}
+	
 	// ---------------------------------------- GETTER AND SETTER ----------------------------------------
 	
 	public GeneratorTab getSelectedTab() {

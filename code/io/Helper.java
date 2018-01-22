@@ -6,5 +6,11 @@ public final class Helper {
 		return s.length();
 	}
 	
+	public static void test_BeforeGUIStarts() {
 	
+	}
+	
+	public static void test_AfterGUIStarts() {
+	
+	}
 }

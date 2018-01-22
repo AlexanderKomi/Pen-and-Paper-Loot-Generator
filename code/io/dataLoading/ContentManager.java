@@ -12,7 +12,7 @@ public class ContentManager {
 	
 	public void createUsableData() {
 		
-		ArrayList<String> content      = reader.getContent();
+		ArrayList<String> content      = reader.getAllContent();
 		String[]          contentArray = new String[ content.size() ];
 		content.toArray( contentArray );
 		

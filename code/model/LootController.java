@@ -43,4 +43,17 @@ public class LootController {
 		}
 		return list;
 	}
+	
+	public static boolean updateLootClass( LootClass newLootClass ) {
+		try {
+			LootClass oldLootClass = getLootClassByName( newLootClass.getName() );
+			int       index        = lootClasses.indexOf( oldLootClass );
+			lootClasses.set( index, newLootClass );
+			return true;
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

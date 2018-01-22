@@ -11,12 +11,12 @@ public class ReadFile {
 	
 	public ArrayList<String> fileNames = new ArrayList<>();
 	
-	public ArrayList<String> getContent() {
+	public ArrayList<String> getAllContent() {
 		if ( this.isExecutedFromJar() ) {  //Distinguish between jar and IDE execution
 			return findInJar();
 		}
 		else {
-			return getContentAsStrings( findInFiles() ); //Every Element in this list contains one file.
+			return getAllContentAsStrings( findInFiles() ); //Every Element in this list contains one file.
 		}
 	}
 	
@@ -93,7 +93,7 @@ public class ReadFile {
 	private File[] findInFiles() {
 		ArrayList<File> usebleFiles     = new ArrayList<>();
 		String          sourceDirectory = GeneralConstants.getLocation() + IOConstants.resourceFolder;
-		File[]          files           = finder( sourceDirectory );
+		File[]          files           = findFilesInDirectory( sourceDirectory );
 
 		try {
 			if ( files != null ) {
@@ -132,11 +132,15 @@ public class ReadFile {
 		return files;
 	}
 	
-	private File[] finder( String dirName ) {
+	private File findFileInDirectory( String dirName, String fileName ) {
+		return new File( dirName + "/" + fileName );
+	}
+	
+	private File[] findFilesInDirectory( String dirName ) {
 		return new File( dirName ).listFiles( ( directory, filename ) -> filename.endsWith( IOConstants.fileType ) );
 	}
 	
-	private ArrayList<String> getContentAsStrings( File[] files ) {
+	private ArrayList<String> getAllContentAsStrings( File[] files ) {
 		ArrayList<String> content = new ArrayList<>();
 
 		for ( File file : files ) {
@@ -145,6 +149,10 @@ public class ReadFile {
 		}
 
 		return content;
+	}
+	
+	private String getContentAsString( File file ) {
+		return readFile( file.getPath() );
 	}
 	
 	private boolean isExecutedFromJar() {

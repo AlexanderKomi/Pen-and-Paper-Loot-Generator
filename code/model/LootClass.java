@@ -7,24 +7,23 @@ import io.dataLoading.LootClassCreator;
 import model.generator.Configuration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LootClass {
 	
-	private Configuration configuration;
-	private String        name;
-	private String[]      columns;
-	private Loot[]        items;
-	private int           index;
+	private Configuration   configuration;
+	private String          name;
+	private String[]        columns;
+	private ArrayList<Loot> items;
+	private int             index;
 	
 	public LootClass( Header header, String content ) {
 		this.name = header.getName();
 		this.columns = header.getColumns();
 		try {
 			this.index = getInitialIndex();
-			ArrayList<Loot> list = LootClassCreator.createItems( content, columns );
+			items = LootClassCreator.createItems( content, columns );
 			//list.forEach( System.out::println );
-			items = new Loot[ list.size() ];
-			list.toArray( items );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
@@ -111,17 +110,17 @@ public class LootClass {
 		this.name = name;
 	}
 	
-	public Loot[] getItems() {
+	public ArrayList<Loot> getItems() {
 		return items;
 	}
 	
-	public void setItems( Loot[] items ) {
-		this.items = items;
+	public void setItems( ArrayList<Loot> items ) {
+		Loot[] loot = new Loot[ items.size() ];
+		items.toArray( loot );
 	}
 	
-	public void setItems( ArrayList<Loot> items ) {
-		this.items = new Loot[ items.size() ];
-		items.toArray( this.items );
+	public void setItems( Loot[] items ) {
+		Collections.addAll( this.items, items );
 	}
 	
 	public String[] getColumns() {

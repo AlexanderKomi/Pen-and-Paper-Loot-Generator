@@ -105,4 +105,17 @@ public final class Filter {
 		return lootArrayList;
 	}
 	
+	public static ArrayList<String> filterDuplicatedEntries( ArrayList<Loot> items, String[] columns ) {
+		ArrayList<String> list = new ArrayList<>();
+		
+		for ( Loot item : items ) {
+			for ( String column : columns ) {
+				String entry = item.getEntries().get( column );
+				if ( !list.contains( entry ) ) {
+					list.add( entry );
+				}
+			}
+		}
+		return list;
+	}
 }

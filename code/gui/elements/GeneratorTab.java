@@ -31,4 +31,8 @@ public class GeneratorTab extends Tab implements Comparable<GeneratorTab> {
 	public int compareTo( GeneratorTab o ) {
 		return 0;
 	}
+	
+	public Generator getGenerator() {
+		return generator;
+	}
 }

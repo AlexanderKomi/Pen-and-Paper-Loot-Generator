@@ -1,4 +1,5 @@
 import arguments.Arguments;
+import io.Helper;
 import io.IOController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -51,10 +52,11 @@ public class LootGenerator extends Application {
 	
 	private void beforeGuiInit() {
 		IOController.loadStartingData();
+		Helper.test_BeforeGUIStarts();
 	}
 	
 	private void afterGuiInit() {
-	
+		Helper.test_AfterGUIStarts();
 	}
 	
 }
