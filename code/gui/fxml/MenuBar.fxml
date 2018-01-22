@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<MenuBar xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" prefHeight="-Infinity"
-         prefWidth="-Infinity"
-         fx:controller="gui.controller.MenuBarController">
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar minHeight="30.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MenuBarController">
     <Menu mnemonicParsing="false" text="File">
-        <MenuItem mnemonicParsing="false" onAction="#closeClicked" text="Close"/>
+        <MenuItem mnemonicParsing="false" onAction="#closeClicked" text="Close" />
     </Menu>
     <Menu mnemonicParsing="false" text="Help">
-        <MenuItem mnemonicParsing="false" onAction="#aboutClicked" text="About"/>
+        <MenuItem mnemonicParsing="false" onAction="#aboutClicked" text="About" />
     </Menu>
 </MenuBar>
