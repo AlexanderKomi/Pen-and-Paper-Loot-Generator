@@ -97,7 +97,7 @@
                                             </VBox.margin>
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                        <RadioButton mnemonicParsing="false" text="Gewehr" userData="gun_crossbow" VBox.vgrow="ALWAYS">
+                                        <RadioButton mnemonicParsing="false" text="Gewehr" toggleGroup="$weaponType" userData="gun_crossbow" VBox.vgrow="ALWAYS">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                             </padding>
@@ -106,7 +106,7 @@
                                             </VBox.margin>
                                         </RadioButton>
                                         <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                        <RadioButton mnemonicParsing="false" text="Bogen" userData="bow" VBox.vgrow="ALWAYS">
+                                        <RadioButton mnemonicParsing="false" text="Bogen" toggleGroup="$weaponType" userData="bow" VBox.vgrow="ALWAYS">
                                             <padding>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                             </padding>
