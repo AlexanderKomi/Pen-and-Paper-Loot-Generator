@@ -14,11 +14,21 @@ public class LootClassCreator {
 		String[]        rows = content.split( IOConstants.fileRowSeparator );
 		
 		for ( String row : deleteEmptyStart( rows ) ) {
-			
+
 			ArrayList<String> list = createLoot( row );
 			
 			if ( list != null ) {
-				loot.add( new Loot( mergeListAndColumnsToLoot( list, columns ) ) );
+				if(list.size() == columns.length) {
+					loot.add(new Loot(mergeListAndColumnsToLoot(list, columns)));
+				}
+				else{
+					try {
+						throw new Exception("list size != columns length!");
+					} catch (Exception e) {
+						e.printStackTrace();
+						System.exit(1);
+					}
+				}
 			}
 		}
 		return loot;
@@ -27,7 +37,8 @@ public class LootClassCreator {
 	private static HashMap<String, String> mergeListAndColumnsToLoot( ArrayList<String> list, String[] columns ) {
 		HashMap<String, String> map = new HashMap<>();
 		for ( int i = 0; i < columns.length; i++ ) {
-			map.put( columns[ i ], list.get( i ) );
+			String column = columns[ i ];
+			map.put( column, list.get( i ) );
 		}
 		return map;
 	}

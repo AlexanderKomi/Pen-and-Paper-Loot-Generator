@@ -7,6 +7,7 @@ public final class IOConstants {
 	public static final String fileType           = ".csv";
 	public static final String fileEntrySeparator = ";";
 	public static final String fileRowSeparator   = "\n";
+	public static final String lineSeparator = "\r\n";
 	
 	public static final String[] lootClasses   = {
 			"Waffen", "Erste Hilfe", "Gifte", "Kram", "Computerteile"
