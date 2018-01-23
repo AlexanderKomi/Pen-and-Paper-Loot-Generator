@@ -50,19 +50,19 @@ public class MiddleContentController {
 	}
 	
 	private void createDennisTab() {
-		Tab tab = new Tab( "Dennis Generator" );
+		Tab tab = new Tab( "Dennis Generator" );	//TODO: Name kann nur über MiddleContent.fxml verändert werden!
 		tab.setContent( this.dennisGeneratorTabController.getRootPane() );
 		activeTabs.add( new GeneratorTab( this.dennisGeneratorTabController.getGenerator(), tab ) );
 	}
 	
 	private void createAlexTab() {
-		Tab tab = new Tab( "Alex Generator" );
+		Tab tab = new Tab( "Alex Generator" );		//TODO: Name kann nur über MiddleContent.fxml verändert werden!
 		tab.setContent( this.alexGeneratorTabController.getRootPane() );
 		activeTabs.add( new GeneratorTab( this.alexGeneratorTabController.getAlexGenerator(), tab ) );
 	}
 	
 	private void createNissTab() {
-		Tab tab = new Tab();
+		Tab tab = new Tab("Waffen Generator");		//TODO: Name kann nur über MiddleContent.fxml verändert werden!
 		tab.setContent( this.nissGeneratorTabController.getRootBox() );
 		activeTabs.add( new GeneratorTab( this.nissGeneratorTabController.getNissGenerator(), tab ) );
 	}

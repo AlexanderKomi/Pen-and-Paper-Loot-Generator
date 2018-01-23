@@ -20,7 +20,7 @@
     </ScrollPane>
     <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="580.0" minWidth="750.0">
         <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" tabMinWidth="50.0">
-            <Tab text="Niss Generator">
+            <Tab text="Waffen Generator">
                 <fx:include fx:id="nissGeneratorTab" source="tabs/NissGeneratorTab.fxml" />
             </Tab>
             <Tab text="Alex Generator">

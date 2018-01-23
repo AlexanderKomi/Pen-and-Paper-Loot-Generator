@@ -1,7 +1,7 @@
 package gui.controller.tabs;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -10,16 +10,17 @@ import model.generator.generators.NissGenerator;
 public class NissGeneratorTabController {
 
     private NissGenerator nissGenerator = new NissGenerator(this);
+    private String weaponRange = "Nahkampf";
 
     // --- Fxml -----------------------------------------------------------------------------------
 
     @FXML
     private VBox rootBox;
 
-    @FXML
-    private Label label_magazin;
-
     // --- RadioButtons ---------------------------------------------------------------------------
+
+    @FXML
+    private RadioButton rb_random_weapontype;
 
     @FXML
     private RadioButton rb_weaponless;
@@ -34,144 +35,56 @@ public class NissGeneratorTabController {
     private RadioButton rb_pointy;
 
     @FXML
-    private RadioButton rb_throwing;
+    private RadioButton rb_exo_melee;
 
     @FXML
-    private RadioButton rb_pistol;
+    private RadioButton rb_throw;
 
     @FXML
-    private RadioButton rb_gun_crossbow;
+    private RadioButton rb_pistole;
+
+    @FXML
+    private RadioButton rb_gun;
 
     @FXML
     private RadioButton rb_bow;
 
     @FXML
-    private RadioButton rb_classification_user;
+    private RadioButton rb_exo_range;
 
     @FXML
-    private RadioButton rb_classification_poor;
+    private RadioButton rb_random_class;
 
     @FXML
-    private RadioButton rb_classification_medium;
+    private RadioButton rb_poor;
 
     @FXML
-    private RadioButton rb_classification_good;
+    private RadioButton rb_medium;
 
     @FXML
-    private RadioButton rb_classification_legendary;
+    private RadioButton rb_good;
 
     @FXML
-    private RadioButton rb_quality_random;
-
-    @FXML
-    private RadioButton rb_quality_1;
-
-    @FXML
-    private RadioButton rb_quality_2;
-
-    @FXML
-    private RadioButton rb_quality_3;
-
-    @FXML
-    private RadioButton rb_quality_4;
-
-    @FXML
-    private RadioButton rb_quality_5;
-
-    @FXML
-    private RadioButton rb_damage_random;
-
-    @FXML
-    private RadioButton rb_damage_weak;
-
-    @FXML
-    private RadioButton rb_damage_medium;
-
-    @FXML
-    private RadioButton rb_damage_strong;
-
-    @FXML
-    private RadioButton rb_hitchance_random;
-
-    @FXML
-    private RadioButton rb_hitchance_poor;
-
-    @FXML
-    private RadioButton rb_hitchance_medium;
-
-    @FXML
-    private RadioButton rb_hitchance_good;
-
-    @FXML
-    private RadioButton rb_parade_random;
-
-    @FXML
-    private RadioButton rb_parade_poor;
-
-    @FXML
-    private RadioButton rb_parade_medium;
-
-    @FXML
-    private RadioButton rb_parade_good;
-
-    @FXML
-    private RadioButton rb_magazine_random;
-
-    @FXML
-    private RadioButton rb_magazine_little;
-
-    @FXML
-    private RadioButton rb_magazine_medium;
-
-    @FXML
-    private RadioButton rb_magazine_much;
-
-    @FXML
-    private RadioButton rb_addition_random;
-
-    @FXML
-    private RadioButton rb_addition_no;
-
-    @FXML
-    private RadioButton rb_addition_negative;
-
-    @FXML
-    private RadioButton rb_addition_neutral;
-
-    @FXML
-    private RadioButton rb_addition_positive;
+    private RadioButton rb_legendary;
 
 
     // --- ToggleGroups ---------------------------------------------------------------------------
-
-
-    @FXML
-    private ToggleGroup addition;
-
     @FXML
     private ToggleGroup classification;
-
-    @FXML
-    private ToggleGroup damage;
-
-    @FXML
-    private ToggleGroup hitchance;
-
-    @FXML
-    private ToggleGroup magazine;
-
-    @FXML
-    private ToggleGroup parade;
-
-    @FXML
-    private ToggleGroup quality;
-
     @FXML
     private ToggleGroup weaponType;
 
     // --- Methods --------------------------------------------------------------------------------
 
+    @FXML
+    void weaponTypeToMelee(ActionEvent event) {
+        setWeaponRange("Nahkampf");
+    }
 
+    @FXML
+    void weaponTypeToRange(ActionEvent event) {
+        setWeaponRange("Fernkampf");
+    }
 
     // --- Getter and Setter ----------------------------------------------------------------------
 
@@ -188,20 +101,19 @@ public class NissGeneratorTabController {
         this.nissGenerator = nissGenerator;
     }
 
-    public String getWeaponType() {return (String) weaponType.getSelectedToggle().getUserData();}
+    public String getWeaponType() {
+        return (String) this.weaponType.getSelectedToggle().getUserData();
+    }
 
-    public String getClassification() {return (String) classification.getSelectedToggle().getUserData();}
+    public String getClassification() {
+        return (String) this.classification.getSelectedToggle().getUserData();
+    }
 
-    public String getQuality(){return (String) quality.getSelectedToggle().getUserData();}
+    public String getWeaponRange() {
+        return weaponRange;
+    }
 
-    public String getDamage(){return (String) damage.getSelectedToggle().getUserData();}
-
-    public String getHitchance(){return (String) hitchance.getSelectedToggle().getUserData();}
-
-    public String getParade(){return (String) parade.getSelectedToggle().getUserData();}
-
-    public String getMagazine(){return (String) magazine.getSelectedToggle().getUserData();}
-
-    public String getAddition(){return (String) addition.getSelectedToggle().getUserData();}
-
+    public void setWeaponRange(String weaponRange) {
+        this.weaponRange = weaponRange;
+    }
 }
