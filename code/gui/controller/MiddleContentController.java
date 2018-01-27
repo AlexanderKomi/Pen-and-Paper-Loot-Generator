@@ -1,8 +1,8 @@
 package gui.controller;
 
 import gui.controller.tabs.AlexGeneratorTabController;
-import gui.controller.tabs.DennisGeneratorTabController;
-import gui.controller.tabs.NissGeneratorTabController;
+import gui.controller.tabs.WeaponCreatorTabController;
+import gui.controller.tabs.WeaponGeneratorTabController;
 import gui.elements.GeneratorTab;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -27,13 +27,13 @@ public class MiddleContentController {
 	private VBox                       nissGeneratorTab;
 
 	@FXML
-	private NissGeneratorTabController nissGeneratorTabController;
+	private WeaponGeneratorTabController weaponGeneratorTabController;
 	
 	@FXML
 	private AlexGeneratorTabController alexGeneratorTabController;
 	
 	@FXML
-	private DennisGeneratorTabController dennisGeneratorTabController;
+	private WeaponCreatorTabController weaponCreatorTabController;
 	
 	// END   ---------------- CUSTOM TABS ----------------   END
 	
@@ -50,9 +50,9 @@ public class MiddleContentController {
 	}
 	
 	private void createDennisTab() {
-		Tab tab = new Tab( "Dennis Generator" );	//TODO: Name kann nur über MiddleContent.fxml verändert werden!
-		tab.setContent( this.dennisGeneratorTabController.getRootPane() );
-		activeTabs.add( new GeneratorTab( this.dennisGeneratorTabController.getGenerator(), tab ) );
+		Tab tab = new Tab( "Waffen erstellen" );	//TODO: Name kann nur über MiddleContent.fxml verändert werden!
+		tab.setContent( this.weaponCreatorTabController.getRootPane() );
+		activeTabs.add( new GeneratorTab( this.weaponCreatorTabController.getGenerator(), tab ) );
 	}
 	
 	private void createAlexTab() {
@@ -62,9 +62,9 @@ public class MiddleContentController {
 	}
 	
 	private void createNissTab() {
-		Tab tab = new Tab("Waffen Generator");		//TODO: Name kann nur über MiddleContent.fxml verändert werden!
-		tab.setContent( this.nissGeneratorTabController.getRootBox() );
-		activeTabs.add( new GeneratorTab( this.nissGeneratorTabController.getNissGenerator(), tab ) );
+		Tab tab = new Tab("Waffen generieren");		//TODO: Name kann nur über MiddleContent.fxml verändert werden!
+		tab.setContent( this.weaponGeneratorTabController.getRootBox() );
+		activeTabs.add( new GeneratorTab( this.weaponGeneratorTabController.getGenerator(), tab ) );
 	}
 	
 	

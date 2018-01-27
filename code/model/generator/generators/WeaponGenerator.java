@@ -1,19 +1,19 @@
 package model.generator.generators;
 
-import gui.controller.tabs.NissGeneratorTabController;
+import gui.controller.tabs.WeaponGeneratorTabController;
 import model.LootController;
 import model.generator.Generator;
 import model.generator.generators.weaponGenerator.Weapon;
 import model.generator.generators.weaponGenerator.WeaponConst;
 
-public class NissGenerator extends Generator {
+public class WeaponGenerator extends Generator {
 
-    private NissGeneratorTabController ngtc;
+    private WeaponGeneratorTabController ngtc;
     private String lootClass;                       //may use later.
     private static Weapon weapon = new Weapon();
 
 
-    public NissGenerator(NissGeneratorTabController ngtc) {
+    public WeaponGenerator(WeaponGeneratorTabController ngtc) {
         setNgtc(ngtc);
         try {
             lootClass = LootController.getLootClassByName("Waffen").getName();
@@ -84,7 +84,7 @@ public class NissGenerator extends Generator {
         }
 
         //category -> melee/range
-
+        
 
         switch (weapon.getType()) {
             case "Waffenlos":
@@ -394,11 +394,11 @@ public class NissGenerator extends Generator {
 
     // --- Getter and Setter ----------------------------------------------------------------------
 
-    private void setNgtc(NissGeneratorTabController ngtc) {
+    private void setNgtc(WeaponGeneratorTabController ngtc) {
         this.ngtc = ngtc;
     }
 
-    private NissGeneratorTabController getNgtc() {
+    private WeaponGeneratorTabController getNgtc() {
         return this.ngtc;
     }
     

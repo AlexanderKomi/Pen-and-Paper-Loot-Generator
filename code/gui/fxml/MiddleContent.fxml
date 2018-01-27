@@ -20,14 +20,14 @@
     </ScrollPane>
     <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="580.0" minWidth="750.0">
         <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" tabMinWidth="50.0">
-            <Tab text="Waffen Generator">
-                <fx:include fx:id="nissGeneratorTab" source="tabs/NissGeneratorTab.fxml" />
+            <Tab text="Waffen generieren">
+                <fx:include fx:id="weaponGeneratorTab" source="tabs/WeaponGeneratorTab.fxml" />
             </Tab>
-            <Tab text="Alex Generator">
+            <Tab text="Loot generieren">
                 <fx:include fx:id="alexGeneratorTab" source="tabs/AlexGeneratorTab.fxml" />
             </Tab>
-            <Tab text="Dennis Generator">
-                <fx:include fx:id="dennisGeneratorTab" source="tabs/DennisGeneratorTab.fxml" />
+            <Tab text="Waffen erstellen">
+                <fx:include fx:id="weaponCreatorTab" source="tabs/WeaponCreatorTab.fxml" />
             </Tab>
         </TabPane>
     </ScrollPane>

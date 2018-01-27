@@ -5,11 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
-import model.generator.generators.NissGenerator;
+import model.generator.generators.WeaponGenerator;
 
-public class NissGeneratorTabController {
+public class WeaponGeneratorTabController {
 
-    private NissGenerator nissGenerator = new NissGenerator(this);
+    private WeaponGenerator weaponGenerator = new WeaponGenerator(this);
     private String weaponRange = "Nahkampf";
 
     // --- Fxml -----------------------------------------------------------------------------------
@@ -93,12 +93,12 @@ public class NissGeneratorTabController {
         return rootBox;
     }
 
-    public NissGenerator getNissGenerator() {
-        return nissGenerator;
+    public WeaponGenerator getGenerator() {
+        return weaponGenerator;
     }
 
-    public void setNissGenerator(NissGenerator nissGenerator) {
-        this.nissGenerator = nissGenerator;
+    public void setNissGenerator(WeaponGenerator weaponGenerator) {
+        this.weaponGenerator = weaponGenerator;
     }
 
     public String getWeaponType() {

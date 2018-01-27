@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import model.generator.generators.DennisGenerator;
 
-public class DennisGeneratorTabController {
+public class WeaponCreatorTabController {
 	
 	private DennisGenerator dennisGenerator = new DennisGenerator();
 	
