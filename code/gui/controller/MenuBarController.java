@@ -7,6 +7,13 @@ import javafx.stage.Modality;
 
 public class MenuBarController {
 	
+	private static AboutPage about = new AboutPage();
+	
+	@FXML
+	private void initialize() {
+		about.initModality( Modality.APPLICATION_MODAL );
+	}
+	
 	@FXML
 	private void closeClicked() {
 		System.out.println( "Close clicked" );
@@ -16,8 +23,6 @@ public class MenuBarController {
 	@FXML
 	private void aboutClicked() {
 		System.out.println( "About clicked" );
-		AboutPage about = new AboutPage();
-		about.initModality( Modality.APPLICATION_MODAL );
 		about.showAndWait();
 	}
 	
