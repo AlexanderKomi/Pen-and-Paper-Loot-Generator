@@ -3,11 +3,12 @@ package io;
 public final class IOConstants {
 	
 	public static final String replaceCharacter   = "";
-	public static final String resourceFolder     = "loot/";
+	public static final String lootFolder         = "loot/";
+	public static final String graphicsFolder     = "graphics/";
 	public static final String fileType           = ".csv";
 	public static final String fileEntrySeparator = ";";
 	public static final String fileRowSeparator   = "\n";
-	public static final String lineSeparator = "\r\n";
+	public static final String lineSeparator      = "\r\n";
 	
 	public static final String[] lootClasses   = {
 			"Waffen", "Erste Hilfe", "Gifte", "Kram", "Computerteile"

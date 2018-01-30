@@ -71,14 +71,14 @@ public class ReadFile {
 	private ArrayList<String> findInJar() {
 		ArrayList<String> results = new ArrayList<>();
 		for ( String lootClassName : IOConstants.lootClasses ) {
-			String content = findResource( IOConstants.resourceFolder + lootClassName + IOConstants.fileType );
+			String content = findResource( IOConstants.lootFolder + lootClassName + IOConstants.fileType );
 			if ( content != null ) {
 				fileNames.add( lootClassName );
 				results.add( content );
 			}
 			else {
 				try {
-					String exception = "ERROR : No resources found in : " + IOConstants.resourceFolder + lootClassName + IOConstants.fileType;
+					String exception = "ERROR : No resources found in : " + IOConstants.lootFolder + lootClassName + IOConstants.fileType;
 					//IOController.getLogger().addEntry( exception );
 					throw new Exception( exception );
 				}
@@ -92,7 +92,7 @@ public class ReadFile {
 	
 	private File[] findInFiles() {
 		ArrayList<File> usebleFiles     = new ArrayList<>();
-		String          sourceDirectory = GeneralConstants.getLocation() + IOConstants.resourceFolder;
+		String          sourceDirectory = GeneralConstants.getLocation() + IOConstants.lootFolder;
 		File[]          files           = findFilesInDirectory( sourceDirectory );
 
 		try {

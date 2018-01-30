@@ -1,5 +1,7 @@
 import arguments.Arguments;
+import constants.GeneralConstants;
 import io.Helper;
+import io.IOConstants;
 import io.IOController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -42,20 +44,31 @@ public class LootGenerator extends Application {
 		beforeGuiInit();
 		Scene scene = new Scene( FXMLLoader.load( getClass().getResource( "gui/fxml/MainGui.fxml" ) ) );
 		primaryStage.setTitle( "Pen and Paper : Loot Generator" );
-		primaryStage.setMinWidth(1060);
-		primaryStage.setMinHeight(665);
+		primaryStage.setMinWidth( GeneralConstants.guiMinWidth );
+		primaryStage.setMinHeight( GeneralConstants.guiMinHeight );
 		primaryStage.setScene( scene );
 		primaryStage.setOnCloseRequest( event -> Platform.exit() );
-
-		try {
-			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/graphics/PnPLogo.svg")));
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
+		
+		setIcon( primaryStage );
+		
 		primaryStage.show();
 		
 		afterGuiInit();
+	}
+	
+	private void setIcon( Stage primaryStage ) {
+		try {
+			String iconPath = IOConstants.graphicsFolder + "PnPLogo.svg";
+			if ( GeneralConstants.isExecutedFromJar() ) {
+				primaryStage.getIcons().add( new Image( getClass().getResourceAsStream( iconPath ) ) );
+			}
+			else {
+				primaryStage.getIcons().add( new Image( getClass().getResource( iconPath ).toExternalForm() ) );
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	private void beforeGuiInit() {
