@@ -5,6 +5,7 @@ import model.LootController;
 import model.generator.Generator;
 import model.generator.generators.weaponGenerator.Weapon;
 import model.generator.generators.weaponGenerator.WeaponConst;
+import model.generator.generators.weaponGenerator.WeaponNameGenerator;
 
 public class WeaponGenerator extends Generator {
 
@@ -29,7 +30,7 @@ public class WeaponGenerator extends Generator {
     public String generateLoot() {
         try {
             if ( !WeaponConst.testSetup() ) {
-            
+                // TODO : Add exception handling here. Maybe an error message on gui ?
             }
         }
         catch ( Exception e ) {
@@ -122,7 +123,8 @@ public class WeaponGenerator extends Generator {
                 System.out.println("Fehler bei der Typbestimmung der Waffe! ");
                 break;
         }
-    
+        System.out.println( WeaponNameGenerator.generateName( weapon ) );
+        
         return weapon.toPrintableFormat();
     }
 
