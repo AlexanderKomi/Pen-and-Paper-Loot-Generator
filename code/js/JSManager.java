@@ -25,6 +25,9 @@ public class JSManager {
 		try {
 			engine.eval( "print(1+1)" );
 			
+			//-----------------------------------------------------------------------
+			
+			
 			FileReader f = new FileReader( scriptLocation + "Example.js" );
 			engine.eval( f );
 			Invocable invocable = (Invocable) engine;

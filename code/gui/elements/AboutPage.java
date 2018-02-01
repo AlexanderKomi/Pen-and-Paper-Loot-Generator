@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 public class AboutPage extends Stage {
 	
 	private static BorderPane bp = new BorderPane();
+	private static Label systemLabel;
 	private static Label versionLabel;
 	private static Label authorsLabel;
 	
@@ -28,7 +29,7 @@ public class AboutPage extends Stage {
 	
 	private void createContent() {
 		versionLabel = new Label( "Current Version : \t" + GeneralConstants.current_version );
-		
+		systemLabel = new Label( "Compatible System Version : \t" + GeneralConstants.compatible_System_Version );
 		StringBuilder authors = new StringBuilder();
 		for ( String s : GeneralConstants.authors ) {
 			authors.append( "\t" ).append( s ).append( "\n" );
@@ -40,7 +41,7 @@ public class AboutPage extends Stage {
 	private void addContentToGui() {
 		VBox vbox = new VBox();
 		this.addDefaultValues( vbox );
-		vbox.getChildren().addAll( versionLabel, authorsLabel );
+		vbox.getChildren().addAll( versionLabel, systemLabel, authorsLabel );
 		
 		bp.setCenter( vbox );
 		Scene scene = new Scene( bp );

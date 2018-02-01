@@ -35,6 +35,8 @@ public final class GeneralConstants {
 	private static final String[] versions        = { current_version, "0.1a" };
 	private static       String   location        = getMainLocation();
 	
+	public static final String compatible_System_Version = "1_1";
+	
 	public static final int guiMinHeight = 665;
 	public static final int guiMinWidth  = 1060;
 	
