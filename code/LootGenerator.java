@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import js.JSManager;
+import testing.LanguageSupportTest;
 
 import java.util.Map;
 
@@ -73,9 +73,13 @@ public class LootGenerator extends Application {
 	}
 	
 	private void beforeGuiInit() {
-		JSManager.demo();
+		
+		LanguageSupportTest.test();
 		IOController.loadStartingData();
 		Helper.test_BeforeGUIStarts();
+	}
+	
+	private void kotlinTest() {
 	}
 	
 	private void afterGuiInit() {
