@@ -1,6 +1,5 @@
 import arguments.Arguments;
 import constants.GeneralConstants;
-import io.Helper;
 import io.IOConstants;
 import io.IOController;
 import javafx.application.Application;
@@ -52,8 +51,6 @@ public class LootGenerator extends Application {
 		setIcon( primaryStage );
 		
 		primaryStage.show();
-		
-		afterGuiInit();
 	}
 	
 	private void setIcon( Stage primaryStage ) {
@@ -66,7 +63,8 @@ public class LootGenerator extends Application {
 				primaryStage.getIcons().add( new Image( getClass().getResource( iconPath ).toExternalForm() ) );
 			}
 			
-		}catch(Exception e){
+		}
+		catch ( Exception e ) {
 			e.printStackTrace();
 		}
 	}
@@ -74,14 +72,6 @@ public class LootGenerator extends Application {
 	private void beforeGuiInit() {
 		//LanguageSupportTest.test();
 		IOController.loadStartingData();
-		Helper.test_BeforeGUIStarts();
-	}
-	
-	private void kotlinTest() {
-	}
-	
-	private void afterGuiInit() {
-		Helper.test_AfterGUIStarts();
 	}
 	
 }

@@ -14,7 +14,7 @@ public class AlexGenerator extends Generator {
 	
 	public AlexGenerator( AlexGeneratorTabController alexGeneratorTabController ) {
 		this.setTabController( alexGeneratorTabController );
-		this.setName( "Alex Generator" );
+		this.setName( alexGeneratorTabController.getName() );
 	}
 	
 	@Override

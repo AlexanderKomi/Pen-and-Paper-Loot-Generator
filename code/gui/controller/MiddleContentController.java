@@ -24,7 +24,7 @@ public class MiddleContentController {
 	// START ---------------- CUSTOM TABS ---------------- START
 	
 	@FXML
-	private VBox                       nissGeneratorTab;
+	private VBox nissGeneratorTab;
 
 	@FXML
 	private WeaponGeneratorTabController weaponGeneratorTabController;
@@ -50,19 +50,19 @@ public class MiddleContentController {
 	}
 	
 	private void createDennisTab() {
-		Tab tab = new Tab( "Waffen erstellen" );	//TODO: Name kann nur über MiddleContent.fxml verändert werden!
+		Tab tab = new Tab( "Waffen erstellen" );    //TODO: Name kann nur über MiddleContent.fxml verändert werden!
 		tab.setContent( this.weaponCreatorTabController.getRootPane() );
 		activeTabs.add( new GeneratorTab( this.weaponCreatorTabController.getGenerator(), tab ) );
 	}
 	
 	private void createAlexTab() {
-		Tab tab = new Tab( "Alex Generator" );		//TODO: Name kann nur über MiddleContent.fxml verändert werden!
+		Tab tab = new Tab( "Alex Generator" );        //TODO: Name kann nur über MiddleContent.fxml verändert werden!
 		tab.setContent( this.alexGeneratorTabController.getRootPane() );
 		activeTabs.add( new GeneratorTab( this.alexGeneratorTabController.getAlexGenerator(), tab ) );
 	}
 	
 	private void createNissTab() {
-		Tab tab = new Tab("Waffen generieren");		//TODO: Name kann nur über MiddleContent.fxml verändert werden!
+		Tab tab = new Tab( "Waffen generieren" );        //TODO: Name kann nur über MiddleContent.fxml verändert werden!
 		tab.setContent( this.weaponGeneratorTabController.getRootBox() );
 		activeTabs.add( new GeneratorTab( this.weaponGeneratorTabController.getGenerator(), tab ) );
 	}

@@ -2,7 +2,7 @@ package model.generator.generators.weaponGenerator;
 
 public final class WeaponConst {
 	
-	public static final String[] classifications  = {
+	public static final String[] classifications = {
 			"schlecht", "mittel", "gut", "legendär"
 	};
 	

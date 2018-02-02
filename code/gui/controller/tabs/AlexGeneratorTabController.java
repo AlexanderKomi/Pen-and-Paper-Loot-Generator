@@ -389,4 +389,8 @@ public class AlexGeneratorTabController {
 	public AlexGenerator getAlexGenerator() {
 		return alexGenerator;
 	}
+	
+	public String getName() {
+		return "Alex Generator";
+	}
 }

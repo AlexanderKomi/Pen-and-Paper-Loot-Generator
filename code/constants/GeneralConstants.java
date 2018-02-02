@@ -29,16 +29,14 @@ public final class GeneralConstants {
 	 *       - RELEASE : Finished part of the project.
 	 *
 	 * */
-	public static final  String   current_version = "1.0b";
-	public static final  String[] authors         = { "Alexander Komischke", "Dennis Sellemann" };
-	private static final String[] stable_versions = { "1.0b" };
-	private static final String[] versions        = { current_version, "0.1a" };
-	private static       String   location        = getMainLocation();
-	
-	public static final String compatible_System_Version = "1_1";
-	
-	public static final int guiMinHeight = 665;
-	public static final int guiMinWidth  = 1060;
+	public static final  String   current_version           = "1.0b";
+	public static final  String[] authors                   = { "Alexander Komischke", "Dennis Sellemann" };
+	public static final  String   compatible_System_Version = "1_1";
+	public static final  int      guiMinHeight              = 665;
+	public static final  int      guiMinWidth               = 1060;
+	private static final String[] stable_versions           = { "1.0b" };
+	private static final String[] versions                  = { current_version, "0.1a" };
+	private static       String   location                  = getMainLocation();
 	
 	
 	private GeneralConstants() {

@@ -2,7 +2,7 @@ package io.dataLoading;
 
 import io.IOConstants;
 
-public class Header {
+public final class Header {
 	
 	private String   name;
 	private String[] columns;

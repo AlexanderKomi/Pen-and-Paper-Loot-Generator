@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<SplitPane dividerPositions="0.29797979797979796" prefHeight="-Infinity" prefWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MiddleContentController">
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.29797979797979796" prefHeight="-Infinity"
+           prefWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111"
+           fx:controller="gui.controller.MiddleContentController">
     <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="580.0" minWidth="300.0">
         <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
             <Label fx:id="outputText" text="Output">
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                 </padding>
             </Label>
         </AnchorPane>
@@ -21,13 +18,13 @@
     <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="580.0" minWidth="750.0">
         <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" tabMinWidth="50.0">
             <Tab text="Waffen generieren">
-                <fx:include fx:id="weaponGeneratorTab" source="tabs/WeaponGeneratorTab.fxml" />
+                <fx:include fx:id="weaponGeneratorTab" source="tabs/WeaponGeneratorTab.fxml"/>
             </Tab>
             <Tab text="Loot generieren">
-                <fx:include fx:id="alexGeneratorTab" source="tabs/AlexGeneratorTab.fxml" />
+                <fx:include fx:id="alexGeneratorTab" source="tabs/AlexGeneratorTab.fxml"/>
             </Tab>
             <Tab text="Waffen erstellen">
-                <fx:include fx:id="weaponCreatorTab" source="tabs/WeaponCreatorTab.fxml" />
+                <fx:include fx:id="weaponCreatorTab" source="tabs/WeaponCreatorTab.fxml"/>
             </Tab>
         </TabPane>
     </ScrollPane>

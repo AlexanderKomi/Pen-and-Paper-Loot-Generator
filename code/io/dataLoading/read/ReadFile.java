@@ -1,8 +1,8 @@
-package io.dataLoading;
+package io.dataLoading.read;
 
 import constants.GeneralConstants;
-import io.Helper;
 import io.IOConstants;
+import io.IOController;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class ReadFile {
 			return findInJar();
 		}
 		else {
-			return getAllContentAsStrings( findInFiles() ); //Every Element in this list contains one file.
+			return getStringsFromFiles( findInFiles( GeneralConstants.getLocation() + IOConstants.lootFolder ) ); //Every Element in this list contains one file.
 		}
 	}
 	
@@ -39,7 +39,7 @@ public class ReadFile {
 	}
 	
 	private String findResource( String fileLocation ) {
-		InputStream is = Helper.class.getClassLoader().getResourceAsStream( fileLocation );
+		InputStream is = IOController.class.getClassLoader().getResourceAsStream( fileLocation );
 		if ( is == null ) {
 			System.out.println( " File : " + fileLocation + " not found." );
 			return null;
@@ -90,11 +90,10 @@ public class ReadFile {
 		return results;
 	}
 	
-	private File[] findInFiles() {
-		ArrayList<File> usebleFiles     = new ArrayList<>();
-		String          sourceDirectory = GeneralConstants.getLocation() + IOConstants.lootFolder;
-		File[]          files           = findFilesInDirectory( sourceDirectory );
-
+	private File[] findInFiles( String directory ) {
+		ArrayList<File> usableFiles = new ArrayList<>();
+		File[]          files       = findFilesInDirectory( directory );
+		
 		try {
 			if ( files != null ) {
 				if ( files.length != IOConstants.lootClasses.length ) {
@@ -106,20 +105,20 @@ public class ReadFile {
 							
 							if ( IOConstants.lootClasses[ j ].equals( nameWithoutExtension ) ) {
 								fileNames.add( nameWithoutExtension );
-								usebleFiles.add( file );
+								usableFiles.add( file );
 							}
 						}
 					}
-					files = new File[ usebleFiles.size() ];
-					usebleFiles.toArray( files );
+					files = new File[ usableFiles.size() ];
+					usableFiles.toArray( files );
 					
-					String exception = "Found files and loot-classes (in IOConstants) differ in length : " + sourceDirectory;
+					String exception = "Found files and loot-classes (in IOConstants) differ in length : " + directory;
 					//IOController.getLogger().addEntry( exception );
 					throw new Exception( exception );
 				}
 			}
 			else {
-				String exception = "No resources found in : " + sourceDirectory;
+				String exception = "No resources found in : " + directory;
 				//IOController.getLogger().addEntry( exception );
 				throw new Exception( exception );
 			}
@@ -128,31 +127,23 @@ public class ReadFile {
 		catch ( Exception e ) {
 			e.printStackTrace();
 		}
-
+		
 		return files;
-	}
-	
-	private File findFileInDirectory( String dirName, String fileName ) {
-		return new File( dirName + "/" + fileName );
 	}
 	
 	private File[] findFilesInDirectory( String dirName ) {
 		return new File( dirName ).listFiles( ( directory, filename ) -> filename.endsWith( IOConstants.fileType ) );
 	}
 	
-	private ArrayList<String> getAllContentAsStrings( File[] files ) {
+	private ArrayList<String> getStringsFromFiles( File[] files ) {
 		ArrayList<String> content = new ArrayList<>();
-
+		
 		for ( File file : files ) {
 			fileNames.add( file.getName().substring( 0, file.getName().length() - IOConstants.fileType.length() ) );
 			content.add( readFile( file.getPath() ) );
 		}
-
+		
 		return content;
-	}
-	
-	private String getContentAsString( File file ) {
-		return readFile( file.getPath() );
 	}
 	
 	private boolean isExecutedFromJar() {

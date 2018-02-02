@@ -1,9 +1,7 @@
 package model;
 
-import io.FileLogger;
 import io.IOConstants;
 import io.dataLoading.Header;
-import io.dataLoading.LootClassCreator;
 import model.generator.Configuration;
 
 import java.util.ArrayList;
@@ -17,20 +15,18 @@ public class LootClass {
 	private ArrayList<Loot> items;
 	private int             index;
 	
-	public LootClass( Header header, String content ) {
+	public LootClass( Header header, ArrayList<Loot> loot ) {
 		this.name = header.getName();
 		this.columns = header.getColumns();
+		this.items = loot;
 		try {
 			this.index = getInitialIndex();
-			items = LootClassCreator.createItems( content, columns );
-			//list.forEach( System.out::println );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace();
-			FileLogger.getLogger().info( e.getMessage() );
 			System.exit( 1 );
 		}
-		configuration = new Configuration( this );
+		this.configuration = new Configuration( this );
 	}
 	
 	public ArrayList<String> filterDuplicatedEntries( String column ) {
@@ -114,13 +110,13 @@ public class LootClass {
 		return items;
 	}
 	
+	public void setItems( Loot[] items ) {
+		Collections.addAll( this.items, items );
+	}
+	
 	public void setItems( ArrayList<Loot> items ) {
 		Loot[] loot = new Loot[ items.size() ];
 		items.toArray( loot );
-	}
-	
-	public void setItems( Loot[] items ) {
-		Collections.addAll( this.items, items );
 	}
 	
 	public String[] getColumns() {

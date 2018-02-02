@@ -1,239 +1,266 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<VBox fx:id="rootBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.tabs.WeaponGeneratorTabController">
-    <children>
-        <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
-            <children>
-                <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="370.0" minWidth="150.0" HBox.hgrow="ALWAYS">
-                    <content>
-                  <VBox alignment="CENTER">
-                     <children>
-                              <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
-                                  <children>
-                                      <VBox alignment="CENTER_LEFT" spacing="2.0" HBox.hgrow="ALWAYS">
-                                          <children>
-                                    <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="Waffen - Typ:" textAlignment="CENTER" underline="true" wrapText="true" VBox.vgrow="ALWAYS">
-                                       <padding>
-                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Pane VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_random_weapontype" mnemonicParsing="false" selected="true" text="Zufall" userData="random" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                       <toggleGroup>
-                                                      <ToggleGroup fx:id="weaponType" />
-                                       </toggleGroup>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </RadioButton>
-                                              <Pane VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_weaponless" mnemonicParsing="false" onAction="#weaponTypeToMelee" text="Waffenlos" toggleGroup="$weaponType" userData="Waffenlos" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_sharp" mnemonicParsing="false" onAction="#weaponTypeToMelee" text="Scharfe" toggleGroup="$weaponType" userData="Scharf" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_blunt" mnemonicParsing="false" onAction="#weaponTypeToMelee" text="Stumpfe" toggleGroup="$weaponType" userData="Stumpf" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_pointy" mnemonicParsing="false" onAction="#weaponTypeToMelee" text="Spitze" toggleGroup="$weaponType" userData="Spitz" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_exo_melee" layoutX="10.0" layoutY="409.0" mnemonicParsing="false" onAction="#weaponTypeToMelee" text="Exo - Nahkampf" toggleGroup="$weaponType" userData="Exotisch" VBox.vgrow="ALWAYS">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                    </RadioButton>
-                                    <Pane layoutX="10.0" layoutY="439.0" VBox.vgrow="ALWAYS" />
-                                              <Separator prefHeight="5.0" VBox.vgrow="ALWAYS">
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                       <padding>
-                                          <Insets left="-100.0" right="-10.0" />
-                                       </padding>
-                                              </Separator>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_throw" mnemonicParsing="false" onAction="#weaponTypeToRange" text="Wurf" toggleGroup="$weaponType" userData="Wurf" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_pistole" mnemonicParsing="false" onAction="#weaponTypeToRange" text="Pistole" toggleGroup="$weaponType" userData="Pistole" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_gun" mnemonicParsing="false" onAction="#weaponTypeToRange" text="Gewehr" toggleGroup="$weaponType" userData="Gewehr" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                              <RadioButton fx:id="rb_bow" mnemonicParsing="false" onAction="#weaponTypeToRange" text="Bogen" toggleGroup="$weaponType" userData="Bogen" VBox.vgrow="ALWAYS">
-                                                  <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </padding>
-                                                  <VBox.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                  </VBox.margin>
-                                              </RadioButton>
-                                              <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_exo_range" layoutX="15.0" layoutY="185.0" mnemonicParsing="false" onAction="#weaponTypeToRange" text="Exo - Fernkampf" toggleGroup="$weaponType" userData="Exotisch" VBox.vgrow="ALWAYS">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                    </RadioButton>
-                                    <Pane layoutX="10.0" layoutY="220.0" />
-                                          </children>
-                                          <HBox.margin>
-                                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                          </HBox.margin>
-                                      </VBox>
-                              <Separator orientation="VERTICAL">
-                                 <padding>
-                                    <Insets bottom="-10.0" top="-10.0" />
-                                 </padding>
-                              </Separator>
-                                      <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                                          <children>
-                                    <Pane minWidth="120.0" VBox.vgrow="ALWAYS" />
-                                    <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="Klassifizierung: " textAlignment="CENTER" underline="true" wrapText="true" VBox.vgrow="ALWAYS">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_random_class" mnemonicParsing="false" selected="true" text="zufall" userData="random" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="classification" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_poor" mnemonicParsing="false" text="schlecht" toggleGroup="$classification" userData="schlecht" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </RadioButton>
-                                    <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_medium" mnemonicParsing="false" text="mittel" toggleGroup="$classification" userData="mittel" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </RadioButton>
-                                    <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_good" mnemonicParsing="false" text="gut" toggleGroup="$classification" userData="gut" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </RadioButton>
-                                    <Pane layoutX="10.0" layoutY="403.0" VBox.vgrow="ALWAYS" />
-                                    <RadioButton fx:id="rb_legendary" mnemonicParsing="false" text="legendär" toggleGroup="$classification" userData="legendär" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </RadioButton>
-                                    <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS" />
-                                          </children>
-                                          <HBox.margin>
-                                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                          </HBox.margin>
-                                      </VBox>
-                                  </children>
-                              </HBox>
-                     </children>
-                  </VBox>
-                    </content>
-                </ScrollPane>
-            </children>
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
-        </HBox>
-    </children>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="rootBox" alignment="CENTER" maxHeight="-Infinity"
+      maxWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111"
+      fx:controller="gui.controller.tabs.WeaponGeneratorTabController">
+    <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets/>
+        </VBox.margin>
+        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="370.0" minWidth="150.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER">
+                <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                    <VBox alignment="CENTER_LEFT" spacing="2.0" HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+                        </HBox.margin>
+                        <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT"
+                               text="Waffen - Typ:" textAlignment="CENTER" underline="true"
+                               wrapText="true" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold" size="13.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Pane VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_random_weapontype" mnemonicParsing="false"
+                                     selected="true" text="Zufall" userData="random"
+                                     VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                            <toggleGroup>
+                                <ToggleGroup fx:id="weaponType"/>
+                            </toggleGroup>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </RadioButton>
+                        <Pane VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_weaponless" mnemonicParsing="false"
+                                     onAction="#weaponTypeToMelee" text="Waffenlos"
+                                     toggleGroup="$weaponType" userData="Waffenlos"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_sharp" mnemonicParsing="false"
+                                     onAction="#weaponTypeToMelee" text="Scharfe"
+                                     toggleGroup="$weaponType" userData="Scharf"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_blunt" mnemonicParsing="false"
+                                     onAction="#weaponTypeToMelee" text="Stumpfe"
+                                     toggleGroup="$weaponType" userData="Stumpf"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_pointy" mnemonicParsing="false"
+                                     onAction="#weaponTypeToMelee" text="Spitze"
+                                     toggleGroup="$weaponType" userData="Spitz"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_exo_melee" layoutX="10.0" layoutY="409.0"
+                                     mnemonicParsing="false" onAction="#weaponTypeToMelee"
+                                     text="Exo - Nahkampf" toggleGroup="$weaponType"
+                                     userData="Exotisch" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="439.0" VBox.vgrow="ALWAYS"/>
+                        <Separator prefHeight="5.0" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                            <padding>
+                                <Insets left="-100.0" right="-10.0"/>
+                            </padding>
+                        </Separator>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_throw" mnemonicParsing="false"
+                                     onAction="#weaponTypeToRange" text="Wurf"
+                                     toggleGroup="$weaponType" userData="Wurf"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_pistole" mnemonicParsing="false"
+                                     onAction="#weaponTypeToRange" text="Pistole"
+                                     toggleGroup="$weaponType" userData="Pistole"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_gun" mnemonicParsing="false"
+                                     onAction="#weaponTypeToRange" text="Gewehr"
+                                     toggleGroup="$weaponType" userData="Gewehr"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_bow" mnemonicParsing="false"
+                                     onAction="#weaponTypeToRange" text="Bogen"
+                                     toggleGroup="$weaponType" userData="Bogen"
+                                     VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="365.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_exo_range" layoutX="15.0" layoutY="185.0"
+                                     mnemonicParsing="false" onAction="#weaponTypeToRange"
+                                     text="Exo - Fernkampf" toggleGroup="$weaponType"
+                                     userData="Exotisch" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="220.0"/>
+                    </VBox>
+                    <Separator orientation="VERTICAL">
+                        <padding>
+                            <Insets bottom="-10.0" top="-10.0"/>
+                        </padding>
+                    </Separator>
+                    <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+                        </HBox.margin>
+                        <Pane minWidth="120.0" VBox.vgrow="ALWAYS"/>
+                        <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT"
+                               text="Klassifizierung: " textAlignment="CENTER" underline="true"
+                               wrapText="true" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold" size="13.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_random_class" mnemonicParsing="false"
+                                     selected="true" text="zufall" userData="random"
+                                     VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <toggleGroup>
+                                <ToggleGroup fx:id="classification"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_poor" mnemonicParsing="false" text="schlecht"
+                                     toggleGroup="$classification" userData="schlecht"
+                                     VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_medium" mnemonicParsing="false" text="mittel"
+                                     toggleGroup="$classification" userData="mittel"
+                                     VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_good" mnemonicParsing="false" text="gut"
+                                     toggleGroup="$classification" userData="gut"
+                                     VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="403.0" VBox.vgrow="ALWAYS"/>
+                        <RadioButton fx:id="rb_legendary" mnemonicParsing="false"
+                                     text="legendär" toggleGroup="$classification"
+                                     userData="legendär" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </RadioButton>
+                        <Pane layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </HBox>
 </VBox>

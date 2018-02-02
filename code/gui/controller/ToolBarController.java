@@ -14,9 +14,7 @@ public class ToolBarController {
 	
 	@FXML
 	private void generateLootClicked() {
-		Platform.runLater( () -> {
-			resultOutput.set( this.selectedTab.generateLoot() );
-		} );
+		Platform.runLater( () -> resultOutput.set( this.selectedTab.generateLoot() ) );
 	}
 	
 	@FXML

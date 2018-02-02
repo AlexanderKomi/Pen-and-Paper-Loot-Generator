@@ -1,32 +1,38 @@
 package io.dataLoading;
 
 import io.IOConstants;
+import io.dataLoading.read.StringManipulator;
 import model.Loot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LootClassCreator {
+public final class LootClassCreator {
 	
-	public static ArrayList<Loot> createItems( String content, String[] columns ) {
+	public ArrayList<Loot> createLoot( Header header, String lootContent ) {
+		return createLoot( lootContent, header.getColumns() );
+	}
+	
+	private ArrayList<Loot> createLoot( String content, String[] columns ) {
 		
 		ArrayList<Loot> loot = new ArrayList<>();
 		String[]        rows = content.split( IOConstants.fileRowSeparator );
 		
-		for ( String row : deleteEmptyStart( rows ) ) {
-
-			ArrayList<String> list = createLoot( row );
+		for ( String row : StringManipulator.deleteEmptyStart( rows ) ) {
 			
-			if ( list != null ) {
-				if(list.size() == columns.length) {
-					loot.add(new Loot(mergeListAndColumnsToLoot(list, columns)));
+			ArrayList<String> lootContent = createLootContent( row );
+			
+			if ( lootContent != null ) {
+				if ( lootContent.size() == columns.length ) {
+					loot.add( new Loot( createLootMap( lootContent, columns ) ) );
 				}
-				else{
+				else {
 					try {
-						throw new Exception("list size != columns length!");
-					} catch (Exception e) {
+						throw new Exception( "list size != columns length!" );
+					}
+					catch ( Exception e ) {
 						e.printStackTrace();
-						System.exit(1);
+						System.exit( 1 );
 					}
 				}
 			}
@@ -34,33 +40,16 @@ public class LootClassCreator {
 		return loot;
 	}
 	
-	private static HashMap<String, String> mergeListAndColumnsToLoot( ArrayList<String> list, String[] columns ) {
+	private HashMap<String, String> createLootMap( ArrayList<String> lootContent, String[] columns ) {
 		HashMap<String, String> map = new HashMap<>();
 		for ( int i = 0; i < columns.length; i++ ) {
 			String column = columns[ i ];
-			map.put( column, list.get( i ) );
+			map.put( column, lootContent.get( i ) );
 		}
 		return map;
 	}
 	
-	private static String[] deleteEmptyStart( String[] rows ) {
-		String[] result = rows;
-		for ( int i = 0; i < rows.length; i++ ) {
-			for ( String s : rows[ i ].split( IOConstants.fileEntrySeparator ) ) {
-				if ( !s.isEmpty() ) {
-					
-					result = new String[ rows.length - i ];
-					
-					System.arraycopy( rows, i + 1, result, 0, rows.length - i - 1 - i );
-					
-					return result;
-				}
-			}
-		}
-		return result;
-	}
-	
-	private static ArrayList<String> createLoot( String row ) {
+	private ArrayList<String> createLootContent( String row ) {
 		if ( row == null ) {
 			return null;
 		}

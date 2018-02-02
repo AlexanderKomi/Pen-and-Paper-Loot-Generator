@@ -1,15 +1,16 @@
 package io;
 
 import io.dataLoading.ContentManager;
+import model.LootController;
 
-public class IOController {
+public final class IOController {
 	
 	//private static FileLogger     logger = new FileLogger();
-	private static ContentManager c = new ContentManager();
+	private static ContentManager contentManager = new ContentManager();
 	
 	public static void loadStartingData() {
 		if ( IOConstants.checkArrayLength() ) {
-			c.createUsableData();
+			LootController.setLootClasses( contentManager.createUsableData() );
 		}
 		else {
 			try {
