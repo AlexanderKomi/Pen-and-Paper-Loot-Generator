@@ -39,8 +39,18 @@ public class WeaponGenerator extends Generator {
 		}
 		
 		weapon.clear();
-		String classification;
 		
+		generateDistance();
+		
+		//category -> melee/range
+		generateType( weapon.getType(), classify() );
+		
+		System.out.println( WeaponNameGenerator.generateName( weapon ) );
+		
+		return weapon.toPrintableFormat();
+	}
+	
+	private void generateDistance() {
 		if ( ngtc.getWeaponType().equals( "random" ) ) {
 			if ( Generator.getRandomIntInclusive( 0, 1 ) == 1 ) {
 				if ( WeaponConst.weaponTypesMelee.length > 0 ) {
@@ -80,18 +90,19 @@ public class WeaponGenerator extends Generator {
 			weapon.setType( ngtc.getWeaponType() );
 			weapon.setCategory( ngtc.getWeaponRange() );
 		}
-		
+	}
+	
+	private String classify() {
 		if ( ngtc.getClassification().equals( "random" ) ) {      //schlecht / mittel / gut / legendär
-			classification = WeaponConst.classifications[ Generator.getRandomIntInclusive( 0, WeaponConst.classifications.length - 1 ) ];
+			return WeaponConst.classifications[ Generator.getRandomIntInclusive( 0, WeaponConst.classifications.length - 1 ) ];
 		}
 		else {
-			classification = ngtc.getClassification();
+			return ngtc.getClassification();
 		}
-		
-		//category -> melee/range
-		
-		
-		switch ( weapon.getType() ) {
+	}
+	
+	private void generateType( String weaponType, String classification ) {
+		switch ( weaponType ) {
 			case "Waffenlos":
 				generateWeaponlessWeapon( classification );
 				break;
@@ -128,9 +139,6 @@ public class WeaponGenerator extends Generator {
 				System.out.println( "Fehler bei der Typbestimmung der Waffe! " );
 				break;
 		}
-		System.out.println( WeaponNameGenerator.generateName( weapon ) );
-		
-		return weapon.toPrintableFormat();
 	}
 	
 	private void generateWeaponlessWeapon( String classification ) {
